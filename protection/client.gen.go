@@ -23,85 +23,22 @@ const (
 	BearerAuthScopes = "bearerAuth.Scopes"
 )
 
-// Defines values for BaseNetworkType.
-const (
-	DYNAMICEXTERNAL BaseNetworkType = "DYNAMIC_EXTERNAL"
-	DYNAMICINTERNAL BaseNetworkType = "DYNAMIC_INTERNAL"
-	STATICCIDR      BaseNetworkType = "STATIC_CIDR"
-	STATICENCRYPTED BaseNetworkType = "STATIC_ENCRYPTED"
-	STATICRANGE     BaseNetworkType = "STATIC_RANGE"
-	STATICSINGLE    BaseNetworkType = "STATIC_SINGLE"
-)
-
-// Defines values for ExceptionGroupType.
-const (
-	ExceptionGroupTypeAllowlist ExceptionGroupType = "allowlist"
-	ExceptionGroupTypeBlocklist ExceptionGroupType = "blocklist"
-)
-
-// Defines values for ExceptionGroupCreationType.
-const (
-	ExceptionGroupCreationTypeAllowlist ExceptionGroupCreationType = "allowlist"
-	ExceptionGroupCreationTypeBlocklist ExceptionGroupCreationType = "blocklist"
-)
-
-// Defines values for ExceptionGroupUpdateType.
-const (
-	ExceptionGroupUpdateTypeAllowlist ExceptionGroupUpdateType = "allowlist"
-	ExceptionGroupUpdateTypeBlocklist ExceptionGroupUpdateType = "blocklist"
-)
-
-// Defines values for ExceptionGroupWithDomainsType.
-const (
-	ExceptionGroupWithDomainsTypeAllowlist ExceptionGroupWithDomainsType = "allowlist"
-	ExceptionGroupWithDomainsTypeBlocklist ExceptionGroupWithDomainsType = "blocklist"
-)
-
-// Defines values for ExceptionGroupWithDomainsAndPoliciesType.
-const (
-	Allowlist ExceptionGroupWithDomainsAndPoliciesType = "allowlist"
-	Blocklist ExceptionGroupWithDomainsAndPoliciesType = "blocklist"
-)
-
-// Defines values for MacroCategoryWithCategoriesProtectionModule.
-const (
-	AppBlocker        MacroCategoryWithCategoriesProtectionModule = "app_blocker"
-	ContentFilter     MacroCategoryWithCategoriesProtectionModule = "content_filter"
-	MalwareProtection MacroCategoryWithCategoriesProtectionModule = "malware_protection"
-)
-
-// Defines values for TemplateWithConfigDataSettings.
-const (
-	BingSafesearch       TemplateWithConfigDataSettings = "bing_safesearch"
-	DuckduckgoSafesearch TemplateWithConfigDataSettings = "duckduckgo_safesearch"
-	GoogleSafesearch     TemplateWithConfigDataSettings = "google_safesearch"
-	IpBlocking           TemplateWithConfigDataSettings = "ip_blocking"
-	YoutubeSafesearch    TemplateWithConfigDataSettings = "youtube_safesearch"
-)
-
-// Defines values for TemplateWithConfigDataType.
-const (
-	MalwareContents TemplateWithConfigDataType = "malware_contents"
-	MalwareFreeTime TemplateWithConfigDataType = "malware_free_time"
-	MalwareThreats  TemplateWithConfigDataType = "malware_threats"
-)
-
-// Defines values for IncludeAssociatedPoliciesParameter.
-const (
-	IncludeAssociatedPoliciesParameterFalse IncludeAssociatedPoliciesParameter = "false"
-	IncludeAssociatedPoliciesParameterTrue  IncludeAssociatedPoliciesParameter = "true"
-)
-
-// Defines values for IncludeNetworkCountParameter.
-const (
-	IncludeNetworkCountParameterFalse IncludeNetworkCountParameter = "false"
-	IncludeNetworkCountParameterTrue  IncludeNetworkCountParameter = "true"
-)
-
 // Defines values for ListExceptionGroupsParamsIncludeAssociatedPolicies.
 const (
 	ListExceptionGroupsParamsIncludeAssociatedPoliciesFalse ListExceptionGroupsParamsIncludeAssociatedPolicies = "false"
 	ListExceptionGroupsParamsIncludeAssociatedPoliciesTrue  ListExceptionGroupsParamsIncludeAssociatedPolicies = "true"
+)
+
+// Defines values for CreateExceptionGroupJSONBodyType.
+const (
+	CreateExceptionGroupJSONBodyTypeAllowlist CreateExceptionGroupJSONBodyType = "allowlist"
+	CreateExceptionGroupJSONBodyTypeBlocklist CreateExceptionGroupJSONBodyType = "blocklist"
+)
+
+// Defines values for UpdateExceptionGroupJSONBodyType.
+const (
+	UpdateExceptionGroupJSONBodyTypeAllowlist UpdateExceptionGroupJSONBodyType = "allowlist"
+	UpdateExceptionGroupJSONBodyTypeBlocklist UpdateExceptionGroupJSONBodyType = "blocklist"
 )
 
 // Defines values for ListPoliciesParamsIncludeNetworkCount.
@@ -110,181 +47,6 @@ const (
 	ListPoliciesParamsIncludeNetworkCountTrue  ListPoliciesParamsIncludeNetworkCount = "true"
 )
 
-// BaseNetwork defines model for BaseNetwork.
-type BaseNetwork struct {
-	CreatedAt      time.Time       `json:"createdAt"`
-	Id             Uuid            `json:"id"`
-	LastQueriedAt  *time.Time      `json:"lastQueriedAt,omitempty"`
-	Name           string          `json:"name"`
-	Note           string          `json:"note"`
-	OrganizationId Uuid            `json:"organizationId"`
-	Type           BaseNetworkType `json:"type"`
-	UpdatedAt      time.Time       `json:"updatedAt"`
-}
-
-// BaseNetworkType defines model for BaseNetwork.Type.
-type BaseNetworkType string
-
-// BlockedCategoryWithSchedule defines model for BlockedCategoryWithSchedule.
-type BlockedCategoryWithSchedule struct {
-	CategoryId Uuid `json:"categoryId"`
-	PolicyId   Uuid `json:"policyId"`
-	TimeBlocks []struct {
-		Day  int       `json:"day"`
-		From time.Time `json:"from"`
-		Id   Uuid      `json:"id"`
-		To   time.Time `json:"to"`
-	} `json:"timeBlocks"`
-}
-
-// BlockedCategoryWithTimeBlock defines model for BlockedCategoryWithTimeBlock.
-type BlockedCategoryWithTimeBlock struct {
-	CategoryId Uuid      `json:"categoryId"`
-	Day        int       `json:"day"`
-	From       time.Time `json:"from"`
-	Id         Uuid      `json:"id"`
-	PolicyId   Uuid      `json:"policyId"`
-	To         time.Time `json:"to"`
-}
-
-// BlockedCountry defines model for BlockedCountry.
-type BlockedCountry struct {
-	Code        string `json:"code"`
-	ContinentId Uuid   `json:"continentId"`
-	Id          Uuid   `json:"id"`
-	Name        string `json:"name"`
-	PolicyId    Uuid   `json:"policyId"`
-}
-
-// Category defines model for Category.
-type Category struct {
-	Code            string `json:"code"`
-	Id              Uuid   `json:"id"`
-	MacroCategoryId Uuid   `json:"macroCategoryId"`
-	Name            string `json:"name"`
-}
-
-// CategoryBlockedOnPolicy defines model for CategoryBlockedOnPolicy.
-type CategoryBlockedOnPolicy struct {
-	CategoryId Uuid `json:"categoryId"`
-	PolicyId   Uuid `json:"policyId"`
-}
-
-// CategoryMultiStatus defines model for CategoryMultiStatus.
-type CategoryMultiStatus = MultiStatusCategoryBlockedOnPolicy
-
-// CategoryScheduleRequest defines model for CategoryScheduleRequest.
-type CategoryScheduleRequest struct {
-	BlockSchedulation []TimeBlockRequest `json:"blockSchedulation"`
-	CategoryId        Uuid               `json:"categoryId"`
-}
-
-// ContinentWithCountries defines model for ContinentWithCountries.
-type ContinentWithCountries struct {
-	Code      string    `json:"code"`
-	Countries []Country `json:"countries"`
-	Id        Uuid      `json:"id"`
-	Name      string    `json:"name"`
-}
-
-// Country defines model for Country.
-type Country struct {
-	Code        string `json:"code"`
-	ContinentId Uuid   `json:"continentId"`
-	Id          Uuid   `json:"id"`
-	Name        string `json:"name"`
-}
-
-// CountryMultiStatus defines model for CountryMultiStatus.
-type CountryMultiStatus = MultiStatusBlockedCountry
-
-// Domain defines model for Domain.
-type Domain struct {
-	Id   Uuid    `json:"id"`
-	Name string  `json:"name"`
-	Note *string `json:"note"`
-}
-
-// DomainInExceptionGroup defines model for DomainInExceptionGroup.
-type DomainInExceptionGroup struct {
-	DomainId         Uuid    `json:"domainId"`
-	ExceptionGroupId Uuid    `json:"exceptionGroupId"`
-	Note             *string `json:"note"`
-}
-
-// DomainInput defines model for DomainInput.
-type DomainInput struct {
-	Domain string  `json:"domain"`
-	Note   *string `json:"note,omitempty"`
-}
-
-// DynamicDnsRedirect defines model for DynamicDnsRedirect.
-type DynamicDnsRedirect struct {
-	IsEnabled bool `json:"isEnabled"`
-}
-
-// ExceptionGroup defines model for ExceptionGroup.
-type ExceptionGroup struct {
-	Id             Uuid               `json:"id"`
-	Name           string             `json:"name"`
-	OrganizationId Uuid               `json:"organizationId"`
-	Type           ExceptionGroupType `json:"type"`
-}
-
-// ExceptionGroupType defines model for ExceptionGroup.Type.
-type ExceptionGroupType string
-
-// ExceptionGroupCreation defines model for ExceptionGroupCreation.
-type ExceptionGroupCreation struct {
-	Domains        *[]string                  `json:"domains,omitempty"`
-	Name           string                     `json:"name"`
-	OrganizationId *Uuid                      `json:"organizationId,omitempty"`
-	Type           ExceptionGroupCreationType `json:"type"`
-}
-
-// ExceptionGroupCreationType defines model for ExceptionGroupCreation.Type.
-type ExceptionGroupCreationType string
-
-// ExceptionGroupListWithPoliciesItem defines model for ExceptionGroupListWithPoliciesItem.
-type ExceptionGroupListWithPoliciesItem struct {
-	union json.RawMessage
-}
-
-// ExceptionGroupUpdate defines model for ExceptionGroupUpdate.
-type ExceptionGroupUpdate struct {
-	Name *string                   `json:"name,omitempty"`
-	Type *ExceptionGroupUpdateType `json:"type,omitempty"`
-}
-
-// ExceptionGroupUpdateType defines model for ExceptionGroupUpdate.Type.
-type ExceptionGroupUpdateType string
-
-// ExceptionGroupWithDomains defines model for ExceptionGroupWithDomains.
-type ExceptionGroupWithDomains struct {
-	Domains        []Domain                      `json:"domains"`
-	Id             Uuid                          `json:"id"`
-	Name           string                        `json:"name"`
-	OrganizationId Uuid                          `json:"organizationId"`
-	Type           ExceptionGroupWithDomainsType `json:"type"`
-}
-
-// ExceptionGroupWithDomainsType defines model for ExceptionGroupWithDomains.Type.
-type ExceptionGroupWithDomainsType string
-
-// ExceptionGroupWithDomainsAndPolicies defines model for ExceptionGroupWithDomainsAndPolicies.
-type ExceptionGroupWithDomainsAndPolicies struct {
-	Domains        []Domain                                 `json:"domains"`
-	Id             Uuid                                     `json:"id"`
-	IsHidden       bool                                     `json:"isHidden"`
-	Name           string                                   `json:"name"`
-	OrganizationId Uuid                                     `json:"organizationId"`
-	Policies       []Policy                                 `json:"policies"`
-	Type           ExceptionGroupWithDomainsAndPoliciesType `json:"type"`
-}
-
-// ExceptionGroupWithDomainsAndPoliciesType defines model for ExceptionGroupWithDomainsAndPolicies.Type.
-type ExceptionGroupWithDomainsAndPoliciesType string
-
 // FlashStartErrorBody defines model for FlashStartErrorBody.
 type FlashStartErrorBody struct {
 	Code    string       `json:"code"`
@@ -292,280 +54,19 @@ type FlashStartErrorBody struct {
 	Message *string      `json:"message,omitempty"`
 }
 
-// MacroCategoryWithCategories defines model for MacroCategoryWithCategories.
-type MacroCategoryWithCategories struct {
-	Categories       []Category                                  `json:"categories"`
-	Id               Uuid                                        `json:"id"`
-	Name             string                                      `json:"name"`
-	ProtectionModule MacroCategoryWithCategoriesProtectionModule `json:"protectionModule"`
-}
-
-// MacroCategoryWithCategoriesProtectionModule defines model for MacroCategoryWithCategories.ProtectionModule.
-type MacroCategoryWithCategoriesProtectionModule string
-
-// MacroTldWithTlds defines model for MacroTldWithTlds.
-type MacroTldWithTlds struct {
-	Code string `json:"code"`
-	Id   Uuid   `json:"id"`
-	Name string `json:"name"`
-	Tlds []Tld  `json:"tlds"`
-}
-
 // MissingCredentialsErrorBody defines model for MissingCredentialsErrorBody.
 type MissingCredentialsErrorBody struct {
 	Message string `json:"message"`
 }
 
-// MultiStatusBlockedCountry defines model for MultiStatusBlockedCountry.
-type MultiStatusBlockedCountry struct {
-	Errors    []FlashStartErrorBody `json:"errors"`
-	Successes []BlockedCountry      `json:"successes"`
-}
-
-// MultiStatusCategoryBlockedOnPolicy defines model for MultiStatusCategoryBlockedOnPolicy.
-type MultiStatusCategoryBlockedOnPolicy struct {
-	Errors    []FlashStartErrorBody     `json:"errors"`
-	Successes []CategoryBlockedOnPolicy `json:"successes"`
-}
-
-// MultiStatusTldBlockedOnPolicy defines model for MultiStatusTldBlockedOnPolicy.
-type MultiStatusTldBlockedOnPolicy struct {
-	Errors    []FlashStartErrorBody `json:"errors"`
-	Successes []TldBlockedOnPolicy  `json:"successes"`
-}
-
-// Policy defines model for Policy.
-type Policy struct {
-	Id             Uuid   `json:"id"`
-	IsLimited      bool   `json:"isLimited"`
-	IsShared       bool   `json:"isShared"`
-	Name           string `json:"name"`
-	OrganizationId Uuid   `json:"organizationId"`
-}
-
-// PolicyCreation defines model for PolicyCreation.
-type PolicyCreation struct {
-	IsLimited      bool   `json:"isLimited"`
-	IsShared       *bool  `json:"isShared,omitempty"`
-	Name           string `json:"name"`
-	OrganizationId *Uuid  `json:"organizationId,omitempty"`
-	TemplateId     *Uuid  `json:"templateId,omitempty"`
-}
-
-// PolicyExceptionGroup defines model for PolicyExceptionGroup.
-type PolicyExceptionGroup struct {
-	ExceptionGroupId Uuid `json:"exceptionGroupId"`
-	PolicyId         Uuid `json:"policyId"`
-}
-
-// PolicyListItem defines model for PolicyListItem.
-type PolicyListItem struct {
-	union json.RawMessage
-}
-
-// PolicySettings defines model for PolicySettings.
-type PolicySettings struct {
-	BingSafeSearchEnabled       bool `json:"bingSafeSearchEnabled"`
-	DuckduckgoSafeSearchEnabled bool `json:"duckduckgoSafeSearchEnabled"`
-	GoogleSafeSearchEnabled     bool `json:"googleSafeSearchEnabled"`
-	IpBlockingEnabled           bool `json:"ipBlockingEnabled"`
-	YoutubeSafeSearchEnabled    bool `json:"youtubeSafeSearchEnabled"`
-}
-
-// PolicySettingsUpdate defines model for PolicySettingsUpdate.
-type PolicySettingsUpdate struct {
-	BingSafeSearchEnabled       *bool `json:"bingSafeSearchEnabled,omitempty"`
-	DuckduckgoSafeSearchEnabled *bool `json:"duckduckgoSafeSearchEnabled,omitempty"`
-	GoogleSafeSearchEnabled     *bool `json:"googleSafeSearchEnabled,omitempty"`
-	IpBlockingEnabled           *bool `json:"ipBlockingEnabled,omitempty"`
-	YoutubeSafeSearchEnabled    *bool `json:"youtubeSafeSearchEnabled,omitempty"`
-}
-
-// PolicyUpdate defines model for PolicyUpdate.
-type PolicyUpdate struct {
-	IsLimited *bool   `json:"isLimited,omitempty"`
-	IsShared  *bool   `json:"isShared,omitempty"`
-	Name      *string `json:"name,omitempty"`
-}
-
-// PolicyWithNetworks defines model for PolicyWithNetworks.
-type PolicyWithNetworks struct {
-	Id             Uuid          `json:"id"`
-	IsLimited      bool          `json:"isLimited"`
-	IsShared       bool          `json:"isShared"`
-	Name           string        `json:"name"`
-	Networks       []BaseNetwork `json:"networks"`
-	OrganizationId Uuid          `json:"organizationId"`
-}
-
-// TemplateWithConfigData defines model for TemplateWithConfigData.
-type TemplateWithConfigData struct {
-	Categories []Category                       `json:"categories"`
-	Id         Uuid                             `json:"id"`
-	Name       string                           `json:"name"`
-	Settings   []TemplateWithConfigDataSettings `json:"settings"`
-	Type       TemplateWithConfigDataType       `json:"type"`
-}
-
-// TemplateWithConfigDataSettings defines model for TemplateWithConfigData.Settings.
-type TemplateWithConfigDataSettings string
-
-// TemplateWithConfigDataType defines model for TemplateWithConfigData.Type.
-type TemplateWithConfigDataType string
-
-// TimeBlock defines model for TimeBlock.
-type TimeBlock struct {
-	Day  int       `json:"day"`
-	From time.Time `json:"from"`
-	To   time.Time `json:"to"`
-}
-
-// TimeBlockRequest defines model for TimeBlockRequest.
-type TimeBlockRequest struct {
-	Day  int    `json:"day"`
-	From string `json:"from"`
-	To   string `json:"to"`
-}
-
-// Tld defines model for Tld.
-type Tld struct {
-	Id  Uuid   `json:"id"`
-	Tld string `json:"tld"`
-}
-
-// TldBlockedOnPolicy defines model for TldBlockedOnPolicy.
-type TldBlockedOnPolicy struct {
-	Id       Uuid   `json:"id"`
-	PolicyId Uuid   `json:"policyId"`
-	Tld      string `json:"tld"`
-	TldId    Uuid   `json:"tldId"`
-}
-
-// TldMultiStatus defines model for TldMultiStatus.
-type TldMultiStatus = MultiStatusTldBlockedOnPolicy
-
-// Uuid defines model for Uuid.
-type Uuid = openapi_types.UUID
-
-// DomainIdParameter defines model for DomainId.
-type DomainIdParameter = Uuid
-
-// ExceptionGroupIdParameter defines model for ExceptionGroupId.
-type ExceptionGroupIdParameter = Uuid
-
-// IncludeAssociatedPoliciesParameter defines model for IncludeAssociatedPolicies.
-type IncludeAssociatedPoliciesParameter string
-
-// IncludeNetworkCountParameter defines model for IncludeNetworkCount.
-type IncludeNetworkCountParameter string
-
-// LangParameter defines model for Lang.
-type LangParameter = string
-
-// OrganizationIdParameter defines model for OrganizationId.
-type OrganizationIdParameter = Uuid
-
-// PolicyIdParameter defines model for PolicyId.
-type PolicyIdParameter = Uuid
-
-// SchedulationIdParameter defines model for SchedulationId.
-type SchedulationIdParameter = Uuid
-
-// TemplateIdParameter defines model for TemplateId.
-type TemplateIdParameter = Uuid
-
-// TldNameParameter defines model for TldName.
-type TldNameParameter = string
-
-// BlockedCategoryListResponse defines model for BlockedCategoryList.
-type BlockedCategoryListResponse = []BlockedCategoryWithSchedule
-
-// BlockedTldListResponse defines model for BlockedTldList.
-type BlockedTldListResponse = []TldBlockedOnPolicy
-
-// CategoryListResponse defines model for CategoryList.
-type CategoryListResponse = []Category
-
-// CategoryMultiStatusResponse defines model for CategoryMultiStatus.
-type CategoryMultiStatusResponse = CategoryMultiStatus
-
-// CategoryScheduleResponse defines model for CategorySchedule.
-type CategoryScheduleResponse = BlockedCategoryWithTimeBlock
-
-// CategoryScheduleListResponse defines model for CategoryScheduleList.
-type CategoryScheduleListResponse = []BlockedCategoryWithTimeBlock
-
-// ContinentListResponse defines model for ContinentList.
-type ContinentListResponse = []ContinentWithCountries
-
-// CountryListResponse defines model for CountryList.
-type CountryListResponse = []Country
-
-// CountryMultiStatusResponse defines model for CountryMultiStatus.
-type CountryMultiStatusResponse = CountryMultiStatus
-
-// DomainInExceptionGroupResponse defines model for DomainInExceptionGroup.
-type DomainInExceptionGroupResponse = DomainInExceptionGroup
-
-// DomainInExceptionGroupListResponse defines model for DomainInExceptionGroupList.
-type DomainInExceptionGroupListResponse = []DomainInExceptionGroup
-
-// DomainListResponse defines model for DomainList.
-type DomainListResponse = []Domain
-
-// DynamicDnsRedirectResponse defines model for DynamicDnsRedirect.
-type DynamicDnsRedirectResponse = DynamicDnsRedirect
-
-// ExceptionGroupResponse defines model for ExceptionGroup.
-type ExceptionGroupResponse = ExceptionGroup
-
-// ExceptionGroupListResponse defines model for ExceptionGroupList.
-type ExceptionGroupListResponse = []ExceptionGroupWithDomains
-
-// ExceptionGroupListWithPoliciesResponse defines model for ExceptionGroupListWithPolicies.
-type ExceptionGroupListWithPoliciesResponse = []ExceptionGroupListWithPoliciesItem
-
-// ExceptionGroupWithDomainsResponse defines model for ExceptionGroupWithDomains.
-type ExceptionGroupWithDomainsResponse = ExceptionGroupWithDomains
-
 // ForbiddenResponse defines model for Forbidden.
 type ForbiddenResponse = FlashStartErrorBody
-
-// MacroCategoryListResponse defines model for MacroCategoryList.
-type MacroCategoryListResponse = []MacroCategoryWithCategories
-
-// MacroTldListResponse defines model for MacroTldList.
-type MacroTldListResponse = []MacroTldWithTlds
 
 // NotFoundResponse defines model for NotFound.
 type NotFoundResponse = FlashStartErrorBody
 
-// PolicyResponse defines model for Policy.
-type PolicyResponse = Policy
-
-// PolicyExceptionGroupResponse defines model for PolicyExceptionGroup.
-type PolicyExceptionGroupResponse = PolicyExceptionGroup
-
-// PolicyListResponse defines model for PolicyList.
-type PolicyListResponse = []PolicyListItem
-
-// PolicySettingsResponse defines model for PolicySettings.
-type PolicySettingsResponse = PolicySettings
-
 // ServerErrorResponse defines model for ServerError.
 type ServerErrorResponse = FlashStartErrorBody
-
-// TemplateListResponse defines model for TemplateList.
-type TemplateListResponse = []TemplateWithConfigData
-
-// TldResponse defines model for Tld.
-type TldResponse = Tld
-
-// TldListResponse defines model for TldList.
-type TldListResponse = []Tld
-
-// TldMultiStatusResponse defines model for TldMultiStatus.
-type TldMultiStatusResponse = TldMultiStatus
 
 // UnauthorizedResponse defines model for Unauthorized.
 type UnauthorizedResponse struct {
@@ -575,95 +76,70 @@ type UnauthorizedResponse struct {
 // ValidationErrorResponse defines model for ValidationError.
 type ValidationErrorResponse = FlashStartErrorBody
 
-// CategoryIdsRequestBody defines model for CategoryIds.
-type CategoryIdsRequestBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
-}
-
-// CategoryScheduleRequestBody defines model for CategorySchedule.
-type CategoryScheduleRequestBody = CategoryScheduleRequest
-
-// CountryIdsRequestBody defines model for CountryIds.
-type CountryIdsRequestBody struct {
-	CountryIds []Uuid `json:"countryIds"`
-}
-
-// DomainNoteRequestBody defines model for DomainNote.
-type DomainNoteRequestBody struct {
-	Note *string `json:"note"`
-}
-
-// DomainsRequestBody defines model for Domains.
-type DomainsRequestBody struct {
-	Domains []DomainInput `json:"domains"`
-}
-
-// ExceptionGroupCreationRequestBody defines model for ExceptionGroupCreation.
-type ExceptionGroupCreationRequestBody = ExceptionGroupCreation
-
-// ExceptionGroupIdRequestBody defines model for ExceptionGroupId.
-type ExceptionGroupIdRequestBody struct {
-	ExceptionGroupId Uuid `json:"exceptionGroupId"`
-}
-
-// ExceptionGroupUpdateRequestBody defines model for ExceptionGroupUpdate.
-type ExceptionGroupUpdateRequestBody = ExceptionGroupUpdate
-
-// PolicyCreationRequestBody defines model for PolicyCreation.
-type PolicyCreationRequestBody = PolicyCreation
-
-// PolicySettingsUpdateRequestBody defines model for PolicySettingsUpdate.
-type PolicySettingsUpdateRequestBody = PolicySettingsUpdate
-
-// PolicyUpdateRequestBody defines model for PolicyUpdate.
-type PolicyUpdateRequestBody = PolicyUpdate
-
-// TldIdsRequestBody defines model for TldIds.
-type TldIdsRequestBody struct {
-	TldIds []Uuid `json:"tldIds"`
-}
-
 // ListAppBlockerCategoriesParams defines parameters for ListAppBlockerCategories.
 type ListAppBlockerCategoriesParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListAppBlockerCategoryMacrosParams defines parameters for ListAppBlockerCategoryMacros.
 type ListAppBlockerCategoryMacrosParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListCategoriesParams defines parameters for ListCategories.
 type ListCategoriesParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListCategoryMacrosParams defines parameters for ListCategoryMacros.
 type ListCategoryMacrosParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListContinentsParams defines parameters for ListContinents.
 type ListContinentsParams struct {
-	LangParameter *LangParameter `form:"lang,omitempty" json:"lang,omitempty"`
+	Lang *string `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListExceptionGroupsParams defines parameters for ListExceptionGroups.
 type ListExceptionGroupsParams struct {
-	OrganizationIdParameter            *OrganizationIdParameter                            `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	IncludeAssociatedPoliciesParameter *ListExceptionGroupsParamsIncludeAssociatedPolicies `form:"includeAssociatedPolicies,omitempty" json:"includeAssociatedPolicies,omitempty"`
+	OrganizationId            *openapi_types.UUID                                 `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	IncludeAssociatedPolicies *ListExceptionGroupsParamsIncludeAssociatedPolicies `form:"includeAssociatedPolicies,omitempty" json:"includeAssociatedPolicies,omitempty"`
 }
 
 // ListExceptionGroupsParamsIncludeAssociatedPolicies defines parameters for ListExceptionGroups.
 type ListExceptionGroupsParamsIncludeAssociatedPolicies string
 
+// CreateExceptionGroupJSONBody defines parameters for CreateExceptionGroup.
+type CreateExceptionGroupJSONBody struct {
+	Domains        *[]string                        `json:"domains,omitempty"`
+	Name           string                           `json:"name"`
+	OrganizationId *openapi_types.UUID              `json:"organizationId,omitempty"`
+	Type           CreateExceptionGroupJSONBodyType `json:"type"`
+}
+
+// CreateExceptionGroupJSONBodyType defines parameters for CreateExceptionGroup.
+type CreateExceptionGroupJSONBodyType string
+
+// UpdateExceptionGroupJSONBody defines parameters for UpdateExceptionGroup.
+type UpdateExceptionGroupJSONBody struct {
+	Name *string                           `json:"name,omitempty"`
+	Type *UpdateExceptionGroupJSONBodyType `json:"type,omitempty"`
+}
+
+// UpdateExceptionGroupJSONBodyType defines parameters for UpdateExceptionGroup.
+type UpdateExceptionGroupJSONBodyType string
+
 // AddExceptionGroupDomainsJSONBody defines parameters for AddExceptionGroupDomains.
 type AddExceptionGroupDomainsJSONBody struct {
-	Domains []DomainInput `json:"domains"`
+	Domains []struct {
+		Domain string  `json:"domain"`
+		Note   *string `json:"note,omitempty"`
+	} `json:"domains"`
 }
 
 // UpdateExceptionGroupDomainNoteJSONBody defines parameters for UpdateExceptionGroupDomainNote.
@@ -673,117 +149,157 @@ type UpdateExceptionGroupDomainNoteJSONBody struct {
 
 // ListMalwareCategoriesParams defines parameters for ListMalwareCategories.
 type ListMalwareCategoriesParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListMalwareCategoryMacrosParams defines parameters for ListMalwareCategoryMacros.
 type ListMalwareCategoryMacrosParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListPoliciesParams defines parameters for ListPolicies.
 type ListPoliciesParams struct {
-	OrganizationIdParameter      *OrganizationIdParameter               `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	IncludeNetworkCountParameter *ListPoliciesParamsIncludeNetworkCount `form:"includeNetworkCount,omitempty" json:"includeNetworkCount,omitempty"`
+	OrganizationId      *openapi_types.UUID                    `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	IncludeNetworkCount *ListPoliciesParamsIncludeNetworkCount `form:"includeNetworkCount,omitempty" json:"includeNetworkCount,omitempty"`
 }
 
 // ListPoliciesParamsIncludeNetworkCount defines parameters for ListPolicies.
 type ListPoliciesParamsIncludeNetworkCount string
 
-// AllowAppBlockerCategoriesJSONBody defines parameters for AllowAppBlockerCategories.
-type AllowAppBlockerCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
+// CreatePolicyJSONBody defines parameters for CreatePolicy.
+type CreatePolicyJSONBody struct {
+	IsLimited      bool                `json:"isLimited"`
+	IsShared       *bool               `json:"isShared,omitempty"`
+	Name           string              `json:"name"`
+	OrganizationId *openapi_types.UUID `json:"organizationId,omitempty"`
+	TemplateId     *openapi_types.UUID `json:"templateId,omitempty"`
 }
 
-// ListBlockedAppBlockerCategoriesParams defines parameters for ListBlockedAppBlockerCategories.
-type ListBlockedAppBlockerCategoriesParams struct {
-	LangParameter *LangParameter `form:"lang,omitempty" json:"lang,omitempty"`
+// UpdatePolicyJSONBody defines parameters for UpdatePolicy.
+type UpdatePolicyJSONBody struct {
+	IsLimited *bool   `json:"isLimited,omitempty"`
+	IsShared  *bool   `json:"isShared,omitempty"`
+	Name      *string `json:"name,omitempty"`
+}
+
+// AllowAppBlockerCategoriesJSONBody defines parameters for AllowAppBlockerCategories.
+type AllowAppBlockerCategoriesJSONBody struct {
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
 }
 
 // BlockAppBlockerCategoriesJSONBody defines parameters for BlockAppBlockerCategories.
 type BlockAppBlockerCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
+}
+
+// ScheduleAppBlockerCategoryBlockJSONBody defines parameters for ScheduleAppBlockerCategoryBlock.
+type ScheduleAppBlockerCategoryBlockJSONBody struct {
+	BlockSchedulation []struct {
+		Day  int    `json:"day"`
+		From string `json:"from"`
+		To   string `json:"to"`
+	} `json:"blockSchedulation"`
+	CategoryId openapi_types.UUID `json:"categoryId"`
 }
 
 // AllowCategoriesJSONBody defines parameters for AllowCategories.
 type AllowCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
-}
-
-// ListBlockedCategoriesParams defines parameters for ListBlockedCategories.
-type ListBlockedCategoriesParams struct {
-	LangParameter *LangParameter `form:"lang,omitempty" json:"lang,omitempty"`
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
 }
 
 // BlockCategoriesJSONBody defines parameters for BlockCategories.
 type BlockCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
+}
+
+// ScheduleCategoryBlockJSONBody defines parameters for ScheduleCategoryBlock.
+type ScheduleCategoryBlockJSONBody struct {
+	BlockSchedulation []struct {
+		Day  int    `json:"day"`
+		From string `json:"from"`
+		To   string `json:"to"`
+	} `json:"blockSchedulation"`
+	CategoryId openapi_types.UUID `json:"categoryId"`
 }
 
 // AllowCountriesJSONBody defines parameters for AllowCountries.
 type AllowCountriesJSONBody struct {
-	CountryIds []Uuid `json:"countryIds"`
+	CountryIds []openapi_types.UUID `json:"countryIds"`
 }
 
 // BlockCountriesJSONBody defines parameters for BlockCountries.
 type BlockCountriesJSONBody struct {
-	CountryIds []Uuid `json:"countryIds"`
+	CountryIds []openapi_types.UUID `json:"countryIds"`
 }
 
 // AddPolicyExceptionGroupJSONBody defines parameters for AddPolicyExceptionGroup.
 type AddPolicyExceptionGroupJSONBody struct {
-	ExceptionGroupId Uuid `json:"exceptionGroupId"`
+	ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
 }
 
 // AllowMalwareCategoriesJSONBody defines parameters for AllowMalwareCategories.
 type AllowMalwareCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
-}
-
-// ListBlockedMalwareCategoriesParams defines parameters for ListBlockedMalwareCategories.
-type ListBlockedMalwareCategoriesParams struct {
-	LangParameter *LangParameter `form:"lang,omitempty" json:"lang,omitempty"`
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
 }
 
 // BlockMalwareCategoriesJSONBody defines parameters for BlockMalwareCategories.
 type BlockMalwareCategoriesJSONBody struct {
-	CategoryIds []Uuid `json:"categoryIds"`
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
+}
+
+// ScheduleMalwareCategoryBlockJSONBody defines parameters for ScheduleMalwareCategoryBlock.
+type ScheduleMalwareCategoryBlockJSONBody struct {
+	BlockSchedulation []struct {
+		Day  int    `json:"day"`
+		From string `json:"from"`
+		To   string `json:"to"`
+	} `json:"blockSchedulation"`
+	CategoryId openapi_types.UUID `json:"categoryId"`
+}
+
+// UpdatePolicySettingsJSONBody defines parameters for UpdatePolicySettings.
+type UpdatePolicySettingsJSONBody struct {
+	BingSafeSearchEnabled       *bool `json:"bingSafeSearchEnabled,omitempty"`
+	DuckduckgoSafeSearchEnabled *bool `json:"duckduckgoSafeSearchEnabled,omitempty"`
+	GoogleSafeSearchEnabled     *bool `json:"googleSafeSearchEnabled,omitempty"`
+	IpBlockingEnabled           *bool `json:"ipBlockingEnabled,omitempty"`
+	YoutubeSafeSearchEnabled    *bool `json:"youtubeSafeSearchEnabled,omitempty"`
 }
 
 // AllowTldsJSONBody defines parameters for AllowTlds.
 type AllowTldsJSONBody struct {
-	TldIds []Uuid `json:"tldIds"`
+	TldIds []openapi_types.UUID `json:"tldIds"`
 }
 
 // BlockTldsJSONBody defines parameters for BlockTlds.
 type BlockTldsJSONBody struct {
-	TldIds []Uuid `json:"tldIds"`
+	TldIds []openapi_types.UUID `json:"tldIds"`
 }
 
 // ListProtectionTemplatesParams defines parameters for ListProtectionTemplates.
 type ListProtectionTemplatesParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListTemplateCategoriesParams defines parameters for ListTemplateCategories.
 type ListTemplateCategoriesParams struct {
-	OrganizationIdParameter *OrganizationIdParameter `form:"organizationId,omitempty" json:"organizationId,omitempty"`
-	LangParameter           *LangParameter           `form:"lang,omitempty" json:"lang,omitempty"`
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // ListTldMacrosParams defines parameters for ListTldMacros.
 type ListTldMacrosParams struct {
-	LangParameter *LangParameter `form:"lang,omitempty" json:"lang,omitempty"`
+	Lang *string `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
 // CreateExceptionGroupJSONRequestBody defines body for CreateExceptionGroup for application/json ContentType.
-type CreateExceptionGroupJSONRequestBody = ExceptionGroupCreation
+type CreateExceptionGroupJSONRequestBody CreateExceptionGroupJSONBody
 
 // UpdateExceptionGroupJSONRequestBody defines body for UpdateExceptionGroup for application/json ContentType.
-type UpdateExceptionGroupJSONRequestBody = ExceptionGroupUpdate
+type UpdateExceptionGroupJSONRequestBody UpdateExceptionGroupJSONBody
 
 // AddExceptionGroupDomainsJSONRequestBody defines body for AddExceptionGroupDomains for application/json ContentType.
 type AddExceptionGroupDomainsJSONRequestBody AddExceptionGroupDomainsJSONBody
@@ -792,10 +308,10 @@ type AddExceptionGroupDomainsJSONRequestBody AddExceptionGroupDomainsJSONBody
 type UpdateExceptionGroupDomainNoteJSONRequestBody UpdateExceptionGroupDomainNoteJSONBody
 
 // CreatePolicyJSONRequestBody defines body for CreatePolicy for application/json ContentType.
-type CreatePolicyJSONRequestBody = PolicyCreation
+type CreatePolicyJSONRequestBody CreatePolicyJSONBody
 
 // UpdatePolicyJSONRequestBody defines body for UpdatePolicy for application/json ContentType.
-type UpdatePolicyJSONRequestBody = PolicyUpdate
+type UpdatePolicyJSONRequestBody UpdatePolicyJSONBody
 
 // AllowAppBlockerCategoriesJSONRequestBody defines body for AllowAppBlockerCategories for application/json ContentType.
 type AllowAppBlockerCategoriesJSONRequestBody AllowAppBlockerCategoriesJSONBody
@@ -804,7 +320,7 @@ type AllowAppBlockerCategoriesJSONRequestBody AllowAppBlockerCategoriesJSONBody
 type BlockAppBlockerCategoriesJSONRequestBody BlockAppBlockerCategoriesJSONBody
 
 // ScheduleAppBlockerCategoryBlockJSONRequestBody defines body for ScheduleAppBlockerCategoryBlock for application/json ContentType.
-type ScheduleAppBlockerCategoryBlockJSONRequestBody = CategoryScheduleRequest
+type ScheduleAppBlockerCategoryBlockJSONRequestBody ScheduleAppBlockerCategoryBlockJSONBody
 
 // AllowCategoriesJSONRequestBody defines body for AllowCategories for application/json ContentType.
 type AllowCategoriesJSONRequestBody AllowCategoriesJSONBody
@@ -813,7 +329,7 @@ type AllowCategoriesJSONRequestBody AllowCategoriesJSONBody
 type BlockCategoriesJSONRequestBody BlockCategoriesJSONBody
 
 // ScheduleCategoryBlockJSONRequestBody defines body for ScheduleCategoryBlock for application/json ContentType.
-type ScheduleCategoryBlockJSONRequestBody = CategoryScheduleRequest
+type ScheduleCategoryBlockJSONRequestBody ScheduleCategoryBlockJSONBody
 
 // AllowCountriesJSONRequestBody defines body for AllowCountries for application/json ContentType.
 type AllowCountriesJSONRequestBody AllowCountriesJSONBody
@@ -831,140 +347,16 @@ type AllowMalwareCategoriesJSONRequestBody AllowMalwareCategoriesJSONBody
 type BlockMalwareCategoriesJSONRequestBody BlockMalwareCategoriesJSONBody
 
 // ScheduleMalwareCategoryBlockJSONRequestBody defines body for ScheduleMalwareCategoryBlock for application/json ContentType.
-type ScheduleMalwareCategoryBlockJSONRequestBody = CategoryScheduleRequest
+type ScheduleMalwareCategoryBlockJSONRequestBody ScheduleMalwareCategoryBlockJSONBody
 
 // UpdatePolicySettingsJSONRequestBody defines body for UpdatePolicySettings for application/json ContentType.
-type UpdatePolicySettingsJSONRequestBody = PolicySettingsUpdate
+type UpdatePolicySettingsJSONRequestBody UpdatePolicySettingsJSONBody
 
 // AllowTldsJSONRequestBody defines body for AllowTlds for application/json ContentType.
 type AllowTldsJSONRequestBody AllowTldsJSONBody
 
 // BlockTldsJSONRequestBody defines body for BlockTlds for application/json ContentType.
 type BlockTldsJSONRequestBody BlockTldsJSONBody
-
-// AsExceptionGroupWithDomains returns the union data inside the ExceptionGroupListWithPoliciesItem as a ExceptionGroupWithDomains
-func (t ExceptionGroupListWithPoliciesItem) AsExceptionGroupWithDomains() (ExceptionGroupWithDomains, error) {
-	var body ExceptionGroupWithDomains
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromExceptionGroupWithDomains overwrites any union data inside the ExceptionGroupListWithPoliciesItem as the provided ExceptionGroupWithDomains
-func (t *ExceptionGroupListWithPoliciesItem) FromExceptionGroupWithDomains(v ExceptionGroupWithDomains) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeExceptionGroupWithDomains performs a merge with any union data inside the ExceptionGroupListWithPoliciesItem, using the provided ExceptionGroupWithDomains
-func (t *ExceptionGroupListWithPoliciesItem) MergeExceptionGroupWithDomains(v ExceptionGroupWithDomains) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsExceptionGroupWithDomainsAndPolicies returns the union data inside the ExceptionGroupListWithPoliciesItem as a ExceptionGroupWithDomainsAndPolicies
-func (t ExceptionGroupListWithPoliciesItem) AsExceptionGroupWithDomainsAndPolicies() (ExceptionGroupWithDomainsAndPolicies, error) {
-	var body ExceptionGroupWithDomainsAndPolicies
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromExceptionGroupWithDomainsAndPolicies overwrites any union data inside the ExceptionGroupListWithPoliciesItem as the provided ExceptionGroupWithDomainsAndPolicies
-func (t *ExceptionGroupListWithPoliciesItem) FromExceptionGroupWithDomainsAndPolicies(v ExceptionGroupWithDomainsAndPolicies) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeExceptionGroupWithDomainsAndPolicies performs a merge with any union data inside the ExceptionGroupListWithPoliciesItem, using the provided ExceptionGroupWithDomainsAndPolicies
-func (t *ExceptionGroupListWithPoliciesItem) MergeExceptionGroupWithDomainsAndPolicies(v ExceptionGroupWithDomainsAndPolicies) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ExceptionGroupListWithPoliciesItem) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ExceptionGroupListWithPoliciesItem) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsPolicy returns the union data inside the PolicyListItem as a Policy
-func (t PolicyListItem) AsPolicy() (Policy, error) {
-	var body Policy
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromPolicy overwrites any union data inside the PolicyListItem as the provided Policy
-func (t *PolicyListItem) FromPolicy(v Policy) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergePolicy performs a merge with any union data inside the PolicyListItem, using the provided Policy
-func (t *PolicyListItem) MergePolicy(v Policy) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsPolicyWithNetworks returns the union data inside the PolicyListItem as a PolicyWithNetworks
-func (t PolicyListItem) AsPolicyWithNetworks() (PolicyWithNetworks, error) {
-	var body PolicyWithNetworks
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromPolicyWithNetworks overwrites any union data inside the PolicyListItem as the provided PolicyWithNetworks
-func (t *PolicyListItem) FromPolicyWithNetworks(v PolicyWithNetworks) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergePolicyWithNetworks performs a merge with any union data inside the PolicyListItem, using the provided PolicyWithNetworks
-func (t *PolicyListItem) MergePolicyWithNetworks(v PolicyWithNetworks) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t PolicyListItem) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *PolicyListItem) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
 
 // AsMissingCredentialsErrorBody returns the union data inside the UnauthorizedResponse as a MissingCredentialsErrorBody
 func (t UnauthorizedResponse) AsMissingCredentialsErrorBody() (MissingCredentialsErrorBody, error) {
@@ -1128,28 +520,28 @@ type ClientInterface interface {
 	CreateExceptionGroup(ctx context.Context, body CreateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteExceptionGroup request
-	DeleteExceptionGroup(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeleteExceptionGroup(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdateExceptionGroupWithBody request with any body
-	UpdateExceptionGroupWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateExceptionGroupWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdateExceptionGroup(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateExceptionGroup(ctx context.Context, exceptionGroupId openapi_types.UUID, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListExceptionGroupDomains request
-	ListExceptionGroupDomains(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListExceptionGroupDomains(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AddExceptionGroupDomainsWithBody request with any body
-	AddExceptionGroupDomainsWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AddExceptionGroupDomainsWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AddExceptionGroupDomains(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AddExceptionGroupDomains(ctx context.Context, exceptionGroupId openapi_types.UUID, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemoveExceptionGroupDomain request
-	RemoveExceptionGroupDomain(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemoveExceptionGroupDomain(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdateExceptionGroupDomainNoteWithBody request with any body
-	UpdateExceptionGroupDomainNoteWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateExceptionGroupDomainNoteWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdateExceptionGroupDomainNote(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateExceptionGroupDomainNote(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListMalwareCategories request
 	ListMalwareCategories(ctx context.Context, params *ListMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1166,138 +558,138 @@ type ClientInterface interface {
 	CreatePolicy(ctx context.Context, body CreatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeletePolicy request
-	DeletePolicy(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DeletePolicy(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetPolicy request
-	GetPolicy(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetPolicy(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdatePolicyWithBody request with any body
-	UpdatePolicyWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdatePolicyWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdatePolicy(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdatePolicy(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowAppBlockerCategoriesWithBody request with any body
-	AllowAppBlockerCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowAppBlockerCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AllowAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBlockedAppBlockerCategories request
-	ListBlockedAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedAppBlockerCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListBlockedAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// BlockAppBlockerCategoriesWithBody request with any body
-	BlockAppBlockerCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockAppBlockerCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BlockAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ScheduleAppBlockerCategoryBlockWithBody request with any body
-	ScheduleAppBlockerCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleAppBlockerCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	ScheduleAppBlockerCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleAppBlockerCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemoveAppBlockerCategoryBlockSchedule request
-	RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowCategoriesWithBody request with any body
-	AllowCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AllowCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowCategories(ctx context.Context, policyId openapi_types.UUID, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBlockedCategories request
-	ListBlockedCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListBlockedCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// BlockCategoriesWithBody request with any body
-	BlockCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BlockCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockCategories(ctx context.Context, policyId openapi_types.UUID, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ScheduleCategoryBlockWithBody request with any body
-	ScheduleCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	ScheduleCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemoveCategoryBlockSchedule request
-	RemoveCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemoveCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowCountriesWithBody request with any body
-	AllowCountriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowCountriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AllowCountries(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowCountries(ctx context.Context, policyId openapi_types.UUID, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBlockedCountries request
-	ListBlockedCountries(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListBlockedCountries(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// BlockCountriesWithBody request with any body
-	BlockCountriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockCountriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BlockCountries(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockCountries(ctx context.Context, policyId openapi_types.UUID, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DisableDynamicDnsRedirect request
-	DisableDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	DisableDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetDynamicDnsRedirect request
-	GetDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// EnableDynamicDnsRedirect request
-	EnableDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	EnableDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListPolicyExceptionGroups request
-	ListPolicyExceptionGroups(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListPolicyExceptionGroups(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AddPolicyExceptionGroupWithBody request with any body
-	AddPolicyExceptionGroupWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AddPolicyExceptionGroupWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AddPolicyExceptionGroup(ctx context.Context, policyIdParameter PolicyIdParameter, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AddPolicyExceptionGroup(ctx context.Context, policyId openapi_types.UUID, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemovePolicyExceptionGroup request
-	RemovePolicyExceptionGroup(ctx context.Context, policyIdParameter PolicyIdParameter, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemovePolicyExceptionGroup(ctx context.Context, policyId openapi_types.UUID, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowMalwareCategoriesWithBody request with any body
-	AllowMalwareCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowMalwareCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AllowMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowMalwareCategories(ctx context.Context, policyId openapi_types.UUID, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBlockedMalwareCategories request
-	ListBlockedMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListBlockedMalwareCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// BlockMalwareCategoriesWithBody request with any body
-	BlockMalwareCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockMalwareCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BlockMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockMalwareCategories(ctx context.Context, policyId openapi_types.UUID, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ScheduleMalwareCategoryBlockWithBody request with any body
-	ScheduleMalwareCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleMalwareCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	ScheduleMalwareCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ScheduleMalwareCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// RemoveMalwareCategoryBlockSchedule request
-	RemoveMalwareCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	RemoveMalwareCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetPolicySettings request
-	GetPolicySettings(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetPolicySettings(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdatePolicySettingsWithBody request with any body
-	UpdatePolicySettingsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdatePolicySettingsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdatePolicySettings(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdatePolicySettings(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowTldsWithBody request with any body
-	AllowTldsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AllowTlds(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AllowTlds(ctx context.Context, policyId openapi_types.UUID, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBlockedTlds request
-	ListBlockedTlds(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListBlockedTlds(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// BlockTldsWithBody request with any body
-	BlockTldsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BlockTlds(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	BlockTlds(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListProtectionTemplates request
 	ListProtectionTemplates(ctx context.Context, params *ListProtectionTemplatesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListTemplateCategories request
-	ListTemplateCategories(ctx context.Context, templateIdParameter TemplateIdParameter, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ListTemplateCategories(ctx context.Context, templateId openapi_types.UUID, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListTlds request
 	ListTlds(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1306,7 +698,7 @@ type ClientInterface interface {
 	ListTldMacros(ctx context.Context, params *ListTldMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTld request
-	GetTld(ctx context.Context, tldNameParameter TldNameParameter, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetTld(ctx context.Context, tldName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) ListAppBlockerCategories(ctx context.Context, params *ListAppBlockerCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -1417,8 +809,8 @@ func (c *Client) CreateExceptionGroup(ctx context.Context, body CreateExceptionG
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeleteExceptionGroup(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteExceptionGroupRequest(c.Server, exceptionGroupIdParameter)
+func (c *Client) DeleteExceptionGroup(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteExceptionGroupRequest(c.Server, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -1429,8 +821,8 @@ func (c *Client) DeleteExceptionGroup(ctx context.Context, exceptionGroupIdParam
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateExceptionGroupWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateExceptionGroupRequestWithBody(c.Server, exceptionGroupIdParameter, contentType, body)
+func (c *Client) UpdateExceptionGroupWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExceptionGroupRequestWithBody(c.Server, exceptionGroupId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1441,8 +833,8 @@ func (c *Client) UpdateExceptionGroupWithBody(ctx context.Context, exceptionGrou
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateExceptionGroup(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateExceptionGroupRequest(c.Server, exceptionGroupIdParameter, body)
+func (c *Client) UpdateExceptionGroup(ctx context.Context, exceptionGroupId openapi_types.UUID, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExceptionGroupRequest(c.Server, exceptionGroupId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1453,8 +845,8 @@ func (c *Client) UpdateExceptionGroup(ctx context.Context, exceptionGroupIdParam
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListExceptionGroupDomains(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListExceptionGroupDomainsRequest(c.Server, exceptionGroupIdParameter)
+func (c *Client) ListExceptionGroupDomains(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListExceptionGroupDomainsRequest(c.Server, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -1465,8 +857,8 @@ func (c *Client) ListExceptionGroupDomains(ctx context.Context, exceptionGroupId
 	return c.Client.Do(req)
 }
 
-func (c *Client) AddExceptionGroupDomainsWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAddExceptionGroupDomainsRequestWithBody(c.Server, exceptionGroupIdParameter, contentType, body)
+func (c *Client) AddExceptionGroupDomainsWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAddExceptionGroupDomainsRequestWithBody(c.Server, exceptionGroupId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1477,8 +869,8 @@ func (c *Client) AddExceptionGroupDomainsWithBody(ctx context.Context, exception
 	return c.Client.Do(req)
 }
 
-func (c *Client) AddExceptionGroupDomains(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAddExceptionGroupDomainsRequest(c.Server, exceptionGroupIdParameter, body)
+func (c *Client) AddExceptionGroupDomains(ctx context.Context, exceptionGroupId openapi_types.UUID, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAddExceptionGroupDomainsRequest(c.Server, exceptionGroupId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1489,8 +881,8 @@ func (c *Client) AddExceptionGroupDomains(ctx context.Context, exceptionGroupIdP
 	return c.Client.Do(req)
 }
 
-func (c *Client) RemoveExceptionGroupDomain(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemoveExceptionGroupDomainRequest(c.Server, exceptionGroupIdParameter, domainIdParameter)
+func (c *Client) RemoveExceptionGroupDomain(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveExceptionGroupDomainRequest(c.Server, exceptionGroupId, domainId)
 	if err != nil {
 		return nil, err
 	}
@@ -1501,8 +893,8 @@ func (c *Client) RemoveExceptionGroupDomain(ctx context.Context, exceptionGroupI
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateExceptionGroupDomainNoteWithBody(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateExceptionGroupDomainNoteRequestWithBody(c.Server, exceptionGroupIdParameter, domainIdParameter, contentType, body)
+func (c *Client) UpdateExceptionGroupDomainNoteWithBody(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExceptionGroupDomainNoteRequestWithBody(c.Server, exceptionGroupId, domainId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1513,8 +905,8 @@ func (c *Client) UpdateExceptionGroupDomainNoteWithBody(ctx context.Context, exc
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateExceptionGroupDomainNote(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateExceptionGroupDomainNoteRequest(c.Server, exceptionGroupIdParameter, domainIdParameter, body)
+func (c *Client) UpdateExceptionGroupDomainNote(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExceptionGroupDomainNoteRequest(c.Server, exceptionGroupId, domainId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1585,8 +977,8 @@ func (c *Client) CreatePolicy(ctx context.Context, body CreatePolicyJSONRequestB
 	return c.Client.Do(req)
 }
 
-func (c *Client) DeletePolicy(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeletePolicyRequest(c.Server, policyIdParameter)
+func (c *Client) DeletePolicy(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeletePolicyRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1597,8 +989,8 @@ func (c *Client) DeletePolicy(ctx context.Context, policyIdParameter PolicyIdPar
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetPolicy(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPolicyRequest(c.Server, policyIdParameter)
+func (c *Client) GetPolicy(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPolicyRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1609,8 +1001,8 @@ func (c *Client) GetPolicy(ctx context.Context, policyIdParameter PolicyIdParame
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdatePolicyWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdatePolicyRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) UpdatePolicyWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicyRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1621,8 +1013,8 @@ func (c *Client) UpdatePolicyWithBody(ctx context.Context, policyIdParameter Pol
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdatePolicy(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdatePolicyRequest(c.Server, policyIdParameter, body)
+func (c *Client) UpdatePolicy(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicyRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1633,8 +1025,8 @@ func (c *Client) UpdatePolicy(ctx context.Context, policyIdParameter PolicyIdPar
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowAppBlockerCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowAppBlockerCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AllowAppBlockerCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowAppBlockerCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1645,8 +1037,8 @@ func (c *Client) AllowAppBlockerCategoriesWithBody(ctx context.Context, policyId
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowAppBlockerCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) AllowAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowAppBlockerCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1657,8 +1049,8 @@ func (c *Client) AllowAppBlockerCategories(ctx context.Context, policyIdParamete
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListBlockedAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedAppBlockerCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListBlockedAppBlockerCategoriesRequest(c.Server, policyIdParameter, params)
+func (c *Client) ListBlockedAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedAppBlockerCategoriesRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1669,8 +1061,8 @@ func (c *Client) ListBlockedAppBlockerCategories(ctx context.Context, policyIdPa
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockAppBlockerCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockAppBlockerCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) BlockAppBlockerCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockAppBlockerCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1681,8 +1073,8 @@ func (c *Client) BlockAppBlockerCategoriesWithBody(ctx context.Context, policyId
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockAppBlockerCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockAppBlockerCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) BlockAppBlockerCategories(ctx context.Context, policyId openapi_types.UUID, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockAppBlockerCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1693,8 +1085,8 @@ func (c *Client) BlockAppBlockerCategories(ctx context.Context, policyIdParamete
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleAppBlockerCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleAppBlockerCategoryBlockRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) ScheduleAppBlockerCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleAppBlockerCategoryBlockRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1705,8 +1097,8 @@ func (c *Client) ScheduleAppBlockerCategoryBlockWithBody(ctx context.Context, po
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleAppBlockerCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleAppBlockerCategoryBlockRequest(c.Server, policyIdParameter, body)
+func (c *Client) ScheduleAppBlockerCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleAppBlockerCategoryBlockRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1717,8 +1109,8 @@ func (c *Client) ScheduleAppBlockerCategoryBlock(ctx context.Context, policyIdPa
 	return c.Client.Do(req)
 }
 
-func (c *Client) RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemoveAppBlockerCategoryBlockScheduleRequest(c.Server, policyIdParameter, schedulationIdParameter)
+func (c *Client) RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveAppBlockerCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -1729,8 +1121,8 @@ func (c *Client) RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, poli
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AllowCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1741,8 +1133,8 @@ func (c *Client) AllowCategoriesWithBody(ctx context.Context, policyIdParameter 
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) AllowCategories(ctx context.Context, policyId openapi_types.UUID, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1753,8 +1145,8 @@ func (c *Client) AllowCategories(ctx context.Context, policyIdParameter PolicyId
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListBlockedCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListBlockedCategoriesRequest(c.Server, policyIdParameter, params)
+func (c *Client) ListBlockedCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedCategoriesRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1765,8 +1157,8 @@ func (c *Client) ListBlockedCategories(ctx context.Context, policyIdParameter Po
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) BlockCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1777,8 +1169,8 @@ func (c *Client) BlockCategoriesWithBody(ctx context.Context, policyIdParameter 
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) BlockCategories(ctx context.Context, policyId openapi_types.UUID, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1789,8 +1181,8 @@ func (c *Client) BlockCategories(ctx context.Context, policyIdParameter PolicyId
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleCategoryBlockRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) ScheduleCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleCategoryBlockRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1801,8 +1193,8 @@ func (c *Client) ScheduleCategoryBlockWithBody(ctx context.Context, policyIdPara
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleCategoryBlockRequest(c.Server, policyIdParameter, body)
+func (c *Client) ScheduleCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleCategoryBlockRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1813,8 +1205,8 @@ func (c *Client) ScheduleCategoryBlock(ctx context.Context, policyIdParameter Po
 	return c.Client.Do(req)
 }
 
-func (c *Client) RemoveCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemoveCategoryBlockScheduleRequest(c.Server, policyIdParameter, schedulationIdParameter)
+func (c *Client) RemoveCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -1825,8 +1217,8 @@ func (c *Client) RemoveCategoryBlockSchedule(ctx context.Context, policyIdParame
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowCountriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowCountriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AllowCountriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowCountriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1837,8 +1229,8 @@ func (c *Client) AllowCountriesWithBody(ctx context.Context, policyIdParameter P
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowCountries(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowCountriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) AllowCountries(ctx context.Context, policyId openapi_types.UUID, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowCountriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1849,8 +1241,8 @@ func (c *Client) AllowCountries(ctx context.Context, policyIdParameter PolicyIdP
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListBlockedCountries(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListBlockedCountriesRequest(c.Server, policyIdParameter)
+func (c *Client) ListBlockedCountries(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedCountriesRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1861,8 +1253,8 @@ func (c *Client) ListBlockedCountries(ctx context.Context, policyIdParameter Pol
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockCountriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockCountriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) BlockCountriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockCountriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1873,8 +1265,8 @@ func (c *Client) BlockCountriesWithBody(ctx context.Context, policyIdParameter P
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockCountries(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockCountriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) BlockCountries(ctx context.Context, policyId openapi_types.UUID, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockCountriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1885,8 +1277,8 @@ func (c *Client) BlockCountries(ctx context.Context, policyIdParameter PolicyIdP
 	return c.Client.Do(req)
 }
 
-func (c *Client) DisableDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDisableDynamicDnsRedirectRequest(c.Server, policyIdParameter)
+func (c *Client) DisableDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDisableDynamicDnsRedirectRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1897,8 +1289,8 @@ func (c *Client) DisableDynamicDnsRedirect(ctx context.Context, policyIdParamete
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetDynamicDnsRedirectRequest(c.Server, policyIdParameter)
+func (c *Client) GetDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetDynamicDnsRedirectRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1909,8 +1301,8 @@ func (c *Client) GetDynamicDnsRedirect(ctx context.Context, policyIdParameter Po
 	return c.Client.Do(req)
 }
 
-func (c *Client) EnableDynamicDnsRedirect(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewEnableDynamicDnsRedirectRequest(c.Server, policyIdParameter)
+func (c *Client) EnableDynamicDnsRedirect(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewEnableDynamicDnsRedirectRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1921,8 +1313,8 @@ func (c *Client) EnableDynamicDnsRedirect(ctx context.Context, policyIdParameter
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListPolicyExceptionGroups(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListPolicyExceptionGroupsRequest(c.Server, policyIdParameter)
+func (c *Client) ListPolicyExceptionGroups(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListPolicyExceptionGroupsRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -1933,8 +1325,8 @@ func (c *Client) ListPolicyExceptionGroups(ctx context.Context, policyIdParamete
 	return c.Client.Do(req)
 }
 
-func (c *Client) AddPolicyExceptionGroupWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAddPolicyExceptionGroupRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AddPolicyExceptionGroupWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAddPolicyExceptionGroupRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1945,8 +1337,8 @@ func (c *Client) AddPolicyExceptionGroupWithBody(ctx context.Context, policyIdPa
 	return c.Client.Do(req)
 }
 
-func (c *Client) AddPolicyExceptionGroup(ctx context.Context, policyIdParameter PolicyIdParameter, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAddPolicyExceptionGroupRequest(c.Server, policyIdParameter, body)
+func (c *Client) AddPolicyExceptionGroup(ctx context.Context, policyId openapi_types.UUID, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAddPolicyExceptionGroupRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1957,8 +1349,8 @@ func (c *Client) AddPolicyExceptionGroup(ctx context.Context, policyIdParameter 
 	return c.Client.Do(req)
 }
 
-func (c *Client) RemovePolicyExceptionGroup(ctx context.Context, policyIdParameter PolicyIdParameter, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemovePolicyExceptionGroupRequest(c.Server, policyIdParameter, exceptionGroupIdParameter)
+func (c *Client) RemovePolicyExceptionGroup(ctx context.Context, policyId openapi_types.UUID, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemovePolicyExceptionGroupRequest(c.Server, policyId, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -1969,8 +1361,8 @@ func (c *Client) RemovePolicyExceptionGroup(ctx context.Context, policyIdParamet
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowMalwareCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowMalwareCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AllowMalwareCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowMalwareCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1981,8 +1373,8 @@ func (c *Client) AllowMalwareCategoriesWithBody(ctx context.Context, policyIdPar
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowMalwareCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) AllowMalwareCategories(ctx context.Context, policyId openapi_types.UUID, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowMalwareCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1993,8 +1385,8 @@ func (c *Client) AllowMalwareCategories(ctx context.Context, policyIdParameter P
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListBlockedMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListBlockedMalwareCategoriesRequest(c.Server, policyIdParameter, params)
+func (c *Client) ListBlockedMalwareCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedMalwareCategoriesRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -2005,8 +1397,8 @@ func (c *Client) ListBlockedMalwareCategories(ctx context.Context, policyIdParam
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockMalwareCategoriesWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockMalwareCategoriesRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) BlockMalwareCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockMalwareCategoriesRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2017,8 +1409,8 @@ func (c *Client) BlockMalwareCategoriesWithBody(ctx context.Context, policyIdPar
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockMalwareCategories(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockMalwareCategoriesRequest(c.Server, policyIdParameter, body)
+func (c *Client) BlockMalwareCategories(ctx context.Context, policyId openapi_types.UUID, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockMalwareCategoriesRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2029,8 +1421,8 @@ func (c *Client) BlockMalwareCategories(ctx context.Context, policyIdParameter P
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleMalwareCategoryBlockWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleMalwareCategoryBlockRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) ScheduleMalwareCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleMalwareCategoryBlockRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2041,8 +1433,8 @@ func (c *Client) ScheduleMalwareCategoryBlockWithBody(ctx context.Context, polic
 	return c.Client.Do(req)
 }
 
-func (c *Client) ScheduleMalwareCategoryBlock(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewScheduleMalwareCategoryBlockRequest(c.Server, policyIdParameter, body)
+func (c *Client) ScheduleMalwareCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleMalwareCategoryBlockRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2053,8 +1445,8 @@ func (c *Client) ScheduleMalwareCategoryBlock(ctx context.Context, policyIdParam
 	return c.Client.Do(req)
 }
 
-func (c *Client) RemoveMalwareCategoryBlockSchedule(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRemoveMalwareCategoryBlockScheduleRequest(c.Server, policyIdParameter, schedulationIdParameter)
+func (c *Client) RemoveMalwareCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveMalwareCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -2065,8 +1457,8 @@ func (c *Client) RemoveMalwareCategoryBlockSchedule(ctx context.Context, policyI
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetPolicySettings(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPolicySettingsRequest(c.Server, policyIdParameter)
+func (c *Client) GetPolicySettings(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPolicySettingsRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -2077,8 +1469,8 @@ func (c *Client) GetPolicySettings(ctx context.Context, policyIdParameter Policy
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdatePolicySettingsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdatePolicySettingsRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) UpdatePolicySettingsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicySettingsRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2089,8 +1481,8 @@ func (c *Client) UpdatePolicySettingsWithBody(ctx context.Context, policyIdParam
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdatePolicySettings(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdatePolicySettingsRequest(c.Server, policyIdParameter, body)
+func (c *Client) UpdatePolicySettings(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicySettingsRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2101,8 +1493,8 @@ func (c *Client) UpdatePolicySettings(ctx context.Context, policyIdParameter Pol
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowTldsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowTldsRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) AllowTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowTldsRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2113,8 +1505,8 @@ func (c *Client) AllowTldsWithBody(ctx context.Context, policyIdParameter Policy
 	return c.Client.Do(req)
 }
 
-func (c *Client) AllowTlds(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAllowTldsRequest(c.Server, policyIdParameter, body)
+func (c *Client) AllowTlds(ctx context.Context, policyId openapi_types.UUID, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowTldsRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2125,8 +1517,8 @@ func (c *Client) AllowTlds(ctx context.Context, policyIdParameter PolicyIdParame
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListBlockedTlds(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListBlockedTldsRequest(c.Server, policyIdParameter)
+func (c *Client) ListBlockedTlds(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedTldsRequest(c.Server, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -2137,8 +1529,8 @@ func (c *Client) ListBlockedTlds(ctx context.Context, policyIdParameter PolicyId
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockTldsWithBody(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockTldsRequestWithBody(c.Server, policyIdParameter, contentType, body)
+func (c *Client) BlockTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockTldsRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2149,8 +1541,8 @@ func (c *Client) BlockTldsWithBody(ctx context.Context, policyIdParameter Policy
 	return c.Client.Do(req)
 }
 
-func (c *Client) BlockTlds(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBlockTldsRequest(c.Server, policyIdParameter, body)
+func (c *Client) BlockTlds(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockTldsRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -2173,8 +1565,8 @@ func (c *Client) ListProtectionTemplates(ctx context.Context, params *ListProtec
 	return c.Client.Do(req)
 }
 
-func (c *Client) ListTemplateCategories(ctx context.Context, templateIdParameter TemplateIdParameter, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewListTemplateCategoriesRequest(c.Server, templateIdParameter, params)
+func (c *Client) ListTemplateCategories(ctx context.Context, templateId openapi_types.UUID, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListTemplateCategoriesRequest(c.Server, templateId, params)
 	if err != nil {
 		return nil, err
 	}
@@ -2209,8 +1601,8 @@ func (c *Client) ListTldMacros(ctx context.Context, params *ListTldMacrosParams,
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetTld(ctx context.Context, tldNameParameter TldNameParameter, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetTldRequest(c.Server, tldNameParameter)
+func (c *Client) GetTld(ctx context.Context, tldName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTldRequest(c.Server, tldName)
 	if err != nil {
 		return nil, err
 	}
@@ -2243,9 +1635,9 @@ func NewListAppBlockerCategoriesRequest(server string, params *ListAppBlockerCat
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2259,9 +1651,9 @@ func NewListAppBlockerCategoriesRequest(server string, params *ListAppBlockerCat
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2308,9 +1700,9 @@ func NewListAppBlockerCategoryMacrosRequest(server string, params *ListAppBlocke
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2324,9 +1716,9 @@ func NewListAppBlockerCategoryMacrosRequest(server string, params *ListAppBlocke
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2373,9 +1765,9 @@ func NewListCategoriesRequest(server string, params *ListCategoriesParams) (*htt
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2389,9 +1781,9 @@ func NewListCategoriesRequest(server string, params *ListCategoriesParams) (*htt
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2438,9 +1830,9 @@ func NewListCategoryMacrosRequest(server string, params *ListCategoryMacrosParam
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2454,9 +1846,9 @@ func NewListCategoryMacrosRequest(server string, params *ListCategoryMacrosParam
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2503,9 +1895,9 @@ func NewListContinentsRequest(server string, params *ListContinentsParams) (*htt
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2579,9 +1971,9 @@ func NewListExceptionGroupsRequest(server string, params *ListExceptionGroupsPar
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2595,9 +1987,9 @@ func NewListExceptionGroupsRequest(server string, params *ListExceptionGroupsPar
 
 		}
 
-		if params.IncludeAssociatedPoliciesParameter != nil {
+		if params.IncludeAssociatedPolicies != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeAssociatedPolicies", runtime.ParamLocationQuery, *params.IncludeAssociatedPoliciesParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeAssociatedPolicies", runtime.ParamLocationQuery, *params.IncludeAssociatedPolicies); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2663,12 +2055,12 @@ func NewCreateExceptionGroupRequestWithBody(server string, contentType string, b
 }
 
 // NewDeleteExceptionGroupRequest generates requests for DeleteExceptionGroup
-func NewDeleteExceptionGroupRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter) (*http.Request, error) {
+func NewDeleteExceptionGroupRequest(server string, exceptionGroupId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -2697,23 +2089,23 @@ func NewDeleteExceptionGroupRequest(server string, exceptionGroupIdParameter Exc
 }
 
 // NewUpdateExceptionGroupRequest calls the generic UpdateExceptionGroup builder with application/json body
-func NewUpdateExceptionGroupRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, body UpdateExceptionGroupJSONRequestBody) (*http.Request, error) {
+func NewUpdateExceptionGroupRequest(server string, exceptionGroupId openapi_types.UUID, body UpdateExceptionGroupJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateExceptionGroupRequestWithBody(server, exceptionGroupIdParameter, "application/json", bodyReader)
+	return NewUpdateExceptionGroupRequestWithBody(server, exceptionGroupId, "application/json", bodyReader)
 }
 
 // NewUpdateExceptionGroupRequestWithBody generates requests for UpdateExceptionGroup with any type of body
-func NewUpdateExceptionGroupRequestWithBody(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewUpdateExceptionGroupRequestWithBody(server string, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -2744,12 +2136,12 @@ func NewUpdateExceptionGroupRequestWithBody(server string, exceptionGroupIdParam
 }
 
 // NewListExceptionGroupDomainsRequest generates requests for ListExceptionGroupDomains
-func NewListExceptionGroupDomainsRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter) (*http.Request, error) {
+func NewListExceptionGroupDomainsRequest(server string, exceptionGroupId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -2778,23 +2170,23 @@ func NewListExceptionGroupDomainsRequest(server string, exceptionGroupIdParamete
 }
 
 // NewAddExceptionGroupDomainsRequest calls the generic AddExceptionGroupDomains builder with application/json body
-func NewAddExceptionGroupDomainsRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, body AddExceptionGroupDomainsJSONRequestBody) (*http.Request, error) {
+func NewAddExceptionGroupDomainsRequest(server string, exceptionGroupId openapi_types.UUID, body AddExceptionGroupDomainsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAddExceptionGroupDomainsRequestWithBody(server, exceptionGroupIdParameter, "application/json", bodyReader)
+	return NewAddExceptionGroupDomainsRequestWithBody(server, exceptionGroupId, "application/json", bodyReader)
 }
 
 // NewAddExceptionGroupDomainsRequestWithBody generates requests for AddExceptionGroupDomains with any type of body
-func NewAddExceptionGroupDomainsRequestWithBody(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAddExceptionGroupDomainsRequestWithBody(server string, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -2825,19 +2217,19 @@ func NewAddExceptionGroupDomainsRequestWithBody(server string, exceptionGroupIdP
 }
 
 // NewRemoveExceptionGroupDomainRequest generates requests for RemoveExceptionGroupDomain
-func NewRemoveExceptionGroupDomainRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter) (*http.Request, error) {
+func NewRemoveExceptionGroupDomainRequest(server string, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "domainId", runtime.ParamLocationPath, domainIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "domainId", runtime.ParamLocationPath, domainId)
 	if err != nil {
 		return nil, err
 	}
@@ -2866,30 +2258,30 @@ func NewRemoveExceptionGroupDomainRequest(server string, exceptionGroupIdParamet
 }
 
 // NewUpdateExceptionGroupDomainNoteRequest calls the generic UpdateExceptionGroupDomainNote builder with application/json body
-func NewUpdateExceptionGroupDomainNoteRequest(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, body UpdateExceptionGroupDomainNoteJSONRequestBody) (*http.Request, error) {
+func NewUpdateExceptionGroupDomainNoteRequest(server string, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, body UpdateExceptionGroupDomainNoteJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateExceptionGroupDomainNoteRequestWithBody(server, exceptionGroupIdParameter, domainIdParameter, "application/json", bodyReader)
+	return NewUpdateExceptionGroupDomainNoteRequestWithBody(server, exceptionGroupId, domainId, "application/json", bodyReader)
 }
 
 // NewUpdateExceptionGroupDomainNoteRequestWithBody generates requests for UpdateExceptionGroupDomainNote with any type of body
-func NewUpdateExceptionGroupDomainNoteRequestWithBody(server string, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewUpdateExceptionGroupDomainNoteRequestWithBody(server string, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "domainId", runtime.ParamLocationPath, domainIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "domainId", runtime.ParamLocationPath, domainId)
 	if err != nil {
 		return nil, err
 	}
@@ -2941,9 +2333,9 @@ func NewListMalwareCategoriesRequest(server string, params *ListMalwareCategorie
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2957,9 +2349,9 @@ func NewListMalwareCategoriesRequest(server string, params *ListMalwareCategorie
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3006,9 +2398,9 @@ func NewListMalwareCategoryMacrosRequest(server string, params *ListMalwareCateg
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3022,9 +2414,9 @@ func NewListMalwareCategoryMacrosRequest(server string, params *ListMalwareCateg
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3071,9 +2463,9 @@ func NewListPoliciesRequest(server string, params *ListPoliciesParams) (*http.Re
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3087,9 +2479,9 @@ func NewListPoliciesRequest(server string, params *ListPoliciesParams) (*http.Re
 
 		}
 
-		if params.IncludeNetworkCountParameter != nil {
+		if params.IncludeNetworkCount != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeNetworkCount", runtime.ParamLocationQuery, *params.IncludeNetworkCountParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeNetworkCount", runtime.ParamLocationQuery, *params.IncludeNetworkCount); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3155,12 +2547,12 @@ func NewCreatePolicyRequestWithBody(server string, contentType string, body io.R
 }
 
 // NewDeletePolicyRequest generates requests for DeletePolicy
-func NewDeletePolicyRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewDeletePolicyRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3189,12 +2581,12 @@ func NewDeletePolicyRequest(server string, policyIdParameter PolicyIdParameter) 
 }
 
 // NewGetPolicyRequest generates requests for GetPolicy
-func NewGetPolicyRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewGetPolicyRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3223,23 +2615,23 @@ func NewGetPolicyRequest(server string, policyIdParameter PolicyIdParameter) (*h
 }
 
 // NewUpdatePolicyRequest calls the generic UpdatePolicy builder with application/json body
-func NewUpdatePolicyRequest(server string, policyIdParameter PolicyIdParameter, body UpdatePolicyJSONRequestBody) (*http.Request, error) {
+func NewUpdatePolicyRequest(server string, policyId openapi_types.UUID, body UpdatePolicyJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdatePolicyRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewUpdatePolicyRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewUpdatePolicyRequestWithBody generates requests for UpdatePolicy with any type of body
-func NewUpdatePolicyRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewUpdatePolicyRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3270,23 +2662,23 @@ func NewUpdatePolicyRequestWithBody(server string, policyIdParameter PolicyIdPar
 }
 
 // NewAllowAppBlockerCategoriesRequest calls the generic AllowAppBlockerCategories builder with application/json body
-func NewAllowAppBlockerCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body AllowAppBlockerCategoriesJSONRequestBody) (*http.Request, error) {
+func NewAllowAppBlockerCategoriesRequest(server string, policyId openapi_types.UUID, body AllowAppBlockerCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAllowAppBlockerCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAllowAppBlockerCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAllowAppBlockerCategoriesRequestWithBody generates requests for AllowAppBlockerCategories with any type of body
-func NewAllowAppBlockerCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAllowAppBlockerCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3317,12 +2709,12 @@ func NewAllowAppBlockerCategoriesRequestWithBody(server string, policyIdParamete
 }
 
 // NewListBlockedAppBlockerCategoriesRequest generates requests for ListBlockedAppBlockerCategories
-func NewListBlockedAppBlockerCategoriesRequest(server string, policyIdParameter PolicyIdParameter, params *ListBlockedAppBlockerCategoriesParams) (*http.Request, error) {
+func NewListBlockedAppBlockerCategoriesRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3342,28 +2734,6 @@ func NewListBlockedAppBlockerCategoriesRequest(server string, policyIdParameter 
 		return nil, err
 	}
 
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if params.LangParameter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
@@ -3373,23 +2743,23 @@ func NewListBlockedAppBlockerCategoriesRequest(server string, policyIdParameter 
 }
 
 // NewBlockAppBlockerCategoriesRequest calls the generic BlockAppBlockerCategories builder with application/json body
-func NewBlockAppBlockerCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body BlockAppBlockerCategoriesJSONRequestBody) (*http.Request, error) {
+func NewBlockAppBlockerCategoriesRequest(server string, policyId openapi_types.UUID, body BlockAppBlockerCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBlockAppBlockerCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewBlockAppBlockerCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewBlockAppBlockerCategoriesRequestWithBody generates requests for BlockAppBlockerCategories with any type of body
-func NewBlockAppBlockerCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewBlockAppBlockerCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3420,23 +2790,23 @@ func NewBlockAppBlockerCategoriesRequestWithBody(server string, policyIdParamete
 }
 
 // NewScheduleAppBlockerCategoryBlockRequest calls the generic ScheduleAppBlockerCategoryBlock builder with application/json body
-func NewScheduleAppBlockerCategoryBlockRequest(server string, policyIdParameter PolicyIdParameter, body ScheduleAppBlockerCategoryBlockJSONRequestBody) (*http.Request, error) {
+func NewScheduleAppBlockerCategoryBlockRequest(server string, policyId openapi_types.UUID, body ScheduleAppBlockerCategoryBlockJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewScheduleAppBlockerCategoryBlockRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewScheduleAppBlockerCategoryBlockRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewScheduleAppBlockerCategoryBlockRequestWithBody generates requests for ScheduleAppBlockerCategoryBlock with any type of body
-func NewScheduleAppBlockerCategoryBlockRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewScheduleAppBlockerCategoryBlockRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3467,19 +2837,19 @@ func NewScheduleAppBlockerCategoryBlockRequestWithBody(server string, policyIdPa
 }
 
 // NewRemoveAppBlockerCategoryBlockScheduleRequest generates requests for RemoveAppBlockerCategoryBlockSchedule
-func NewRemoveAppBlockerCategoryBlockScheduleRequest(server string, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter) (*http.Request, error) {
+func NewRemoveAppBlockerCategoryBlockScheduleRequest(server string, policyId openapi_types.UUID, schedulationId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -3508,23 +2878,23 @@ func NewRemoveAppBlockerCategoryBlockScheduleRequest(server string, policyIdPara
 }
 
 // NewAllowCategoriesRequest calls the generic AllowCategories builder with application/json body
-func NewAllowCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body AllowCategoriesJSONRequestBody) (*http.Request, error) {
+func NewAllowCategoriesRequest(server string, policyId openapi_types.UUID, body AllowCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAllowCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAllowCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAllowCategoriesRequestWithBody generates requests for AllowCategories with any type of body
-func NewAllowCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAllowCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3555,12 +2925,12 @@ func NewAllowCategoriesRequestWithBody(server string, policyIdParameter PolicyId
 }
 
 // NewListBlockedCategoriesRequest generates requests for ListBlockedCategories
-func NewListBlockedCategoriesRequest(server string, policyIdParameter PolicyIdParameter, params *ListBlockedCategoriesParams) (*http.Request, error) {
+func NewListBlockedCategoriesRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3580,28 +2950,6 @@ func NewListBlockedCategoriesRequest(server string, policyIdParameter PolicyIdPa
 		return nil, err
 	}
 
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if params.LangParameter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
@@ -3611,23 +2959,23 @@ func NewListBlockedCategoriesRequest(server string, policyIdParameter PolicyIdPa
 }
 
 // NewBlockCategoriesRequest calls the generic BlockCategories builder with application/json body
-func NewBlockCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body BlockCategoriesJSONRequestBody) (*http.Request, error) {
+func NewBlockCategoriesRequest(server string, policyId openapi_types.UUID, body BlockCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBlockCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewBlockCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewBlockCategoriesRequestWithBody generates requests for BlockCategories with any type of body
-func NewBlockCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewBlockCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3658,23 +3006,23 @@ func NewBlockCategoriesRequestWithBody(server string, policyIdParameter PolicyId
 }
 
 // NewScheduleCategoryBlockRequest calls the generic ScheduleCategoryBlock builder with application/json body
-func NewScheduleCategoryBlockRequest(server string, policyIdParameter PolicyIdParameter, body ScheduleCategoryBlockJSONRequestBody) (*http.Request, error) {
+func NewScheduleCategoryBlockRequest(server string, policyId openapi_types.UUID, body ScheduleCategoryBlockJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewScheduleCategoryBlockRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewScheduleCategoryBlockRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewScheduleCategoryBlockRequestWithBody generates requests for ScheduleCategoryBlock with any type of body
-func NewScheduleCategoryBlockRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewScheduleCategoryBlockRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3705,19 +3053,19 @@ func NewScheduleCategoryBlockRequestWithBody(server string, policyIdParameter Po
 }
 
 // NewRemoveCategoryBlockScheduleRequest generates requests for RemoveCategoryBlockSchedule
-func NewRemoveCategoryBlockScheduleRequest(server string, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter) (*http.Request, error) {
+func NewRemoveCategoryBlockScheduleRequest(server string, policyId openapi_types.UUID, schedulationId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -3746,23 +3094,23 @@ func NewRemoveCategoryBlockScheduleRequest(server string, policyIdParameter Poli
 }
 
 // NewAllowCountriesRequest calls the generic AllowCountries builder with application/json body
-func NewAllowCountriesRequest(server string, policyIdParameter PolicyIdParameter, body AllowCountriesJSONRequestBody) (*http.Request, error) {
+func NewAllowCountriesRequest(server string, policyId openapi_types.UUID, body AllowCountriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAllowCountriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAllowCountriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAllowCountriesRequestWithBody generates requests for AllowCountries with any type of body
-func NewAllowCountriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAllowCountriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3793,12 +3141,12 @@ func NewAllowCountriesRequestWithBody(server string, policyIdParameter PolicyIdP
 }
 
 // NewListBlockedCountriesRequest generates requests for ListBlockedCountries
-func NewListBlockedCountriesRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewListBlockedCountriesRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3827,23 +3175,23 @@ func NewListBlockedCountriesRequest(server string, policyIdParameter PolicyIdPar
 }
 
 // NewBlockCountriesRequest calls the generic BlockCountries builder with application/json body
-func NewBlockCountriesRequest(server string, policyIdParameter PolicyIdParameter, body BlockCountriesJSONRequestBody) (*http.Request, error) {
+func NewBlockCountriesRequest(server string, policyId openapi_types.UUID, body BlockCountriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBlockCountriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewBlockCountriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewBlockCountriesRequestWithBody generates requests for BlockCountries with any type of body
-func NewBlockCountriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewBlockCountriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3874,12 +3222,12 @@ func NewBlockCountriesRequestWithBody(server string, policyIdParameter PolicyIdP
 }
 
 // NewDisableDynamicDnsRedirectRequest generates requests for DisableDynamicDnsRedirect
-func NewDisableDynamicDnsRedirectRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewDisableDynamicDnsRedirectRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3908,12 +3256,12 @@ func NewDisableDynamicDnsRedirectRequest(server string, policyIdParameter Policy
 }
 
 // NewGetDynamicDnsRedirectRequest generates requests for GetDynamicDnsRedirect
-func NewGetDynamicDnsRedirectRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewGetDynamicDnsRedirectRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3942,12 +3290,12 @@ func NewGetDynamicDnsRedirectRequest(server string, policyIdParameter PolicyIdPa
 }
 
 // NewEnableDynamicDnsRedirectRequest generates requests for EnableDynamicDnsRedirect
-func NewEnableDynamicDnsRedirectRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewEnableDynamicDnsRedirectRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -3976,12 +3324,12 @@ func NewEnableDynamicDnsRedirectRequest(server string, policyIdParameter PolicyI
 }
 
 // NewListPolicyExceptionGroupsRequest generates requests for ListPolicyExceptionGroups
-func NewListPolicyExceptionGroupsRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewListPolicyExceptionGroupsRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4010,23 +3358,23 @@ func NewListPolicyExceptionGroupsRequest(server string, policyIdParameter Policy
 }
 
 // NewAddPolicyExceptionGroupRequest calls the generic AddPolicyExceptionGroup builder with application/json body
-func NewAddPolicyExceptionGroupRequest(server string, policyIdParameter PolicyIdParameter, body AddPolicyExceptionGroupJSONRequestBody) (*http.Request, error) {
+func NewAddPolicyExceptionGroupRequest(server string, policyId openapi_types.UUID, body AddPolicyExceptionGroupJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAddPolicyExceptionGroupRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAddPolicyExceptionGroupRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAddPolicyExceptionGroupRequestWithBody generates requests for AddPolicyExceptionGroup with any type of body
-func NewAddPolicyExceptionGroupRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAddPolicyExceptionGroupRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4057,19 +3405,19 @@ func NewAddPolicyExceptionGroupRequestWithBody(server string, policyIdParameter 
 }
 
 // NewRemovePolicyExceptionGroupRequest generates requests for RemovePolicyExceptionGroup
-func NewRemovePolicyExceptionGroupRequest(server string, policyIdParameter PolicyIdParameter, exceptionGroupIdParameter ExceptionGroupIdParameter) (*http.Request, error) {
+func NewRemovePolicyExceptionGroupRequest(server string, policyId openapi_types.UUID, exceptionGroupId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "exceptionGroupId", runtime.ParamLocationPath, exceptionGroupId)
 	if err != nil {
 		return nil, err
 	}
@@ -4098,23 +3446,23 @@ func NewRemovePolicyExceptionGroupRequest(server string, policyIdParameter Polic
 }
 
 // NewAllowMalwareCategoriesRequest calls the generic AllowMalwareCategories builder with application/json body
-func NewAllowMalwareCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body AllowMalwareCategoriesJSONRequestBody) (*http.Request, error) {
+func NewAllowMalwareCategoriesRequest(server string, policyId openapi_types.UUID, body AllowMalwareCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAllowMalwareCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAllowMalwareCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAllowMalwareCategoriesRequestWithBody generates requests for AllowMalwareCategories with any type of body
-func NewAllowMalwareCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAllowMalwareCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4145,12 +3493,12 @@ func NewAllowMalwareCategoriesRequestWithBody(server string, policyIdParameter P
 }
 
 // NewListBlockedMalwareCategoriesRequest generates requests for ListBlockedMalwareCategories
-func NewListBlockedMalwareCategoriesRequest(server string, policyIdParameter PolicyIdParameter, params *ListBlockedMalwareCategoriesParams) (*http.Request, error) {
+func NewListBlockedMalwareCategoriesRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4170,28 +3518,6 @@ func NewListBlockedMalwareCategoriesRequest(server string, policyIdParameter Pol
 		return nil, err
 	}
 
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if params.LangParameter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
@@ -4201,23 +3527,23 @@ func NewListBlockedMalwareCategoriesRequest(server string, policyIdParameter Pol
 }
 
 // NewBlockMalwareCategoriesRequest calls the generic BlockMalwareCategories builder with application/json body
-func NewBlockMalwareCategoriesRequest(server string, policyIdParameter PolicyIdParameter, body BlockMalwareCategoriesJSONRequestBody) (*http.Request, error) {
+func NewBlockMalwareCategoriesRequest(server string, policyId openapi_types.UUID, body BlockMalwareCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBlockMalwareCategoriesRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewBlockMalwareCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewBlockMalwareCategoriesRequestWithBody generates requests for BlockMalwareCategories with any type of body
-func NewBlockMalwareCategoriesRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewBlockMalwareCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4248,23 +3574,23 @@ func NewBlockMalwareCategoriesRequestWithBody(server string, policyIdParameter P
 }
 
 // NewScheduleMalwareCategoryBlockRequest calls the generic ScheduleMalwareCategoryBlock builder with application/json body
-func NewScheduleMalwareCategoryBlockRequest(server string, policyIdParameter PolicyIdParameter, body ScheduleMalwareCategoryBlockJSONRequestBody) (*http.Request, error) {
+func NewScheduleMalwareCategoryBlockRequest(server string, policyId openapi_types.UUID, body ScheduleMalwareCategoryBlockJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewScheduleMalwareCategoryBlockRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewScheduleMalwareCategoryBlockRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewScheduleMalwareCategoryBlockRequestWithBody generates requests for ScheduleMalwareCategoryBlock with any type of body
-func NewScheduleMalwareCategoryBlockRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewScheduleMalwareCategoryBlockRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4295,19 +3621,19 @@ func NewScheduleMalwareCategoryBlockRequestWithBody(server string, policyIdParam
 }
 
 // NewRemoveMalwareCategoryBlockScheduleRequest generates requests for RemoveMalwareCategoryBlockSchedule
-func NewRemoveMalwareCategoryBlockScheduleRequest(server string, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter) (*http.Request, error) {
+func NewRemoveMalwareCategoryBlockScheduleRequest(server string, policyId openapi_types.UUID, schedulationId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
 
 	var pathParam1 string
 
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationIdParameter)
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -4336,12 +3662,12 @@ func NewRemoveMalwareCategoryBlockScheduleRequest(server string, policyIdParamet
 }
 
 // NewGetPolicySettingsRequest generates requests for GetPolicySettings
-func NewGetPolicySettingsRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewGetPolicySettingsRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4370,23 +3696,23 @@ func NewGetPolicySettingsRequest(server string, policyIdParameter PolicyIdParame
 }
 
 // NewUpdatePolicySettingsRequest calls the generic UpdatePolicySettings builder with application/json body
-func NewUpdatePolicySettingsRequest(server string, policyIdParameter PolicyIdParameter, body UpdatePolicySettingsJSONRequestBody) (*http.Request, error) {
+func NewUpdatePolicySettingsRequest(server string, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdatePolicySettingsRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewUpdatePolicySettingsRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewUpdatePolicySettingsRequestWithBody generates requests for UpdatePolicySettings with any type of body
-func NewUpdatePolicySettingsRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewUpdatePolicySettingsRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4417,23 +3743,23 @@ func NewUpdatePolicySettingsRequestWithBody(server string, policyIdParameter Pol
 }
 
 // NewAllowTldsRequest calls the generic AllowTlds builder with application/json body
-func NewAllowTldsRequest(server string, policyIdParameter PolicyIdParameter, body AllowTldsJSONRequestBody) (*http.Request, error) {
+func NewAllowTldsRequest(server string, policyId openapi_types.UUID, body AllowTldsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAllowTldsRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewAllowTldsRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewAllowTldsRequestWithBody generates requests for AllowTlds with any type of body
-func NewAllowTldsRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewAllowTldsRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4464,12 +3790,12 @@ func NewAllowTldsRequestWithBody(server string, policyIdParameter PolicyIdParame
 }
 
 // NewListBlockedTldsRequest generates requests for ListBlockedTlds
-func NewListBlockedTldsRequest(server string, policyIdParameter PolicyIdParameter) (*http.Request, error) {
+func NewListBlockedTldsRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4498,23 +3824,23 @@ func NewListBlockedTldsRequest(server string, policyIdParameter PolicyIdParamete
 }
 
 // NewBlockTldsRequest calls the generic BlockTlds builder with application/json body
-func NewBlockTldsRequest(server string, policyIdParameter PolicyIdParameter, body BlockTldsJSONRequestBody) (*http.Request, error) {
+func NewBlockTldsRequest(server string, policyId openapi_types.UUID, body BlockTldsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBlockTldsRequestWithBody(server, policyIdParameter, "application/json", bodyReader)
+	return NewBlockTldsRequestWithBody(server, policyId, "application/json", bodyReader)
 }
 
 // NewBlockTldsRequestWithBody generates requests for BlockTlds with any type of body
-func NewBlockTldsRequestWithBody(server string, policyIdParameter PolicyIdParameter, contentType string, body io.Reader) (*http.Request, error) {
+func NewBlockTldsRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
 	if err != nil {
 		return nil, err
 	}
@@ -4566,9 +3892,9 @@ func NewListProtectionTemplatesRequest(server string, params *ListProtectionTemp
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4582,9 +3908,9 @@ func NewListProtectionTemplatesRequest(server string, params *ListProtectionTemp
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4610,12 +3936,12 @@ func NewListProtectionTemplatesRequest(server string, params *ListProtectionTemp
 }
 
 // NewListTemplateCategoriesRequest generates requests for ListTemplateCategories
-func NewListTemplateCategoriesRequest(server string, templateIdParameter TemplateIdParameter, params *ListTemplateCategoriesParams) (*http.Request, error) {
+func NewListTemplateCategoriesRequest(server string, templateId openapi_types.UUID, params *ListTemplateCategoriesParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "templateId", runtime.ParamLocationPath, templateIdParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "templateId", runtime.ParamLocationPath, templateId)
 	if err != nil {
 		return nil, err
 	}
@@ -4638,9 +3964,9 @@ func NewListTemplateCategoriesRequest(server string, templateIdParameter Templat
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.OrganizationIdParameter != nil {
+		if params.OrganizationId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationIdParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4654,9 +3980,9 @@ func NewListTemplateCategoriesRequest(server string, templateIdParameter Templat
 
 		}
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4730,9 +4056,9 @@ func NewListTldMacrosRequest(server string, params *ListTldMacrosParams) (*http.
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.LangParameter != nil {
+		if params.Lang != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.LangParameter); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4758,12 +4084,12 @@ func NewListTldMacrosRequest(server string, params *ListTldMacrosParams) (*http.
 }
 
 // NewGetTldRequest generates requests for GetTld
-func NewGetTldRequest(server string, tldNameParameter TldNameParameter) (*http.Request, error) {
+func NewGetTldRequest(server string, tldName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "tldName", runtime.ParamLocationPath, tldNameParameter)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "tldName", runtime.ParamLocationPath, tldName)
 	if err != nil {
 		return nil, err
 	}
@@ -4861,28 +4187,28 @@ type ClientWithResponsesInterface interface {
 	CreateExceptionGroupWithResponse(ctx context.Context, body CreateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateExceptionGroupResponse, error)
 
 	// DeleteExceptionGroupWithResponse request
-	DeleteExceptionGroupWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*DeleteExceptionGroupResponse, error)
+	DeleteExceptionGroupWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteExceptionGroupResponse, error)
 
 	// UpdateExceptionGroupWithBodyWithResponse request with any body
-	UpdateExceptionGroupWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error)
+	UpdateExceptionGroupWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error)
 
-	UpdateExceptionGroupWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error)
+	UpdateExceptionGroupWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error)
 
 	// ListExceptionGroupDomainsWithResponse request
-	ListExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*ListExceptionGroupDomainsResponse, error)
+	ListExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListExceptionGroupDomainsResponse, error)
 
 	// AddExceptionGroupDomainsWithBodyWithResponse request with any body
-	AddExceptionGroupDomainsWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error)
+	AddExceptionGroupDomainsWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error)
 
-	AddExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error)
+	AddExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error)
 
 	// RemoveExceptionGroupDomainWithResponse request
-	RemoveExceptionGroupDomainWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, reqEditors ...RequestEditorFn) (*RemoveExceptionGroupDomainResponse, error)
+	RemoveExceptionGroupDomainWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveExceptionGroupDomainResponse, error)
 
 	// UpdateExceptionGroupDomainNoteWithBodyWithResponse request with any body
-	UpdateExceptionGroupDomainNoteWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error)
+	UpdateExceptionGroupDomainNoteWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error)
 
-	UpdateExceptionGroupDomainNoteWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error)
+	UpdateExceptionGroupDomainNoteWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error)
 
 	// ListMalwareCategoriesWithResponse request
 	ListMalwareCategoriesWithResponse(ctx context.Context, params *ListMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*ListMalwareCategoriesResponse, error)
@@ -4899,138 +4225,138 @@ type ClientWithResponsesInterface interface {
 	CreatePolicyWithResponse(ctx context.Context, body CreatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*CreatePolicyResponse, error)
 
 	// DeletePolicyWithResponse request
-	DeletePolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*DeletePolicyResponse, error)
+	DeletePolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeletePolicyResponse, error)
 
 	// GetPolicyWithResponse request
-	GetPolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetPolicyResponse, error)
+	GetPolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyResponse, error)
 
 	// UpdatePolicyWithBodyWithResponse request with any body
-	UpdatePolicyWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error)
+	UpdatePolicyWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error)
 
-	UpdatePolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error)
+	UpdatePolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error)
 
 	// AllowAppBlockerCategoriesWithBodyWithResponse request with any body
-	AllowAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error)
+	AllowAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error)
 
-	AllowAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error)
+	AllowAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error)
 
 	// ListBlockedAppBlockerCategoriesWithResponse request
-	ListBlockedAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedAppBlockerCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedAppBlockerCategoriesResponse, error)
+	ListBlockedAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedAppBlockerCategoriesResponse, error)
 
 	// BlockAppBlockerCategoriesWithBodyWithResponse request with any body
-	BlockAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error)
+	BlockAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error)
 
-	BlockAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error)
+	BlockAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error)
 
 	// ScheduleAppBlockerCategoryBlockWithBodyWithResponse request with any body
-	ScheduleAppBlockerCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error)
+	ScheduleAppBlockerCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error)
 
-	ScheduleAppBlockerCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error)
+	ScheduleAppBlockerCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error)
 
 	// RemoveAppBlockerCategoryBlockScheduleWithResponse request
-	RemoveAppBlockerCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveAppBlockerCategoryBlockScheduleResponse, error)
+	RemoveAppBlockerCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveAppBlockerCategoryBlockScheduleResponse, error)
 
 	// AllowCategoriesWithBodyWithResponse request with any body
-	AllowCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
+	AllowCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
 
-	AllowCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
+	AllowCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
 
 	// ListBlockedCategoriesWithResponse request
-	ListBlockedCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedCategoriesResponse, error)
+	ListBlockedCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedCategoriesResponse, error)
 
 	// BlockCategoriesWithBodyWithResponse request with any body
-	BlockCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error)
+	BlockCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error)
 
-	BlockCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error)
+	BlockCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error)
 
 	// ScheduleCategoryBlockWithBodyWithResponse request with any body
-	ScheduleCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error)
+	ScheduleCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error)
 
-	ScheduleCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error)
+	ScheduleCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error)
 
 	// RemoveCategoryBlockScheduleWithResponse request
-	RemoveCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveCategoryBlockScheduleResponse, error)
+	RemoveCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveCategoryBlockScheduleResponse, error)
 
 	// AllowCountriesWithBodyWithResponse request with any body
-	AllowCountriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error)
+	AllowCountriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error)
 
-	AllowCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error)
+	AllowCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error)
 
 	// ListBlockedCountriesWithResponse request
-	ListBlockedCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListBlockedCountriesResponse, error)
+	ListBlockedCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedCountriesResponse, error)
 
 	// BlockCountriesWithBodyWithResponse request with any body
-	BlockCountriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error)
+	BlockCountriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error)
 
-	BlockCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error)
+	BlockCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error)
 
 	// DisableDynamicDnsRedirectWithResponse request
-	DisableDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*DisableDynamicDnsRedirectResponse, error)
+	DisableDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DisableDynamicDnsRedirectResponse, error)
 
 	// GetDynamicDnsRedirectWithResponse request
-	GetDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetDynamicDnsRedirectResponse, error)
+	GetDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetDynamicDnsRedirectResponse, error)
 
 	// EnableDynamicDnsRedirectWithResponse request
-	EnableDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*EnableDynamicDnsRedirectResponse, error)
+	EnableDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*EnableDynamicDnsRedirectResponse, error)
 
 	// ListPolicyExceptionGroupsWithResponse request
-	ListPolicyExceptionGroupsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListPolicyExceptionGroupsResponse, error)
+	ListPolicyExceptionGroupsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListPolicyExceptionGroupsResponse, error)
 
 	// AddPolicyExceptionGroupWithBodyWithResponse request with any body
-	AddPolicyExceptionGroupWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error)
+	AddPolicyExceptionGroupWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error)
 
-	AddPolicyExceptionGroupWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error)
+	AddPolicyExceptionGroupWithResponse(ctx context.Context, policyId openapi_types.UUID, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error)
 
 	// RemovePolicyExceptionGroupWithResponse request
-	RemovePolicyExceptionGroupWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*RemovePolicyExceptionGroupResponse, error)
+	RemovePolicyExceptionGroupWithResponse(ctx context.Context, policyId openapi_types.UUID, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemovePolicyExceptionGroupResponse, error)
 
 	// AllowMalwareCategoriesWithBodyWithResponse request with any body
-	AllowMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error)
+	AllowMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error)
 
-	AllowMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error)
+	AllowMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error)
 
 	// ListBlockedMalwareCategoriesWithResponse request
-	ListBlockedMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedMalwareCategoriesResponse, error)
+	ListBlockedMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedMalwareCategoriesResponse, error)
 
 	// BlockMalwareCategoriesWithBodyWithResponse request with any body
-	BlockMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error)
+	BlockMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error)
 
-	BlockMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error)
+	BlockMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error)
 
 	// ScheduleMalwareCategoryBlockWithBodyWithResponse request with any body
-	ScheduleMalwareCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error)
+	ScheduleMalwareCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error)
 
-	ScheduleMalwareCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error)
+	ScheduleMalwareCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error)
 
 	// RemoveMalwareCategoryBlockScheduleWithResponse request
-	RemoveMalwareCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveMalwareCategoryBlockScheduleResponse, error)
+	RemoveMalwareCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveMalwareCategoryBlockScheduleResponse, error)
 
 	// GetPolicySettingsWithResponse request
-	GetPolicySettingsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetPolicySettingsResponse, error)
+	GetPolicySettingsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicySettingsResponse, error)
 
 	// UpdatePolicySettingsWithBodyWithResponse request with any body
-	UpdatePolicySettingsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error)
+	UpdatePolicySettingsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error)
 
-	UpdatePolicySettingsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error)
+	UpdatePolicySettingsWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error)
 
 	// AllowTldsWithBodyWithResponse request with any body
-	AllowTldsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error)
+	AllowTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error)
 
-	AllowTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error)
+	AllowTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error)
 
 	// ListBlockedTldsWithResponse request
-	ListBlockedTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListBlockedTldsResponse, error)
+	ListBlockedTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedTldsResponse, error)
 
 	// BlockTldsWithBodyWithResponse request with any body
-	BlockTldsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
+	BlockTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
 
-	BlockTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
+	BlockTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
 
 	// ListProtectionTemplatesWithResponse request
 	ListProtectionTemplatesWithResponse(ctx context.Context, params *ListProtectionTemplatesParams, reqEditors ...RequestEditorFn) (*ListProtectionTemplatesResponse, error)
 
 	// ListTemplateCategoriesWithResponse request
-	ListTemplateCategoriesWithResponse(ctx context.Context, templateIdParameter TemplateIdParameter, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*ListTemplateCategoriesResponse, error)
+	ListTemplateCategoriesWithResponse(ctx context.Context, templateId openapi_types.UUID, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*ListTemplateCategoriesResponse, error)
 
 	// ListTldsWithResponse request
 	ListTldsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListTldsResponse, error)
@@ -5039,17 +4365,22 @@ type ClientWithResponsesInterface interface {
 	ListTldMacrosWithResponse(ctx context.Context, params *ListTldMacrosParams, reqEditors ...RequestEditorFn) (*ListTldMacrosResponse, error)
 
 	// GetTldWithResponse request
-	GetTldWithResponse(ctx context.Context, tldNameParameter TldNameParameter, reqEditors ...RequestEditorFn) (*GetTldResponse, error)
+	GetTldWithResponse(ctx context.Context, tldName string, reqEditors ...RequestEditorFn) (*GetTldResponse, error)
 }
 
 type ListAppBlockerCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code            string             `json:"code"`
+		Id              openapi_types.UUID `json:"id"`
+		MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+		Name            string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5071,12 +4402,23 @@ func (r ListAppBlockerCategoriesResponse) StatusCode() int {
 type ListAppBlockerCategoryMacrosResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *MacroCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Categories []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		} `json:"categories"`
+		Id               openapi_types.UUID                              `json:"id"`
+		Name             string                                          `json:"name"`
+		ProtectionModule ListAppBlockerCategoryMacros200ProtectionModule `json:"protectionModule"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type ListAppBlockerCategoryMacros200ProtectionModule string
 
 // Status returns HTTPResponse.Status
 func (r ListAppBlockerCategoryMacrosResponse) Status() string {
@@ -5097,11 +4439,16 @@ func (r ListAppBlockerCategoryMacrosResponse) StatusCode() int {
 type ListCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code            string             `json:"code"`
+		Id              openapi_types.UUID `json:"id"`
+		MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+		Name            string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5123,12 +4470,23 @@ func (r ListCategoriesResponse) StatusCode() int {
 type ListCategoryMacrosResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *MacroCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Categories []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		} `json:"categories"`
+		Id               openapi_types.UUID                    `json:"id"`
+		Name             string                                `json:"name"`
+		ProtectionModule ListCategoryMacros200ProtectionModule `json:"protectionModule"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type ListCategoryMacros200ProtectionModule string
 
 // Status returns HTTPResponse.Status
 func (r ListCategoryMacrosResponse) Status() string {
@@ -5149,11 +4507,21 @@ func (r ListCategoryMacrosResponse) StatusCode() int {
 type ListContinentsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *ContinentListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code      string `json:"code"`
+		Countries []struct {
+			Code        string             `json:"code"`
+			ContinentId openapi_types.UUID `json:"continentId"`
+			Id          openapi_types.UUID `json:"id"`
+			Name        string             `json:"name"`
+		} `json:"countries"`
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5175,11 +4543,16 @@ func (r ListContinentsResponse) StatusCode() int {
 type ListCountriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CountryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code        string             `json:"code"`
+		ContinentId openapi_types.UUID `json:"continentId"`
+		Id          openapi_types.UUID `json:"id"`
+		Name        string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5201,11 +4574,46 @@ func (r ListCountriesResponse) StatusCode() int {
 type ListExceptionGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *ExceptionGroupListWithPoliciesResponse
+	JSON200      *[]ListExceptionGroups_200_Item
 	JSON401      *UnauthorizedResponse
 	JSON403      *ForbiddenResponse
 	JSON404      *NotFoundResponse
 	JSON500      *ServerErrorResponse
+}
+type ListExceptionGroups2000 struct {
+	Domains []struct {
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+		Note *string            `json:"note"`
+	} `json:"domains"`
+	Id             openapi_types.UUID          `json:"id"`
+	Name           string                      `json:"name"`
+	OrganizationId openapi_types.UUID          `json:"organizationId"`
+	Type           ListExceptionGroups2000Type `json:"type"`
+}
+type ListExceptionGroups2000Type string
+type ListExceptionGroups2001 struct {
+	Domains []struct {
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+		Note *string            `json:"note"`
+	} `json:"domains"`
+	Id             openapi_types.UUID `json:"id"`
+	IsHidden       bool               `json:"isHidden"`
+	Name           string             `json:"name"`
+	OrganizationId openapi_types.UUID `json:"organizationId"`
+	Policies       []struct {
+		Id             openapi_types.UUID `json:"id"`
+		IsLimited      bool               `json:"isLimited"`
+		IsShared       bool               `json:"isShared"`
+		Name           string             `json:"name"`
+		OrganizationId openapi_types.UUID `json:"organizationId"`
+	} `json:"policies"`
+	Type ListExceptionGroups2001Type `json:"type"`
+}
+type ListExceptionGroups2001Type string
+type ListExceptionGroups_200_Item struct {
+	union json.RawMessage
 }
 
 // Status returns HTTPResponse.Status
@@ -5227,13 +4635,24 @@ func (r ListExceptionGroupsResponse) StatusCode() int {
 type CreateExceptionGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *ExceptionGroupWithDomainsResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *struct {
+		Domains []struct {
+			Id   openapi_types.UUID `json:"id"`
+			Name string             `json:"name"`
+			Note *string            `json:"note"`
+		} `json:"domains"`
+		Id             openapi_types.UUID          `json:"id"`
+		Name           string                      `json:"name"`
+		OrganizationId openapi_types.UUID          `json:"organizationId"`
+		Type           CreateExceptionGroup201Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
+type CreateExceptionGroup201Type string
 
 // Status returns HTTPResponse.Status
 func (r CreateExceptionGroupResponse) Status() string {
@@ -5254,12 +4673,18 @@ func (r CreateExceptionGroupResponse) StatusCode() int {
 type DeleteExceptionGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *ExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id             openapi_types.UUID          `json:"id"`
+		Name           string                      `json:"name"`
+		OrganizationId openapi_types.UUID          `json:"organizationId"`
+		Type           DeleteExceptionGroup200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type DeleteExceptionGroup200Type string
 
 // Status returns HTTPResponse.Status
 func (r DeleteExceptionGroupResponse) Status() string {
@@ -5280,13 +4705,19 @@ func (r DeleteExceptionGroupResponse) StatusCode() int {
 type UpdateExceptionGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *ExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id             openapi_types.UUID          `json:"id"`
+		Name           string                      `json:"name"`
+		OrganizationId openapi_types.UUID          `json:"organizationId"`
+		Type           UpdateExceptionGroup200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
+type UpdateExceptionGroup200Type string
 
 // Status returns HTTPResponse.Status
 func (r UpdateExceptionGroupResponse) Status() string {
@@ -5307,11 +4738,15 @@ func (r UpdateExceptionGroupResponse) StatusCode() int {
 type ListExceptionGroupDomainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DomainListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+		Note *string            `json:"note"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5333,12 +4768,16 @@ func (r ListExceptionGroupDomainsResponse) StatusCode() int {
 type AddExceptionGroupDomainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *DomainInExceptionGroupListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *[]struct {
+		DomainId         openapi_types.UUID `json:"domainId"`
+		ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+		Note             *string            `json:"note"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5360,11 +4799,15 @@ func (r AddExceptionGroupDomainsResponse) StatusCode() int {
 type RemoveExceptionGroupDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DomainInExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		DomainId         openapi_types.UUID `json:"domainId"`
+		ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+		Note             *string            `json:"note"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5386,12 +4829,16 @@ func (r RemoveExceptionGroupDomainResponse) StatusCode() int {
 type UpdateExceptionGroupDomainNoteResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DomainInExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		DomainId         openapi_types.UUID `json:"domainId"`
+		ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+		Note             *string            `json:"note"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5413,11 +4860,16 @@ func (r UpdateExceptionGroupDomainNoteResponse) StatusCode() int {
 type ListMalwareCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code            string             `json:"code"`
+		Id              openapi_types.UUID `json:"id"`
+		MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+		Name            string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5439,12 +4891,23 @@ func (r ListMalwareCategoriesResponse) StatusCode() int {
 type ListMalwareCategoryMacrosResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *MacroCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Categories []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		} `json:"categories"`
+		Id               openapi_types.UUID                           `json:"id"`
+		Name             string                                       `json:"name"`
+		ProtectionModule ListMalwareCategoryMacros200ProtectionModule `json:"protectionModule"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type ListMalwareCategoryMacros200ProtectionModule string
 
 // Status returns HTTPResponse.Status
 func (r ListMalwareCategoryMacrosResponse) Status() string {
@@ -5465,11 +4928,39 @@ func (r ListMalwareCategoryMacrosResponse) StatusCode() int {
 type ListPoliciesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicyListResponse
+	JSON200      *[]ListPolicies_200_Item
 	JSON401      *UnauthorizedResponse
 	JSON403      *ForbiddenResponse
 	JSON404      *NotFoundResponse
 	JSON500      *ServerErrorResponse
+}
+type ListPolicies2000 struct {
+	Id             openapi_types.UUID `json:"id"`
+	IsLimited      bool               `json:"isLimited"`
+	IsShared       bool               `json:"isShared"`
+	Name           string             `json:"name"`
+	OrganizationId openapi_types.UUID `json:"organizationId"`
+}
+type ListPolicies2001 struct {
+	Id        openapi_types.UUID `json:"id"`
+	IsLimited bool               `json:"isLimited"`
+	IsShared  bool               `json:"isShared"`
+	Name      string             `json:"name"`
+	Networks  []struct {
+		CreatedAt      time.Time                    `json:"createdAt"`
+		Id             openapi_types.UUID           `json:"id"`
+		LastQueriedAt  *time.Time                   `json:"lastQueriedAt,omitempty"`
+		Name           string                       `json:"name"`
+		Note           string                       `json:"note"`
+		OrganizationId openapi_types.UUID           `json:"organizationId"`
+		Type           ListPolicies2001NetworksType `json:"type"`
+		UpdatedAt      time.Time                    `json:"updatedAt"`
+	} `json:"networks"`
+	OrganizationId openapi_types.UUID `json:"organizationId"`
+}
+type ListPolicies2001NetworksType string
+type ListPolicies_200_Item struct {
+	union json.RawMessage
 }
 
 // Status returns HTTPResponse.Status
@@ -5491,12 +4982,18 @@ func (r ListPoliciesResponse) StatusCode() int {
 type CreatePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *PolicyResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *struct {
+		Id             openapi_types.UUID `json:"id"`
+		IsLimited      bool               `json:"isLimited"`
+		IsShared       bool               `json:"isShared"`
+		Name           string             `json:"name"`
+		OrganizationId openapi_types.UUID `json:"organizationId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5518,11 +5015,17 @@ func (r CreatePolicyResponse) StatusCode() int {
 type DeletePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicyResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id             openapi_types.UUID `json:"id"`
+		IsLimited      bool               `json:"isLimited"`
+		IsShared       bool               `json:"isShared"`
+		Name           string             `json:"name"`
+		OrganizationId openapi_types.UUID `json:"organizationId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5544,11 +5047,17 @@ func (r DeletePolicyResponse) StatusCode() int {
 type GetPolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicyResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id             openapi_types.UUID `json:"id"`
+		IsLimited      bool               `json:"isLimited"`
+		IsShared       bool               `json:"isShared"`
+		Name           string             `json:"name"`
+		OrganizationId openapi_types.UUID `json:"organizationId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5570,12 +5079,18 @@ func (r GetPolicyResponse) StatusCode() int {
 type UpdatePolicyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicyResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id             openapi_types.UUID `json:"id"`
+		IsLimited      bool               `json:"isLimited"`
+		IsShared       bool               `json:"isShared"`
+		Name           string             `json:"name"`
+		OrganizationId openapi_types.UUID `json:"organizationId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5597,12 +5112,22 @@ func (r UpdatePolicyResponse) StatusCode() int {
 type AllowAppBlockerCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5624,11 +5149,20 @@ func (r AllowAppBlockerCategoriesResponse) StatusCode() int {
 type ListBlockedAppBlockerCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BlockedCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		TimeBlocks []struct {
+			Day  int                `json:"day"`
+			From time.Time          `json:"from"`
+			Id   openapi_types.UUID `json:"id"`
+			To   time.Time          `json:"to"`
+		} `json:"timeBlocks"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5650,12 +5184,22 @@ func (r ListBlockedAppBlockerCategoriesResponse) StatusCode() int {
 type BlockAppBlockerCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5677,12 +5221,19 @@ func (r BlockAppBlockerCategoriesResponse) StatusCode() int {
 type ScheduleAppBlockerCategoryBlockResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *CategoryScheduleListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5704,11 +5255,18 @@ func (r ScheduleAppBlockerCategoryBlockResponse) StatusCode() int {
 type RemoveAppBlockerCategoryBlockScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryScheduleResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5730,12 +5288,22 @@ func (r RemoveAppBlockerCategoryBlockScheduleResponse) StatusCode() int {
 type AllowCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5757,11 +5325,20 @@ func (r AllowCategoriesResponse) StatusCode() int {
 type ListBlockedCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BlockedCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		TimeBlocks []struct {
+			Day  int                `json:"day"`
+			From time.Time          `json:"from"`
+			Id   openapi_types.UUID `json:"id"`
+			To   time.Time          `json:"to"`
+		} `json:"timeBlocks"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5783,12 +5360,22 @@ func (r ListBlockedCategoriesResponse) StatusCode() int {
 type BlockCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5810,12 +5397,19 @@ func (r BlockCategoriesResponse) StatusCode() int {
 type ScheduleCategoryBlockResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *CategoryScheduleListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5837,11 +5431,18 @@ func (r ScheduleCategoryBlockResponse) StatusCode() int {
 type RemoveCategoryBlockScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryScheduleResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5863,12 +5464,25 @@ func (r RemoveCategoryBlockScheduleResponse) StatusCode() int {
 type AllowCountriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CountryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			Code        string             `json:"code"`
+			ContinentId openapi_types.UUID `json:"continentId"`
+			Id          openapi_types.UUID `json:"id"`
+			Name        string             `json:"name"`
+			PolicyId    openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5890,11 +5504,17 @@ func (r AllowCountriesResponse) StatusCode() int {
 type ListBlockedCountriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CountryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code        string             `json:"code"`
+		ContinentId openapi_types.UUID `json:"continentId"`
+		Id          openapi_types.UUID `json:"id"`
+		Name        string             `json:"name"`
+		PolicyId    openapi_types.UUID `json:"policyId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5916,12 +5536,25 @@ func (r ListBlockedCountriesResponse) StatusCode() int {
 type BlockCountriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CountryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			Code        string             `json:"code"`
+			ContinentId openapi_types.UUID `json:"continentId"`
+			Id          openapi_types.UUID `json:"id"`
+			Name        string             `json:"name"`
+			PolicyId    openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -5968,11 +5601,13 @@ func (r DisableDynamicDnsRedirectResponse) StatusCode() int {
 type GetDynamicDnsRedirectResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DynamicDnsRedirectResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		IsEnabled bool `json:"isEnabled"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6019,12 +5654,23 @@ func (r EnableDynamicDnsRedirectResponse) StatusCode() int {
 type ListPolicyExceptionGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *ExceptionGroupListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Domains []struct {
+			Id   openapi_types.UUID `json:"id"`
+			Name string             `json:"name"`
+			Note *string            `json:"note"`
+		} `json:"domains"`
+		Id             openapi_types.UUID               `json:"id"`
+		Name           string                           `json:"name"`
+		OrganizationId openapi_types.UUID               `json:"organizationId"`
+		Type           ListPolicyExceptionGroups200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type ListPolicyExceptionGroups200Type string
 
 // Status returns HTTPResponse.Status
 func (r ListPolicyExceptionGroupsResponse) Status() string {
@@ -6045,12 +5691,15 @@ func (r ListPolicyExceptionGroupsResponse) StatusCode() int {
 type AddPolicyExceptionGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *PolicyExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *struct {
+		ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+		PolicyId         openapi_types.UUID `json:"policyId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6072,11 +5721,14 @@ func (r AddPolicyExceptionGroupResponse) StatusCode() int {
 type RemovePolicyExceptionGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicyExceptionGroupResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+		PolicyId         openapi_types.UUID `json:"policyId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6098,12 +5750,22 @@ func (r RemovePolicyExceptionGroupResponse) StatusCode() int {
 type AllowMalwareCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6125,11 +5787,20 @@ func (r AllowMalwareCategoriesResponse) StatusCode() int {
 type ListBlockedMalwareCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BlockedCategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		TimeBlocks []struct {
+			Day  int                `json:"day"`
+			From time.Time          `json:"from"`
+			Id   openapi_types.UUID `json:"id"`
+			To   time.Time          `json:"to"`
+		} `json:"timeBlocks"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6151,12 +5822,22 @@ func (r ListBlockedMalwareCategoriesResponse) StatusCode() int {
 type BlockMalwareCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *CategoryMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6178,12 +5859,19 @@ func (r BlockMalwareCategoriesResponse) StatusCode() int {
 type ScheduleMalwareCategoryBlockResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON201      *CategoryScheduleListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON201      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6205,11 +5893,18 @@ func (r ScheduleMalwareCategoryBlockResponse) StatusCode() int {
 type RemoveMalwareCategoryBlockScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryScheduleResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6231,11 +5926,17 @@ func (r RemoveMalwareCategoryBlockScheduleResponse) StatusCode() int {
 type GetPolicySettingsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicySettingsResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		BingSafeSearchEnabled       bool `json:"bingSafeSearchEnabled"`
+		DuckduckgoSafeSearchEnabled bool `json:"duckduckgoSafeSearchEnabled"`
+		GoogleSafeSearchEnabled     bool `json:"googleSafeSearchEnabled"`
+		IpBlockingEnabled           bool `json:"ipBlockingEnabled"`
+		YoutubeSafeSearchEnabled    bool `json:"youtubeSafeSearchEnabled"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6257,12 +5958,18 @@ func (r GetPolicySettingsResponse) StatusCode() int {
 type UpdatePolicySettingsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PolicySettingsResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		BingSafeSearchEnabled       bool `json:"bingSafeSearchEnabled"`
+		DuckduckgoSafeSearchEnabled bool `json:"duckduckgoSafeSearchEnabled"`
+		GoogleSafeSearchEnabled     bool `json:"googleSafeSearchEnabled"`
+		IpBlockingEnabled           bool `json:"ipBlockingEnabled"`
+		YoutubeSafeSearchEnabled    bool `json:"youtubeSafeSearchEnabled"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6284,12 +5991,24 @@ func (r UpdatePolicySettingsResponse) StatusCode() int {
 type AllowTldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *TldMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			Id       openapi_types.UUID `json:"id"`
+			PolicyId openapi_types.UUID `json:"policyId"`
+			Tld      string             `json:"tld"`
+			TldId    openapi_types.UUID `json:"tldId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6311,11 +6030,16 @@ func (r AllowTldsResponse) StatusCode() int {
 type ListBlockedTldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BlockedTldListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Id       openapi_types.UUID `json:"id"`
+		PolicyId openapi_types.UUID `json:"policyId"`
+		Tld      string             `json:"tld"`
+		TldId    openapi_types.UUID `json:"tldId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6337,12 +6061,24 @@ func (r ListBlockedTldsResponse) StatusCode() int {
 type BlockTldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON207      *TldMultiStatusResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON422      *ValidationErrorResponse
-	JSON500      *ServerErrorResponse
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			Id       openapi_types.UUID `json:"id"`
+			PolicyId openapi_types.UUID `json:"policyId"`
+			Tld      string             `json:"tld"`
+			TldId    openapi_types.UUID `json:"tldId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6364,12 +6100,25 @@ func (r BlockTldsResponse) StatusCode() int {
 type ListProtectionTemplatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TemplateListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Categories []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		} `json:"categories"`
+		Id       openapi_types.UUID                   `json:"id"`
+		Name     string                               `json:"name"`
+		Settings []ListProtectionTemplates200Settings `json:"settings"`
+		Type     ListProtectionTemplates200Type       `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
+type ListProtectionTemplates200Settings string
+type ListProtectionTemplates200Type string
 
 // Status returns HTTPResponse.Status
 func (r ListProtectionTemplatesResponse) Status() string {
@@ -6390,11 +6139,16 @@ func (r ListProtectionTemplatesResponse) StatusCode() int {
 type ListTemplateCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CategoryListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code            string             `json:"code"`
+		Id              openapi_types.UUID `json:"id"`
+		MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+		Name            string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6416,11 +6170,14 @@ func (r ListTemplateCategoriesResponse) StatusCode() int {
 type ListTldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TldListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Id  openapi_types.UUID `json:"id"`
+		Tld string             `json:"tld"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6442,11 +6199,19 @@ func (r ListTldsResponse) StatusCode() int {
 type ListTldMacrosResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *MacroTldListResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *[]struct {
+		Code string             `json:"code"`
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+		Tlds []struct {
+			Id  openapi_types.UUID `json:"id"`
+			Tld string             `json:"tld"`
+		} `json:"tlds"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6468,11 +6233,14 @@ func (r ListTldMacrosResponse) StatusCode() int {
 type GetTldResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TldResponse
-	JSON401      *UnauthorizedResponse
-	JSON403      *ForbiddenResponse
-	JSON404      *NotFoundResponse
-	JSON500      *ServerErrorResponse
+	JSON200      *struct {
+		Id  openapi_types.UUID `json:"id"`
+		Tld string             `json:"tld"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -6572,8 +6340,8 @@ func (c *ClientWithResponses) CreateExceptionGroupWithResponse(ctx context.Conte
 }
 
 // DeleteExceptionGroupWithResponse request returning *DeleteExceptionGroupResponse
-func (c *ClientWithResponses) DeleteExceptionGroupWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*DeleteExceptionGroupResponse, error) {
-	rsp, err := c.DeleteExceptionGroup(ctx, exceptionGroupIdParameter, reqEditors...)
+func (c *ClientWithResponses) DeleteExceptionGroupWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteExceptionGroupResponse, error) {
+	rsp, err := c.DeleteExceptionGroup(ctx, exceptionGroupId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6581,16 +6349,16 @@ func (c *ClientWithResponses) DeleteExceptionGroupWithResponse(ctx context.Conte
 }
 
 // UpdateExceptionGroupWithBodyWithResponse request with arbitrary body returning *UpdateExceptionGroupResponse
-func (c *ClientWithResponses) UpdateExceptionGroupWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error) {
-	rsp, err := c.UpdateExceptionGroupWithBody(ctx, exceptionGroupIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdateExceptionGroupWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error) {
+	rsp, err := c.UpdateExceptionGroupWithBody(ctx, exceptionGroupId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdateExceptionGroupResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdateExceptionGroupWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error) {
-	rsp, err := c.UpdateExceptionGroup(ctx, exceptionGroupIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) UpdateExceptionGroupWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, body UpdateExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupResponse, error) {
+	rsp, err := c.UpdateExceptionGroup(ctx, exceptionGroupId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6598,8 +6366,8 @@ func (c *ClientWithResponses) UpdateExceptionGroupWithResponse(ctx context.Conte
 }
 
 // ListExceptionGroupDomainsWithResponse request returning *ListExceptionGroupDomainsResponse
-func (c *ClientWithResponses) ListExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*ListExceptionGroupDomainsResponse, error) {
-	rsp, err := c.ListExceptionGroupDomains(ctx, exceptionGroupIdParameter, reqEditors...)
+func (c *ClientWithResponses) ListExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListExceptionGroupDomainsResponse, error) {
+	rsp, err := c.ListExceptionGroupDomains(ctx, exceptionGroupId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6607,16 +6375,16 @@ func (c *ClientWithResponses) ListExceptionGroupDomainsWithResponse(ctx context.
 }
 
 // AddExceptionGroupDomainsWithBodyWithResponse request with arbitrary body returning *AddExceptionGroupDomainsResponse
-func (c *ClientWithResponses) AddExceptionGroupDomainsWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error) {
-	rsp, err := c.AddExceptionGroupDomainsWithBody(ctx, exceptionGroupIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AddExceptionGroupDomainsWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error) {
+	rsp, err := c.AddExceptionGroupDomainsWithBody(ctx, exceptionGroupId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAddExceptionGroupDomainsResponse(rsp)
 }
 
-func (c *ClientWithResponses) AddExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error) {
-	rsp, err := c.AddExceptionGroupDomains(ctx, exceptionGroupIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AddExceptionGroupDomainsWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, body AddExceptionGroupDomainsJSONRequestBody, reqEditors ...RequestEditorFn) (*AddExceptionGroupDomainsResponse, error) {
+	rsp, err := c.AddExceptionGroupDomains(ctx, exceptionGroupId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6624,8 +6392,8 @@ func (c *ClientWithResponses) AddExceptionGroupDomainsWithResponse(ctx context.C
 }
 
 // RemoveExceptionGroupDomainWithResponse request returning *RemoveExceptionGroupDomainResponse
-func (c *ClientWithResponses) RemoveExceptionGroupDomainWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, reqEditors ...RequestEditorFn) (*RemoveExceptionGroupDomainResponse, error) {
-	rsp, err := c.RemoveExceptionGroupDomain(ctx, exceptionGroupIdParameter, domainIdParameter, reqEditors...)
+func (c *ClientWithResponses) RemoveExceptionGroupDomainWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveExceptionGroupDomainResponse, error) {
+	rsp, err := c.RemoveExceptionGroupDomain(ctx, exceptionGroupId, domainId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6633,16 +6401,16 @@ func (c *ClientWithResponses) RemoveExceptionGroupDomainWithResponse(ctx context
 }
 
 // UpdateExceptionGroupDomainNoteWithBodyWithResponse request with arbitrary body returning *UpdateExceptionGroupDomainNoteResponse
-func (c *ClientWithResponses) UpdateExceptionGroupDomainNoteWithBodyWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error) {
-	rsp, err := c.UpdateExceptionGroupDomainNoteWithBody(ctx, exceptionGroupIdParameter, domainIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdateExceptionGroupDomainNoteWithBodyWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error) {
+	rsp, err := c.UpdateExceptionGroupDomainNoteWithBody(ctx, exceptionGroupId, domainId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdateExceptionGroupDomainNoteResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdateExceptionGroupDomainNoteWithResponse(ctx context.Context, exceptionGroupIdParameter ExceptionGroupIdParameter, domainIdParameter DomainIdParameter, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error) {
-	rsp, err := c.UpdateExceptionGroupDomainNote(ctx, exceptionGroupIdParameter, domainIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) UpdateExceptionGroupDomainNoteWithResponse(ctx context.Context, exceptionGroupId openapi_types.UUID, domainId openapi_types.UUID, body UpdateExceptionGroupDomainNoteJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExceptionGroupDomainNoteResponse, error) {
+	rsp, err := c.UpdateExceptionGroupDomainNote(ctx, exceptionGroupId, domainId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6694,8 +6462,8 @@ func (c *ClientWithResponses) CreatePolicyWithResponse(ctx context.Context, body
 }
 
 // DeletePolicyWithResponse request returning *DeletePolicyResponse
-func (c *ClientWithResponses) DeletePolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*DeletePolicyResponse, error) {
-	rsp, err := c.DeletePolicy(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) DeletePolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeletePolicyResponse, error) {
+	rsp, err := c.DeletePolicy(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6703,8 +6471,8 @@ func (c *ClientWithResponses) DeletePolicyWithResponse(ctx context.Context, poli
 }
 
 // GetPolicyWithResponse request returning *GetPolicyResponse
-func (c *ClientWithResponses) GetPolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetPolicyResponse, error) {
-	rsp, err := c.GetPolicy(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) GetPolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyResponse, error) {
+	rsp, err := c.GetPolicy(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6712,16 +6480,16 @@ func (c *ClientWithResponses) GetPolicyWithResponse(ctx context.Context, policyI
 }
 
 // UpdatePolicyWithBodyWithResponse request with arbitrary body returning *UpdatePolicyResponse
-func (c *ClientWithResponses) UpdatePolicyWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error) {
-	rsp, err := c.UpdatePolicyWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdatePolicyWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error) {
+	rsp, err := c.UpdatePolicyWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdatePolicyResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdatePolicyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error) {
-	rsp, err := c.UpdatePolicy(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) UpdatePolicyWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyResponse, error) {
+	rsp, err := c.UpdatePolicy(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6729,16 +6497,16 @@ func (c *ClientWithResponses) UpdatePolicyWithResponse(ctx context.Context, poli
 }
 
 // AllowAppBlockerCategoriesWithBodyWithResponse request with arbitrary body returning *AllowAppBlockerCategoriesResponse
-func (c *ClientWithResponses) AllowAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error) {
-	rsp, err := c.AllowAppBlockerCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AllowAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error) {
+	rsp, err := c.AllowAppBlockerCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAllowAppBlockerCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) AllowAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error) {
-	rsp, err := c.AllowAppBlockerCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AllowAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowAppBlockerCategoriesResponse, error) {
+	rsp, err := c.AllowAppBlockerCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6746,8 +6514,8 @@ func (c *ClientWithResponses) AllowAppBlockerCategoriesWithResponse(ctx context.
 }
 
 // ListBlockedAppBlockerCategoriesWithResponse request returning *ListBlockedAppBlockerCategoriesResponse
-func (c *ClientWithResponses) ListBlockedAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedAppBlockerCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedAppBlockerCategoriesResponse, error) {
-	rsp, err := c.ListBlockedAppBlockerCategories(ctx, policyIdParameter, params, reqEditors...)
+func (c *ClientWithResponses) ListBlockedAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedAppBlockerCategoriesResponse, error) {
+	rsp, err := c.ListBlockedAppBlockerCategories(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6755,16 +6523,16 @@ func (c *ClientWithResponses) ListBlockedAppBlockerCategoriesWithResponse(ctx co
 }
 
 // BlockAppBlockerCategoriesWithBodyWithResponse request with arbitrary body returning *BlockAppBlockerCategoriesResponse
-func (c *ClientWithResponses) BlockAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error) {
-	rsp, err := c.BlockAppBlockerCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) BlockAppBlockerCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error) {
+	rsp, err := c.BlockAppBlockerCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseBlockAppBlockerCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) BlockAppBlockerCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error) {
-	rsp, err := c.BlockAppBlockerCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) BlockAppBlockerCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockAppBlockerCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockAppBlockerCategoriesResponse, error) {
+	rsp, err := c.BlockAppBlockerCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6772,16 +6540,16 @@ func (c *ClientWithResponses) BlockAppBlockerCategoriesWithResponse(ctx context.
 }
 
 // ScheduleAppBlockerCategoryBlockWithBodyWithResponse request with arbitrary body returning *ScheduleAppBlockerCategoryBlockResponse
-func (c *ClientWithResponses) ScheduleAppBlockerCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleAppBlockerCategoryBlockWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleAppBlockerCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleAppBlockerCategoryBlockWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseScheduleAppBlockerCategoryBlockResponse(rsp)
 }
 
-func (c *ClientWithResponses) ScheduleAppBlockerCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleAppBlockerCategoryBlock(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleAppBlockerCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleAppBlockerCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleAppBlockerCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleAppBlockerCategoryBlock(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6789,8 +6557,8 @@ func (c *ClientWithResponses) ScheduleAppBlockerCategoryBlockWithResponse(ctx co
 }
 
 // RemoveAppBlockerCategoryBlockScheduleWithResponse request returning *RemoveAppBlockerCategoryBlockScheduleResponse
-func (c *ClientWithResponses) RemoveAppBlockerCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveAppBlockerCategoryBlockScheduleResponse, error) {
-	rsp, err := c.RemoveAppBlockerCategoryBlockSchedule(ctx, policyIdParameter, schedulationIdParameter, reqEditors...)
+func (c *ClientWithResponses) RemoveAppBlockerCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveAppBlockerCategoryBlockScheduleResponse, error) {
+	rsp, err := c.RemoveAppBlockerCategoryBlockSchedule(ctx, policyId, schedulationId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6798,16 +6566,16 @@ func (c *ClientWithResponses) RemoveAppBlockerCategoryBlockScheduleWithResponse(
 }
 
 // AllowCategoriesWithBodyWithResponse request with arbitrary body returning *AllowCategoriesResponse
-func (c *ClientWithResponses) AllowCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error) {
-	rsp, err := c.AllowCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AllowCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error) {
+	rsp, err := c.AllowCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAllowCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) AllowCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error) {
-	rsp, err := c.AllowCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AllowCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error) {
+	rsp, err := c.AllowCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6815,8 +6583,8 @@ func (c *ClientWithResponses) AllowCategoriesWithResponse(ctx context.Context, p
 }
 
 // ListBlockedCategoriesWithResponse request returning *ListBlockedCategoriesResponse
-func (c *ClientWithResponses) ListBlockedCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedCategoriesResponse, error) {
-	rsp, err := c.ListBlockedCategories(ctx, policyIdParameter, params, reqEditors...)
+func (c *ClientWithResponses) ListBlockedCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedCategoriesResponse, error) {
+	rsp, err := c.ListBlockedCategories(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6824,16 +6592,16 @@ func (c *ClientWithResponses) ListBlockedCategoriesWithResponse(ctx context.Cont
 }
 
 // BlockCategoriesWithBodyWithResponse request with arbitrary body returning *BlockCategoriesResponse
-func (c *ClientWithResponses) BlockCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error) {
-	rsp, err := c.BlockCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) BlockCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error) {
+	rsp, err := c.BlockCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseBlockCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) BlockCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error) {
-	rsp, err := c.BlockCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) BlockCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCategoriesResponse, error) {
+	rsp, err := c.BlockCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6841,16 +6609,16 @@ func (c *ClientWithResponses) BlockCategoriesWithResponse(ctx context.Context, p
 }
 
 // ScheduleCategoryBlockWithBodyWithResponse request with arbitrary body returning *ScheduleCategoryBlockResponse
-func (c *ClientWithResponses) ScheduleCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleCategoryBlockWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleCategoryBlockWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseScheduleCategoryBlockResponse(rsp)
 }
 
-func (c *ClientWithResponses) ScheduleCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleCategoryBlock(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleCategoryBlock(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6858,8 +6626,8 @@ func (c *ClientWithResponses) ScheduleCategoryBlockWithResponse(ctx context.Cont
 }
 
 // RemoveCategoryBlockScheduleWithResponse request returning *RemoveCategoryBlockScheduleResponse
-func (c *ClientWithResponses) RemoveCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveCategoryBlockScheduleResponse, error) {
-	rsp, err := c.RemoveCategoryBlockSchedule(ctx, policyIdParameter, schedulationIdParameter, reqEditors...)
+func (c *ClientWithResponses) RemoveCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveCategoryBlockScheduleResponse, error) {
+	rsp, err := c.RemoveCategoryBlockSchedule(ctx, policyId, schedulationId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6867,16 +6635,16 @@ func (c *ClientWithResponses) RemoveCategoryBlockScheduleWithResponse(ctx contex
 }
 
 // AllowCountriesWithBodyWithResponse request with arbitrary body returning *AllowCountriesResponse
-func (c *ClientWithResponses) AllowCountriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error) {
-	rsp, err := c.AllowCountriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AllowCountriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error) {
+	rsp, err := c.AllowCountriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAllowCountriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) AllowCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error) {
-	rsp, err := c.AllowCountries(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AllowCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowCountriesResponse, error) {
+	rsp, err := c.AllowCountries(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6884,8 +6652,8 @@ func (c *ClientWithResponses) AllowCountriesWithResponse(ctx context.Context, po
 }
 
 // ListBlockedCountriesWithResponse request returning *ListBlockedCountriesResponse
-func (c *ClientWithResponses) ListBlockedCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListBlockedCountriesResponse, error) {
-	rsp, err := c.ListBlockedCountries(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) ListBlockedCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedCountriesResponse, error) {
+	rsp, err := c.ListBlockedCountries(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6893,16 +6661,16 @@ func (c *ClientWithResponses) ListBlockedCountriesWithResponse(ctx context.Conte
 }
 
 // BlockCountriesWithBodyWithResponse request with arbitrary body returning *BlockCountriesResponse
-func (c *ClientWithResponses) BlockCountriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error) {
-	rsp, err := c.BlockCountriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) BlockCountriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error) {
+	rsp, err := c.BlockCountriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseBlockCountriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) BlockCountriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error) {
-	rsp, err := c.BlockCountries(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) BlockCountriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockCountriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockCountriesResponse, error) {
+	rsp, err := c.BlockCountries(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6910,8 +6678,8 @@ func (c *ClientWithResponses) BlockCountriesWithResponse(ctx context.Context, po
 }
 
 // DisableDynamicDnsRedirectWithResponse request returning *DisableDynamicDnsRedirectResponse
-func (c *ClientWithResponses) DisableDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*DisableDynamicDnsRedirectResponse, error) {
-	rsp, err := c.DisableDynamicDnsRedirect(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) DisableDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DisableDynamicDnsRedirectResponse, error) {
+	rsp, err := c.DisableDynamicDnsRedirect(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6919,8 +6687,8 @@ func (c *ClientWithResponses) DisableDynamicDnsRedirectWithResponse(ctx context.
 }
 
 // GetDynamicDnsRedirectWithResponse request returning *GetDynamicDnsRedirectResponse
-func (c *ClientWithResponses) GetDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetDynamicDnsRedirectResponse, error) {
-	rsp, err := c.GetDynamicDnsRedirect(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) GetDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetDynamicDnsRedirectResponse, error) {
+	rsp, err := c.GetDynamicDnsRedirect(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6928,8 +6696,8 @@ func (c *ClientWithResponses) GetDynamicDnsRedirectWithResponse(ctx context.Cont
 }
 
 // EnableDynamicDnsRedirectWithResponse request returning *EnableDynamicDnsRedirectResponse
-func (c *ClientWithResponses) EnableDynamicDnsRedirectWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*EnableDynamicDnsRedirectResponse, error) {
-	rsp, err := c.EnableDynamicDnsRedirect(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) EnableDynamicDnsRedirectWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*EnableDynamicDnsRedirectResponse, error) {
+	rsp, err := c.EnableDynamicDnsRedirect(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6937,8 +6705,8 @@ func (c *ClientWithResponses) EnableDynamicDnsRedirectWithResponse(ctx context.C
 }
 
 // ListPolicyExceptionGroupsWithResponse request returning *ListPolicyExceptionGroupsResponse
-func (c *ClientWithResponses) ListPolicyExceptionGroupsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListPolicyExceptionGroupsResponse, error) {
-	rsp, err := c.ListPolicyExceptionGroups(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) ListPolicyExceptionGroupsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListPolicyExceptionGroupsResponse, error) {
+	rsp, err := c.ListPolicyExceptionGroups(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6946,16 +6714,16 @@ func (c *ClientWithResponses) ListPolicyExceptionGroupsWithResponse(ctx context.
 }
 
 // AddPolicyExceptionGroupWithBodyWithResponse request with arbitrary body returning *AddPolicyExceptionGroupResponse
-func (c *ClientWithResponses) AddPolicyExceptionGroupWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error) {
-	rsp, err := c.AddPolicyExceptionGroupWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AddPolicyExceptionGroupWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error) {
+	rsp, err := c.AddPolicyExceptionGroupWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAddPolicyExceptionGroupResponse(rsp)
 }
 
-func (c *ClientWithResponses) AddPolicyExceptionGroupWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error) {
-	rsp, err := c.AddPolicyExceptionGroup(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AddPolicyExceptionGroupWithResponse(ctx context.Context, policyId openapi_types.UUID, body AddPolicyExceptionGroupJSONRequestBody, reqEditors ...RequestEditorFn) (*AddPolicyExceptionGroupResponse, error) {
+	rsp, err := c.AddPolicyExceptionGroup(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6963,8 +6731,8 @@ func (c *ClientWithResponses) AddPolicyExceptionGroupWithResponse(ctx context.Co
 }
 
 // RemovePolicyExceptionGroupWithResponse request returning *RemovePolicyExceptionGroupResponse
-func (c *ClientWithResponses) RemovePolicyExceptionGroupWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, exceptionGroupIdParameter ExceptionGroupIdParameter, reqEditors ...RequestEditorFn) (*RemovePolicyExceptionGroupResponse, error) {
-	rsp, err := c.RemovePolicyExceptionGroup(ctx, policyIdParameter, exceptionGroupIdParameter, reqEditors...)
+func (c *ClientWithResponses) RemovePolicyExceptionGroupWithResponse(ctx context.Context, policyId openapi_types.UUID, exceptionGroupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemovePolicyExceptionGroupResponse, error) {
+	rsp, err := c.RemovePolicyExceptionGroup(ctx, policyId, exceptionGroupId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6972,16 +6740,16 @@ func (c *ClientWithResponses) RemovePolicyExceptionGroupWithResponse(ctx context
 }
 
 // AllowMalwareCategoriesWithBodyWithResponse request with arbitrary body returning *AllowMalwareCategoriesResponse
-func (c *ClientWithResponses) AllowMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error) {
-	rsp, err := c.AllowMalwareCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AllowMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error) {
+	rsp, err := c.AllowMalwareCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAllowMalwareCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) AllowMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error) {
-	rsp, err := c.AllowMalwareCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AllowMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowMalwareCategoriesResponse, error) {
+	rsp, err := c.AllowMalwareCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6989,8 +6757,8 @@ func (c *ClientWithResponses) AllowMalwareCategoriesWithResponse(ctx context.Con
 }
 
 // ListBlockedMalwareCategoriesWithResponse request returning *ListBlockedMalwareCategoriesResponse
-func (c *ClientWithResponses) ListBlockedMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, params *ListBlockedMalwareCategoriesParams, reqEditors ...RequestEditorFn) (*ListBlockedMalwareCategoriesResponse, error) {
-	rsp, err := c.ListBlockedMalwareCategories(ctx, policyIdParameter, params, reqEditors...)
+func (c *ClientWithResponses) ListBlockedMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedMalwareCategoriesResponse, error) {
+	rsp, err := c.ListBlockedMalwareCategories(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -6998,16 +6766,16 @@ func (c *ClientWithResponses) ListBlockedMalwareCategoriesWithResponse(ctx conte
 }
 
 // BlockMalwareCategoriesWithBodyWithResponse request with arbitrary body returning *BlockMalwareCategoriesResponse
-func (c *ClientWithResponses) BlockMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error) {
-	rsp, err := c.BlockMalwareCategoriesWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) BlockMalwareCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error) {
+	rsp, err := c.BlockMalwareCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseBlockMalwareCategoriesResponse(rsp)
 }
 
-func (c *ClientWithResponses) BlockMalwareCategoriesWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error) {
-	rsp, err := c.BlockMalwareCategories(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) BlockMalwareCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockMalwareCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockMalwareCategoriesResponse, error) {
+	rsp, err := c.BlockMalwareCategories(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7015,16 +6783,16 @@ func (c *ClientWithResponses) BlockMalwareCategoriesWithResponse(ctx context.Con
 }
 
 // ScheduleMalwareCategoryBlockWithBodyWithResponse request with arbitrary body returning *ScheduleMalwareCategoryBlockResponse
-func (c *ClientWithResponses) ScheduleMalwareCategoryBlockWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleMalwareCategoryBlockWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleMalwareCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleMalwareCategoryBlockWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseScheduleMalwareCategoryBlockResponse(rsp)
 }
 
-func (c *ClientWithResponses) ScheduleMalwareCategoryBlockWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error) {
-	rsp, err := c.ScheduleMalwareCategoryBlock(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) ScheduleMalwareCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleMalwareCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleMalwareCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleMalwareCategoryBlock(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7032,8 +6800,8 @@ func (c *ClientWithResponses) ScheduleMalwareCategoryBlockWithResponse(ctx conte
 }
 
 // RemoveMalwareCategoryBlockScheduleWithResponse request returning *RemoveMalwareCategoryBlockScheduleResponse
-func (c *ClientWithResponses) RemoveMalwareCategoryBlockScheduleWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, schedulationIdParameter SchedulationIdParameter, reqEditors ...RequestEditorFn) (*RemoveMalwareCategoryBlockScheduleResponse, error) {
-	rsp, err := c.RemoveMalwareCategoryBlockSchedule(ctx, policyIdParameter, schedulationIdParameter, reqEditors...)
+func (c *ClientWithResponses) RemoveMalwareCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveMalwareCategoryBlockScheduleResponse, error) {
+	rsp, err := c.RemoveMalwareCategoryBlockSchedule(ctx, policyId, schedulationId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7041,8 +6809,8 @@ func (c *ClientWithResponses) RemoveMalwareCategoryBlockScheduleWithResponse(ctx
 }
 
 // GetPolicySettingsWithResponse request returning *GetPolicySettingsResponse
-func (c *ClientWithResponses) GetPolicySettingsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*GetPolicySettingsResponse, error) {
-	rsp, err := c.GetPolicySettings(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) GetPolicySettingsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicySettingsResponse, error) {
+	rsp, err := c.GetPolicySettings(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7050,16 +6818,16 @@ func (c *ClientWithResponses) GetPolicySettingsWithResponse(ctx context.Context,
 }
 
 // UpdatePolicySettingsWithBodyWithResponse request with arbitrary body returning *UpdatePolicySettingsResponse
-func (c *ClientWithResponses) UpdatePolicySettingsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error) {
-	rsp, err := c.UpdatePolicySettingsWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdatePolicySettingsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error) {
+	rsp, err := c.UpdatePolicySettingsWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdatePolicySettingsResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdatePolicySettingsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error) {
-	rsp, err := c.UpdatePolicySettings(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) UpdatePolicySettingsWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error) {
+	rsp, err := c.UpdatePolicySettings(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7067,16 +6835,16 @@ func (c *ClientWithResponses) UpdatePolicySettingsWithResponse(ctx context.Conte
 }
 
 // AllowTldsWithBodyWithResponse request with arbitrary body returning *AllowTldsResponse
-func (c *ClientWithResponses) AllowTldsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error) {
-	rsp, err := c.AllowTldsWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AllowTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error) {
+	rsp, err := c.AllowTldsWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseAllowTldsResponse(rsp)
 }
 
-func (c *ClientWithResponses) AllowTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error) {
-	rsp, err := c.AllowTlds(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) AllowTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error) {
+	rsp, err := c.AllowTlds(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7084,8 +6852,8 @@ func (c *ClientWithResponses) AllowTldsWithResponse(ctx context.Context, policyI
 }
 
 // ListBlockedTldsWithResponse request returning *ListBlockedTldsResponse
-func (c *ClientWithResponses) ListBlockedTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, reqEditors ...RequestEditorFn) (*ListBlockedTldsResponse, error) {
-	rsp, err := c.ListBlockedTlds(ctx, policyIdParameter, reqEditors...)
+func (c *ClientWithResponses) ListBlockedTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedTldsResponse, error) {
+	rsp, err := c.ListBlockedTlds(ctx, policyId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7093,16 +6861,16 @@ func (c *ClientWithResponses) ListBlockedTldsWithResponse(ctx context.Context, p
 }
 
 // BlockTldsWithBodyWithResponse request with arbitrary body returning *BlockTldsResponse
-func (c *ClientWithResponses) BlockTldsWithBodyWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error) {
-	rsp, err := c.BlockTldsWithBody(ctx, policyIdParameter, contentType, body, reqEditors...)
+func (c *ClientWithResponses) BlockTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error) {
+	rsp, err := c.BlockTldsWithBody(ctx, policyId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseBlockTldsResponse(rsp)
 }
 
-func (c *ClientWithResponses) BlockTldsWithResponse(ctx context.Context, policyIdParameter PolicyIdParameter, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error) {
-	rsp, err := c.BlockTlds(ctx, policyIdParameter, body, reqEditors...)
+func (c *ClientWithResponses) BlockTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error) {
+	rsp, err := c.BlockTlds(ctx, policyId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7119,8 +6887,8 @@ func (c *ClientWithResponses) ListProtectionTemplatesWithResponse(ctx context.Co
 }
 
 // ListTemplateCategoriesWithResponse request returning *ListTemplateCategoriesResponse
-func (c *ClientWithResponses) ListTemplateCategoriesWithResponse(ctx context.Context, templateIdParameter TemplateIdParameter, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*ListTemplateCategoriesResponse, error) {
-	rsp, err := c.ListTemplateCategories(ctx, templateIdParameter, params, reqEditors...)
+func (c *ClientWithResponses) ListTemplateCategoriesWithResponse(ctx context.Context, templateId openapi_types.UUID, params *ListTemplateCategoriesParams, reqEditors ...RequestEditorFn) (*ListTemplateCategoriesResponse, error) {
+	rsp, err := c.ListTemplateCategories(ctx, templateId, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7146,8 +6914,8 @@ func (c *ClientWithResponses) ListTldMacrosWithResponse(ctx context.Context, par
 }
 
 // GetTldWithResponse request returning *GetTldResponse
-func (c *ClientWithResponses) GetTldWithResponse(ctx context.Context, tldNameParameter TldNameParameter, reqEditors ...RequestEditorFn) (*GetTldResponse, error) {
-	rsp, err := c.GetTld(ctx, tldNameParameter, reqEditors...)
+func (c *ClientWithResponses) GetTldWithResponse(ctx context.Context, tldName string, reqEditors ...RequestEditorFn) (*GetTldResponse, error) {
+	rsp, err := c.GetTld(ctx, tldName, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7169,7 +6937,12 @@ func ParseListAppBlockerCategoriesResponse(rsp *http.Response) (*ListAppBlockerC
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryListResponse
+		var dest []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7223,7 +6996,17 @@ func ParseListAppBlockerCategoryMacrosResponse(rsp *http.Response) (*ListAppBloc
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MacroCategoryListResponse
+		var dest []struct {
+			Categories []struct {
+				Code            string             `json:"code"`
+				Id              openapi_types.UUID `json:"id"`
+				MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+				Name            string             `json:"name"`
+			} `json:"categories"`
+			Id               openapi_types.UUID                              `json:"id"`
+			Name             string                                          `json:"name"`
+			ProtectionModule ListAppBlockerCategoryMacros200ProtectionModule `json:"protectionModule"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7277,7 +7060,12 @@ func ParseListCategoriesResponse(rsp *http.Response) (*ListCategoriesResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryListResponse
+		var dest []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7331,7 +7119,17 @@ func ParseListCategoryMacrosResponse(rsp *http.Response) (*ListCategoryMacrosRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MacroCategoryListResponse
+		var dest []struct {
+			Categories []struct {
+				Code            string             `json:"code"`
+				Id              openapi_types.UUID `json:"id"`
+				MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+				Name            string             `json:"name"`
+			} `json:"categories"`
+			Id               openapi_types.UUID                    `json:"id"`
+			Name             string                                `json:"name"`
+			ProtectionModule ListCategoryMacros200ProtectionModule `json:"protectionModule"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7385,7 +7183,17 @@ func ParseListContinentsResponse(rsp *http.Response) (*ListContinentsResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContinentListResponse
+		var dest []struct {
+			Code      string `json:"code"`
+			Countries []struct {
+				Code        string             `json:"code"`
+				ContinentId openapi_types.UUID `json:"continentId"`
+				Id          openapi_types.UUID `json:"id"`
+				Name        string             `json:"name"`
+			} `json:"countries"`
+			Id   openapi_types.UUID `json:"id"`
+			Name string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7439,7 +7247,12 @@ func ParseListCountriesResponse(rsp *http.Response) (*ListCountriesResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CountryListResponse
+		var dest []struct {
+			Code        string             `json:"code"`
+			ContinentId openapi_types.UUID `json:"continentId"`
+			Id          openapi_types.UUID `json:"id"`
+			Name        string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7493,7 +7306,7 @@ func ParseListExceptionGroupsResponse(rsp *http.Response) (*ListExceptionGroupsR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExceptionGroupListWithPoliciesResponse
+		var dest []ListExceptionGroups_200_Item
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7547,7 +7360,17 @@ func ParseCreateExceptionGroupResponse(rsp *http.Response) (*CreateExceptionGrou
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest ExceptionGroupWithDomainsResponse
+		var dest struct {
+			Domains []struct {
+				Id   openapi_types.UUID `json:"id"`
+				Name string             `json:"name"`
+				Note *string            `json:"note"`
+			} `json:"domains"`
+			Id             openapi_types.UUID          `json:"id"`
+			Name           string                      `json:"name"`
+			OrganizationId openapi_types.UUID          `json:"organizationId"`
+			Type           CreateExceptionGroup201Type `json:"type"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7608,7 +7431,12 @@ func ParseDeleteExceptionGroupResponse(rsp *http.Response) (*DeleteExceptionGrou
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExceptionGroupResponse
+		var dest struct {
+			Id             openapi_types.UUID          `json:"id"`
+			Name           string                      `json:"name"`
+			OrganizationId openapi_types.UUID          `json:"organizationId"`
+			Type           DeleteExceptionGroup200Type `json:"type"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7662,7 +7490,12 @@ func ParseUpdateExceptionGroupResponse(rsp *http.Response) (*UpdateExceptionGrou
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExceptionGroupResponse
+		var dest struct {
+			Id             openapi_types.UUID          `json:"id"`
+			Name           string                      `json:"name"`
+			OrganizationId openapi_types.UUID          `json:"organizationId"`
+			Type           UpdateExceptionGroup200Type `json:"type"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7723,7 +7556,11 @@ func ParseListExceptionGroupDomainsResponse(rsp *http.Response) (*ListExceptionG
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DomainListResponse
+		var dest []struct {
+			Id   openapi_types.UUID `json:"id"`
+			Name string             `json:"name"`
+			Note *string            `json:"note"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7777,7 +7614,11 @@ func ParseAddExceptionGroupDomainsResponse(rsp *http.Response) (*AddExceptionGro
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest DomainInExceptionGroupListResponse
+		var dest []struct {
+			DomainId         openapi_types.UUID `json:"domainId"`
+			ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+			Note             *string            `json:"note"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7838,7 +7679,11 @@ func ParseRemoveExceptionGroupDomainResponse(rsp *http.Response) (*RemoveExcepti
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DomainInExceptionGroupResponse
+		var dest struct {
+			DomainId         openapi_types.UUID `json:"domainId"`
+			ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+			Note             *string            `json:"note"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7892,7 +7737,11 @@ func ParseUpdateExceptionGroupDomainNoteResponse(rsp *http.Response) (*UpdateExc
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DomainInExceptionGroupResponse
+		var dest struct {
+			DomainId         openapi_types.UUID `json:"domainId"`
+			ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+			Note             *string            `json:"note"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7953,7 +7802,12 @@ func ParseListMalwareCategoriesResponse(rsp *http.Response) (*ListMalwareCategor
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryListResponse
+		var dest []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8007,7 +7861,17 @@ func ParseListMalwareCategoryMacrosResponse(rsp *http.Response) (*ListMalwareCat
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MacroCategoryListResponse
+		var dest []struct {
+			Categories []struct {
+				Code            string             `json:"code"`
+				Id              openapi_types.UUID `json:"id"`
+				MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+				Name            string             `json:"name"`
+			} `json:"categories"`
+			Id               openapi_types.UUID                           `json:"id"`
+			Name             string                                       `json:"name"`
+			ProtectionModule ListMalwareCategoryMacros200ProtectionModule `json:"protectionModule"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8061,7 +7925,7 @@ func ParseListPoliciesResponse(rsp *http.Response) (*ListPoliciesResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicyListResponse
+		var dest []ListPolicies_200_Item
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8115,7 +7979,13 @@ func ParseCreatePolicyResponse(rsp *http.Response) (*CreatePolicyResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest PolicyResponse
+		var dest struct {
+			Id             openapi_types.UUID `json:"id"`
+			IsLimited      bool               `json:"isLimited"`
+			IsShared       bool               `json:"isShared"`
+			Name           string             `json:"name"`
+			OrganizationId openapi_types.UUID `json:"organizationId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8176,7 +8046,13 @@ func ParseDeletePolicyResponse(rsp *http.Response) (*DeletePolicyResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicyResponse
+		var dest struct {
+			Id             openapi_types.UUID `json:"id"`
+			IsLimited      bool               `json:"isLimited"`
+			IsShared       bool               `json:"isShared"`
+			Name           string             `json:"name"`
+			OrganizationId openapi_types.UUID `json:"organizationId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8230,7 +8106,13 @@ func ParseGetPolicyResponse(rsp *http.Response) (*GetPolicyResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicyResponse
+		var dest struct {
+			Id             openapi_types.UUID `json:"id"`
+			IsLimited      bool               `json:"isLimited"`
+			IsShared       bool               `json:"isShared"`
+			Name           string             `json:"name"`
+			OrganizationId openapi_types.UUID `json:"organizationId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8284,7 +8166,13 @@ func ParseUpdatePolicyResponse(rsp *http.Response) (*UpdatePolicyResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicyResponse
+		var dest struct {
+			Id             openapi_types.UUID `json:"id"`
+			IsLimited      bool               `json:"isLimited"`
+			IsShared       bool               `json:"isShared"`
+			Name           string             `json:"name"`
+			OrganizationId openapi_types.UUID `json:"organizationId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8345,7 +8233,17 @@ func ParseAllowAppBlockerCategoriesResponse(rsp *http.Response) (*AllowAppBlocke
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8406,7 +8304,16 @@ func ParseListBlockedAppBlockerCategoriesResponse(rsp *http.Response) (*ListBloc
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BlockedCategoryListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			TimeBlocks []struct {
+				Day  int                `json:"day"`
+				From time.Time          `json:"from"`
+				Id   openapi_types.UUID `json:"id"`
+				To   time.Time          `json:"to"`
+			} `json:"timeBlocks"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8460,7 +8367,17 @@ func ParseBlockAppBlockerCategoriesResponse(rsp *http.Response) (*BlockAppBlocke
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8521,7 +8438,14 @@ func ParseScheduleAppBlockerCategoryBlockResponse(rsp *http.Response) (*Schedule
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest CategoryScheduleListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8582,7 +8506,14 @@ func ParseRemoveAppBlockerCategoryBlockScheduleResponse(rsp *http.Response) (*Re
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryScheduleResponse
+		var dest struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8636,7 +8567,17 @@ func ParseAllowCategoriesResponse(rsp *http.Response) (*AllowCategoriesResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8697,7 +8638,16 @@ func ParseListBlockedCategoriesResponse(rsp *http.Response) (*ListBlockedCategor
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BlockedCategoryListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			TimeBlocks []struct {
+				Day  int                `json:"day"`
+				From time.Time          `json:"from"`
+				Id   openapi_types.UUID `json:"id"`
+				To   time.Time          `json:"to"`
+			} `json:"timeBlocks"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8751,7 +8701,17 @@ func ParseBlockCategoriesResponse(rsp *http.Response) (*BlockCategoriesResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8812,7 +8772,14 @@ func ParseScheduleCategoryBlockResponse(rsp *http.Response) (*ScheduleCategoryBl
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest CategoryScheduleListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8873,7 +8840,14 @@ func ParseRemoveCategoryBlockScheduleResponse(rsp *http.Response) (*RemoveCatego
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryScheduleResponse
+		var dest struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8927,7 +8901,20 @@ func ParseAllowCountriesResponse(rsp *http.Response) (*AllowCountriesResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CountryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				Code        string             `json:"code"`
+				ContinentId openapi_types.UUID `json:"continentId"`
+				Id          openapi_types.UUID `json:"id"`
+				Name        string             `json:"name"`
+				PolicyId    openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8988,7 +8975,13 @@ func ParseListBlockedCountriesResponse(rsp *http.Response) (*ListBlockedCountrie
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CountryListResponse
+		var dest []struct {
+			Code        string             `json:"code"`
+			ContinentId openapi_types.UUID `json:"continentId"`
+			Id          openapi_types.UUID `json:"id"`
+			Name        string             `json:"name"`
+			PolicyId    openapi_types.UUID `json:"policyId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9042,7 +9035,20 @@ func ParseBlockCountriesResponse(rsp *http.Response) (*BlockCountriesResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CountryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				Code        string             `json:"code"`
+				ContinentId openapi_types.UUID `json:"continentId"`
+				Id          openapi_types.UUID `json:"id"`
+				Name        string             `json:"name"`
+				PolicyId    openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9150,7 +9156,9 @@ func ParseGetDynamicDnsRedirectResponse(rsp *http.Response) (*GetDynamicDnsRedir
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DynamicDnsRedirectResponse
+		var dest struct {
+			IsEnabled bool `json:"isEnabled"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9251,7 +9259,17 @@ func ParseListPolicyExceptionGroupsResponse(rsp *http.Response) (*ListPolicyExce
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ExceptionGroupListResponse
+		var dest []struct {
+			Domains []struct {
+				Id   openapi_types.UUID `json:"id"`
+				Name string             `json:"name"`
+				Note *string            `json:"note"`
+			} `json:"domains"`
+			Id             openapi_types.UUID               `json:"id"`
+			Name           string                           `json:"name"`
+			OrganizationId openapi_types.UUID               `json:"organizationId"`
+			Type           ListPolicyExceptionGroups200Type `json:"type"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9305,7 +9323,10 @@ func ParseAddPolicyExceptionGroupResponse(rsp *http.Response) (*AddPolicyExcepti
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest PolicyExceptionGroupResponse
+		var dest struct {
+			ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+			PolicyId         openapi_types.UUID `json:"policyId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9366,7 +9387,10 @@ func ParseRemovePolicyExceptionGroupResponse(rsp *http.Response) (*RemovePolicyE
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicyExceptionGroupResponse
+		var dest struct {
+			ExceptionGroupId openapi_types.UUID `json:"exceptionGroupId"`
+			PolicyId         openapi_types.UUID `json:"policyId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9420,7 +9444,17 @@ func ParseAllowMalwareCategoriesResponse(rsp *http.Response) (*AllowMalwareCateg
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9481,7 +9515,16 @@ func ParseListBlockedMalwareCategoriesResponse(rsp *http.Response) (*ListBlocked
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BlockedCategoryListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			TimeBlocks []struct {
+				Day  int                `json:"day"`
+				From time.Time          `json:"from"`
+				Id   openapi_types.UUID `json:"id"`
+				To   time.Time          `json:"to"`
+			} `json:"timeBlocks"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9535,7 +9578,17 @@ func ParseBlockMalwareCategoriesResponse(rsp *http.Response) (*BlockMalwareCateg
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest CategoryMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9596,7 +9649,14 @@ func ParseScheduleMalwareCategoryBlockResponse(rsp *http.Response) (*ScheduleMal
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest CategoryScheduleListResponse
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9657,7 +9717,14 @@ func ParseRemoveMalwareCategoryBlockScheduleResponse(rsp *http.Response) (*Remov
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryScheduleResponse
+		var dest struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9711,7 +9778,13 @@ func ParseGetPolicySettingsResponse(rsp *http.Response) (*GetPolicySettingsRespo
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicySettingsResponse
+		var dest struct {
+			BingSafeSearchEnabled       bool `json:"bingSafeSearchEnabled"`
+			DuckduckgoSafeSearchEnabled bool `json:"duckduckgoSafeSearchEnabled"`
+			GoogleSafeSearchEnabled     bool `json:"googleSafeSearchEnabled"`
+			IpBlockingEnabled           bool `json:"ipBlockingEnabled"`
+			YoutubeSafeSearchEnabled    bool `json:"youtubeSafeSearchEnabled"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9765,7 +9838,13 @@ func ParseUpdatePolicySettingsResponse(rsp *http.Response) (*UpdatePolicySetting
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PolicySettingsResponse
+		var dest struct {
+			BingSafeSearchEnabled       bool `json:"bingSafeSearchEnabled"`
+			DuckduckgoSafeSearchEnabled bool `json:"duckduckgoSafeSearchEnabled"`
+			GoogleSafeSearchEnabled     bool `json:"googleSafeSearchEnabled"`
+			IpBlockingEnabled           bool `json:"ipBlockingEnabled"`
+			YoutubeSafeSearchEnabled    bool `json:"youtubeSafeSearchEnabled"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9826,7 +9905,19 @@ func ParseAllowTldsResponse(rsp *http.Response) (*AllowTldsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest TldMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				Id       openapi_types.UUID `json:"id"`
+				PolicyId openapi_types.UUID `json:"policyId"`
+				Tld      string             `json:"tld"`
+				TldId    openapi_types.UUID `json:"tldId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9887,7 +9978,12 @@ func ParseListBlockedTldsResponse(rsp *http.Response) (*ListBlockedTldsResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BlockedTldListResponse
+		var dest []struct {
+			Id       openapi_types.UUID `json:"id"`
+			PolicyId openapi_types.UUID `json:"policyId"`
+			Tld      string             `json:"tld"`
+			TldId    openapi_types.UUID `json:"tldId"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -9941,7 +10037,19 @@ func ParseBlockTldsResponse(rsp *http.Response) (*BlockTldsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
-		var dest TldMultiStatusResponse
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				Id       openapi_types.UUID `json:"id"`
+				PolicyId openapi_types.UUID `json:"policyId"`
+				Tld      string             `json:"tld"`
+				TldId    openapi_types.UUID `json:"tldId"`
+			} `json:"successes"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -10002,7 +10110,18 @@ func ParseListProtectionTemplatesResponse(rsp *http.Response) (*ListProtectionTe
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TemplateListResponse
+		var dest []struct {
+			Categories []struct {
+				Code            string             `json:"code"`
+				Id              openapi_types.UUID `json:"id"`
+				MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+				Name            string             `json:"name"`
+			} `json:"categories"`
+			Id       openapi_types.UUID                   `json:"id"`
+			Name     string                               `json:"name"`
+			Settings []ListProtectionTemplates200Settings `json:"settings"`
+			Type     ListProtectionTemplates200Type       `json:"type"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -10056,7 +10175,12 @@ func ParseListTemplateCategoriesResponse(rsp *http.Response) (*ListTemplateCateg
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CategoryListResponse
+		var dest []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -10110,7 +10234,10 @@ func ParseListTldsResponse(rsp *http.Response) (*ListTldsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TldListResponse
+		var dest []struct {
+			Id  openapi_types.UUID `json:"id"`
+			Tld string             `json:"tld"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -10164,7 +10291,15 @@ func ParseListTldMacrosResponse(rsp *http.Response) (*ListTldMacrosResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest MacroTldListResponse
+		var dest []struct {
+			Code string             `json:"code"`
+			Id   openapi_types.UUID `json:"id"`
+			Name string             `json:"name"`
+			Tlds []struct {
+				Id  openapi_types.UUID `json:"id"`
+				Tld string             `json:"tld"`
+			} `json:"tlds"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -10218,7 +10353,10 @@ func ParseGetTldResponse(rsp *http.Response) (*GetTldResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TldResponse
+		var dest struct {
+			Id  openapi_types.UUID `json:"id"`
+			Tld string             `json:"tld"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
