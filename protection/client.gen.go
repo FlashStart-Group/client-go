@@ -88,6 +88,18 @@ type ListAppBlockerCategoryMacrosParams struct {
 	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
+// ListBetaListCategoriesParams defines parameters for ListBetaListCategories.
+type ListBetaListCategoriesParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
+}
+
+// ListBetaListCategoryMacrosParams defines parameters for ListBetaListCategoryMacros.
+type ListBetaListCategoryMacrosParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
+}
+
 // ListCategoriesParams defines parameters for ListCategories.
 type ListCategoriesParams struct {
 	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
@@ -196,6 +208,26 @@ type BlockAppBlockerCategoriesJSONBody struct {
 
 // ScheduleAppBlockerCategoryBlockJSONBody defines parameters for ScheduleAppBlockerCategoryBlock.
 type ScheduleAppBlockerCategoryBlockJSONBody struct {
+	BlockSchedulation []struct {
+		Day  int    `json:"day"`
+		From string `json:"from"`
+		To   string `json:"to"`
+	} `json:"blockSchedulation"`
+	CategoryId openapi_types.UUID `json:"categoryId"`
+}
+
+// AllowBetaListCategoriesJSONBody defines parameters for AllowBetaListCategories.
+type AllowBetaListCategoriesJSONBody struct {
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
+}
+
+// BlockBetaListCategoriesJSONBody defines parameters for BlockBetaListCategories.
+type BlockBetaListCategoriesJSONBody struct {
+	CategoryIds []openapi_types.UUID `json:"categoryIds"`
+}
+
+// ScheduleBetaListCategoryBlockJSONBody defines parameters for ScheduleBetaListCategoryBlock.
+type ScheduleBetaListCategoryBlockJSONBody struct {
 	BlockSchedulation []struct {
 		Day  int    `json:"day"`
 		From string `json:"from"`
@@ -321,6 +353,15 @@ type BlockAppBlockerCategoriesJSONRequestBody BlockAppBlockerCategoriesJSONBody
 
 // ScheduleAppBlockerCategoryBlockJSONRequestBody defines body for ScheduleAppBlockerCategoryBlock for application/json ContentType.
 type ScheduleAppBlockerCategoryBlockJSONRequestBody ScheduleAppBlockerCategoryBlockJSONBody
+
+// AllowBetaListCategoriesJSONRequestBody defines body for AllowBetaListCategories for application/json ContentType.
+type AllowBetaListCategoriesJSONRequestBody AllowBetaListCategoriesJSONBody
+
+// BlockBetaListCategoriesJSONRequestBody defines body for BlockBetaListCategories for application/json ContentType.
+type BlockBetaListCategoriesJSONRequestBody BlockBetaListCategoriesJSONBody
+
+// ScheduleBetaListCategoryBlockJSONRequestBody defines body for ScheduleBetaListCategoryBlock for application/json ContentType.
+type ScheduleBetaListCategoryBlockJSONRequestBody ScheduleBetaListCategoryBlockJSONBody
 
 // AllowCategoriesJSONRequestBody defines body for AllowCategories for application/json ContentType.
 type AllowCategoriesJSONRequestBody AllowCategoriesJSONBody
@@ -499,6 +540,12 @@ type ClientInterface interface {
 	// ListAppBlockerCategoryMacros request
 	ListAppBlockerCategoryMacros(ctx context.Context, params *ListAppBlockerCategoryMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ListBetaListCategories request
+	ListBetaListCategories(ctx context.Context, params *ListBetaListCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBetaListCategoryMacros request
+	ListBetaListCategoryMacros(ctx context.Context, params *ListBetaListCategoryMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ListCategories request
 	ListCategories(ctx context.Context, params *ListCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -588,6 +635,27 @@ type ClientInterface interface {
 
 	// RemoveAppBlockerCategoryBlockSchedule request
 	RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// AllowBetaListCategoriesWithBody request with any body
+	AllowBetaListCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	AllowBetaListCategories(ctx context.Context, policyId openapi_types.UUID, body AllowBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBlockedBetaListCategories request
+	ListBlockedBetaListCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// BlockBetaListCategoriesWithBody request with any body
+	BlockBetaListCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	BlockBetaListCategories(ctx context.Context, policyId openapi_types.UUID, body BlockBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ScheduleBetaListCategoryBlockWithBody request with any body
+	ScheduleBetaListCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	ScheduleBetaListCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleBetaListCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RemoveBetaListCategoryBlockSchedule request
+	RemoveBetaListCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowCategoriesWithBody request with any body
 	AllowCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -715,6 +783,30 @@ func (c *Client) ListAppBlockerCategories(ctx context.Context, params *ListAppBl
 
 func (c *Client) ListAppBlockerCategoryMacros(ctx context.Context, params *ListAppBlockerCategoryMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewListAppBlockerCategoryMacrosRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ListBetaListCategories(ctx context.Context, params *ListBetaListCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBetaListCategoriesRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ListBetaListCategoryMacros(ctx context.Context, params *ListBetaListCategoryMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBetaListCategoryMacrosRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1111,6 +1203,102 @@ func (c *Client) ScheduleAppBlockerCategoryBlock(ctx context.Context, policyId o
 
 func (c *Client) RemoveAppBlockerCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewRemoveAppBlockerCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) AllowBetaListCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowBetaListCategoriesRequestWithBody(c.Server, policyId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) AllowBetaListCategories(ctx context.Context, policyId openapi_types.UUID, body AllowBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAllowBetaListCategoriesRequest(c.Server, policyId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ListBlockedBetaListCategories(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBlockedBetaListCategoriesRequest(c.Server, policyId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) BlockBetaListCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockBetaListCategoriesRequestWithBody(c.Server, policyId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) BlockBetaListCategories(ctx context.Context, policyId openapi_types.UUID, body BlockBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewBlockBetaListCategoriesRequest(c.Server, policyId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ScheduleBetaListCategoryBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleBetaListCategoryBlockRequestWithBody(c.Server, policyId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ScheduleBetaListCategoryBlock(ctx context.Context, policyId openapi_types.UUID, body ScheduleBetaListCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewScheduleBetaListCategoryBlockRequest(c.Server, policyId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) RemoveBetaListCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveBetaListCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
 	if err != nil {
 		return nil, err
 	}
@@ -1688,6 +1876,136 @@ func NewListAppBlockerCategoryMacrosRequest(server string, params *ListAppBlocke
 	}
 
 	operationPath := fmt.Sprintf("/v1/appblocker/macros")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Lang != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewListBetaListCategoriesRequest generates requests for ListBetaListCategories
+func NewListBetaListCategoriesRequest(server string, params *ListBetaListCategoriesParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/betalist/categories")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Lang != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "lang", runtime.ParamLocationQuery, *params.Lang); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewListBetaListCategoryMacrosRequest generates requests for ListBetaListCategoryMacros
+func NewListBetaListCategoryMacrosRequest(server string, params *ListBetaListCategoryMacrosParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/betalist/macros")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2860,6 +3178,222 @@ func NewRemoveAppBlockerCategoryBlockScheduleRequest(server string, policyId ope
 	}
 
 	operationPath := fmt.Sprintf("/v1/policies/%s/appblocker/blocked/schedule/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewAllowBetaListCategoriesRequest calls the generic AllowBetaListCategories builder with application/json body
+func NewAllowBetaListCategoriesRequest(server string, policyId openapi_types.UUID, body AllowBetaListCategoriesJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewAllowBetaListCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
+}
+
+// NewAllowBetaListCategoriesRequestWithBody generates requests for AllowBetaListCategories with any type of body
+func NewAllowBetaListCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/betalist/blocked", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewListBlockedBetaListCategoriesRequest generates requests for ListBlockedBetaListCategories
+func NewListBlockedBetaListCategoriesRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/betalist/blocked", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewBlockBetaListCategoriesRequest calls the generic BlockBetaListCategories builder with application/json body
+func NewBlockBetaListCategoriesRequest(server string, policyId openapi_types.UUID, body BlockBetaListCategoriesJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewBlockBetaListCategoriesRequestWithBody(server, policyId, "application/json", bodyReader)
+}
+
+// NewBlockBetaListCategoriesRequestWithBody generates requests for BlockBetaListCategories with any type of body
+func NewBlockBetaListCategoriesRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/betalist/blocked", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewScheduleBetaListCategoryBlockRequest calls the generic ScheduleBetaListCategoryBlock builder with application/json body
+func NewScheduleBetaListCategoryBlockRequest(server string, policyId openapi_types.UUID, body ScheduleBetaListCategoryBlockJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewScheduleBetaListCategoryBlockRequestWithBody(server, policyId, "application/json", bodyReader)
+}
+
+// NewScheduleBetaListCategoryBlockRequestWithBody generates requests for ScheduleBetaListCategoryBlock with any type of body
+func NewScheduleBetaListCategoryBlockRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/betalist/blocked/schedule", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewRemoveBetaListCategoryBlockScheduleRequest generates requests for RemoveBetaListCategoryBlockSchedule
+func NewRemoveBetaListCategoryBlockScheduleRequest(server string, policyId openapi_types.UUID, schedulationId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "schedulationId", runtime.ParamLocationPath, schedulationId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/betalist/blocked/schedule/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -4166,6 +4700,12 @@ type ClientWithResponsesInterface interface {
 	// ListAppBlockerCategoryMacrosWithResponse request
 	ListAppBlockerCategoryMacrosWithResponse(ctx context.Context, params *ListAppBlockerCategoryMacrosParams, reqEditors ...RequestEditorFn) (*ListAppBlockerCategoryMacrosResponse, error)
 
+	// ListBetaListCategoriesWithResponse request
+	ListBetaListCategoriesWithResponse(ctx context.Context, params *ListBetaListCategoriesParams, reqEditors ...RequestEditorFn) (*ListBetaListCategoriesResponse, error)
+
+	// ListBetaListCategoryMacrosWithResponse request
+	ListBetaListCategoryMacrosWithResponse(ctx context.Context, params *ListBetaListCategoryMacrosParams, reqEditors ...RequestEditorFn) (*ListBetaListCategoryMacrosResponse, error)
+
 	// ListCategoriesWithResponse request
 	ListCategoriesWithResponse(ctx context.Context, params *ListCategoriesParams, reqEditors ...RequestEditorFn) (*ListCategoriesResponse, error)
 
@@ -4255,6 +4795,27 @@ type ClientWithResponsesInterface interface {
 
 	// RemoveAppBlockerCategoryBlockScheduleWithResponse request
 	RemoveAppBlockerCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveAppBlockerCategoryBlockScheduleResponse, error)
+
+	// AllowBetaListCategoriesWithBodyWithResponse request with any body
+	AllowBetaListCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowBetaListCategoriesResponse, error)
+
+	AllowBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowBetaListCategoriesResponse, error)
+
+	// ListBlockedBetaListCategoriesWithResponse request
+	ListBlockedBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedBetaListCategoriesResponse, error)
+
+	// BlockBetaListCategoriesWithBodyWithResponse request with any body
+	BlockBetaListCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockBetaListCategoriesResponse, error)
+
+	BlockBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockBetaListCategoriesResponse, error)
+
+	// ScheduleBetaListCategoryBlockWithBodyWithResponse request with any body
+	ScheduleBetaListCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleBetaListCategoryBlockResponse, error)
+
+	ScheduleBetaListCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleBetaListCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleBetaListCategoryBlockResponse, error)
+
+	// RemoveBetaListCategoryBlockScheduleWithResponse request
+	RemoveBetaListCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveBetaListCategoryBlockScheduleResponse, error)
 
 	// AllowCategoriesWithBodyWithResponse request with any body
 	AllowCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
@@ -4430,6 +4991,74 @@ func (r ListAppBlockerCategoryMacrosResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r ListAppBlockerCategoryMacrosResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ListBetaListCategoriesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]struct {
+		Code            string             `json:"code"`
+		Id              openapi_types.UUID `json:"id"`
+		MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+		Name            string             `json:"name"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBetaListCategoriesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBetaListCategoriesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ListBetaListCategoryMacrosResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]struct {
+		Categories []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		} `json:"categories"`
+		Id               openapi_types.UUID                            `json:"id"`
+		Name             string                                        `json:"name"`
+		ProtectionModule ListBetaListCategoryMacros200ProtectionModule `json:"protectionModule"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type ListBetaListCategoryMacros200ProtectionModule string
+
+// Status returns HTTPResponse.Status
+func (r ListBetaListCategoryMacrosResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBetaListCategoryMacrosResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -5279,6 +5908,182 @@ func (r RemoveAppBlockerCategoryBlockScheduleResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r RemoveAppBlockerCategoryBlockScheduleResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type AllowBetaListCategoriesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r AllowBetaListCategoriesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r AllowBetaListCategoriesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ListBlockedBetaListCategoriesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		TimeBlocks []struct {
+			Day  int                `json:"day"`
+			From time.Time          `json:"from"`
+			Id   openapi_types.UUID `json:"id"`
+			To   time.Time          `json:"to"`
+		} `json:"timeBlocks"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBlockedBetaListCategoriesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBlockedBetaListCategoriesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type BlockBetaListCategoriesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON207      *struct {
+		Errors []struct {
+			Code    string       `json:"code"`
+			Details *interface{} `json:"details,omitempty"`
+			Message *string      `json:"message,omitempty"`
+		} `json:"errors"`
+		Successes []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+		} `json:"successes"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r BlockBetaListCategoriesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r BlockBetaListCategoriesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ScheduleBetaListCategoryBlockResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *[]struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r ScheduleBetaListCategoryBlockResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ScheduleBetaListCategoryBlockResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type RemoveBetaListCategoryBlockScheduleResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CategoryId openapi_types.UUID `json:"categoryId"`
+		Day        int                `json:"day"`
+		From       time.Time          `json:"from"`
+		Id         openapi_types.UUID `json:"id"`
+		PolicyId   openapi_types.UUID `json:"policyId"`
+		To         time.Time          `json:"to"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r RemoveBetaListCategoryBlockScheduleResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r RemoveBetaListCategoryBlockScheduleResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -6277,6 +7082,24 @@ func (c *ClientWithResponses) ListAppBlockerCategoryMacrosWithResponse(ctx conte
 	return ParseListAppBlockerCategoryMacrosResponse(rsp)
 }
 
+// ListBetaListCategoriesWithResponse request returning *ListBetaListCategoriesResponse
+func (c *ClientWithResponses) ListBetaListCategoriesWithResponse(ctx context.Context, params *ListBetaListCategoriesParams, reqEditors ...RequestEditorFn) (*ListBetaListCategoriesResponse, error) {
+	rsp, err := c.ListBetaListCategories(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBetaListCategoriesResponse(rsp)
+}
+
+// ListBetaListCategoryMacrosWithResponse request returning *ListBetaListCategoryMacrosResponse
+func (c *ClientWithResponses) ListBetaListCategoryMacrosWithResponse(ctx context.Context, params *ListBetaListCategoryMacrosParams, reqEditors ...RequestEditorFn) (*ListBetaListCategoryMacrosResponse, error) {
+	rsp, err := c.ListBetaListCategoryMacros(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBetaListCategoryMacrosResponse(rsp)
+}
+
 // ListCategoriesWithResponse request returning *ListCategoriesResponse
 func (c *ClientWithResponses) ListCategoriesWithResponse(ctx context.Context, params *ListCategoriesParams, reqEditors ...RequestEditorFn) (*ListCategoriesResponse, error) {
 	rsp, err := c.ListCategories(ctx, params, reqEditors...)
@@ -6563,6 +7386,75 @@ func (c *ClientWithResponses) RemoveAppBlockerCategoryBlockScheduleWithResponse(
 		return nil, err
 	}
 	return ParseRemoveAppBlockerCategoryBlockScheduleResponse(rsp)
+}
+
+// AllowBetaListCategoriesWithBodyWithResponse request with arbitrary body returning *AllowBetaListCategoriesResponse
+func (c *ClientWithResponses) AllowBetaListCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowBetaListCategoriesResponse, error) {
+	rsp, err := c.AllowBetaListCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseAllowBetaListCategoriesResponse(rsp)
+}
+
+func (c *ClientWithResponses) AllowBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body AllowBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*AllowBetaListCategoriesResponse, error) {
+	rsp, err := c.AllowBetaListCategories(ctx, policyId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseAllowBetaListCategoriesResponse(rsp)
+}
+
+// ListBlockedBetaListCategoriesWithResponse request returning *ListBlockedBetaListCategoriesResponse
+func (c *ClientWithResponses) ListBlockedBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ListBlockedBetaListCategoriesResponse, error) {
+	rsp, err := c.ListBlockedBetaListCategories(ctx, policyId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBlockedBetaListCategoriesResponse(rsp)
+}
+
+// BlockBetaListCategoriesWithBodyWithResponse request with arbitrary body returning *BlockBetaListCategoriesResponse
+func (c *ClientWithResponses) BlockBetaListCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockBetaListCategoriesResponse, error) {
+	rsp, err := c.BlockBetaListCategoriesWithBody(ctx, policyId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseBlockBetaListCategoriesResponse(rsp)
+}
+
+func (c *ClientWithResponses) BlockBetaListCategoriesWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockBetaListCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockBetaListCategoriesResponse, error) {
+	rsp, err := c.BlockBetaListCategories(ctx, policyId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseBlockBetaListCategoriesResponse(rsp)
+}
+
+// ScheduleBetaListCategoryBlockWithBodyWithResponse request with arbitrary body returning *ScheduleBetaListCategoryBlockResponse
+func (c *ClientWithResponses) ScheduleBetaListCategoryBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ScheduleBetaListCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleBetaListCategoryBlockWithBody(ctx, policyId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseScheduleBetaListCategoryBlockResponse(rsp)
+}
+
+func (c *ClientWithResponses) ScheduleBetaListCategoryBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body ScheduleBetaListCategoryBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleBetaListCategoryBlockResponse, error) {
+	rsp, err := c.ScheduleBetaListCategoryBlock(ctx, policyId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseScheduleBetaListCategoryBlockResponse(rsp)
+}
+
+// RemoveBetaListCategoryBlockScheduleWithResponse request returning *RemoveBetaListCategoryBlockScheduleResponse
+func (c *ClientWithResponses) RemoveBetaListCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveBetaListCategoryBlockScheduleResponse, error) {
+	rsp, err := c.RemoveBetaListCategoryBlockSchedule(ctx, policyId, schedulationId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRemoveBetaListCategoryBlockScheduleResponse(rsp)
 }
 
 // AllowCategoriesWithBodyWithResponse request with arbitrary body returning *AllowCategoriesResponse
@@ -7006,6 +7898,129 @@ func ParseListAppBlockerCategoryMacrosResponse(rsp *http.Response) (*ListAppBloc
 			Id               openapi_types.UUID                              `json:"id"`
 			Name             string                                          `json:"name"`
 			ProtectionModule ListAppBlockerCategoryMacros200ProtectionModule `json:"protectionModule"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBetaListCategoriesResponse parses an HTTP response from a ListBetaListCategoriesWithResponse call
+func ParseListBetaListCategoriesResponse(rsp *http.Response) (*ListBetaListCategoriesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBetaListCategoriesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []struct {
+			Code            string             `json:"code"`
+			Id              openapi_types.UUID `json:"id"`
+			MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+			Name            string             `json:"name"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBetaListCategoryMacrosResponse parses an HTTP response from a ListBetaListCategoryMacrosWithResponse call
+func ParseListBetaListCategoryMacrosResponse(rsp *http.Response) (*ListBetaListCategoryMacrosResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBetaListCategoryMacrosResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []struct {
+			Categories []struct {
+				Code            string             `json:"code"`
+				Id              openapi_types.UUID `json:"id"`
+				MacroCategoryId openapi_types.UUID `json:"macroCategoryId"`
+				Name            string             `json:"name"`
+			} `json:"categories"`
+			Id               openapi_types.UUID                            `json:"id"`
+			Name             string                                        `json:"name"`
+			ProtectionModule ListBetaListCategoryMacros200ProtectionModule `json:"protectionModule"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -8500,6 +9515,340 @@ func ParseRemoveAppBlockerCategoryBlockScheduleResponse(rsp *http.Response) (*Re
 	}
 
 	response := &RemoveAppBlockerCategoryBlockScheduleResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseAllowBetaListCategoriesResponse parses an HTTP response from a AllowBetaListCategoriesWithResponse call
+func ParseAllowBetaListCategoriesResponse(rsp *http.Response) (*AllowBetaListCategoriesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &AllowBetaListCategoriesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON207 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBlockedBetaListCategoriesResponse parses an HTTP response from a ListBlockedBetaListCategoriesWithResponse call
+func ParseListBlockedBetaListCategoriesResponse(rsp *http.Response) (*ListBlockedBetaListCategoriesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBlockedBetaListCategoriesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			TimeBlocks []struct {
+				Day  int                `json:"day"`
+				From time.Time          `json:"from"`
+				Id   openapi_types.UUID `json:"id"`
+				To   time.Time          `json:"to"`
+			} `json:"timeBlocks"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseBlockBetaListCategoriesResponse parses an HTTP response from a BlockBetaListCategoriesWithResponse call
+func ParseBlockBetaListCategoriesResponse(rsp *http.Response) (*BlockBetaListCategoriesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &BlockBetaListCategoriesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 207:
+		var dest struct {
+			Errors []struct {
+				Code    string       `json:"code"`
+				Details *interface{} `json:"details,omitempty"`
+				Message *string      `json:"message,omitempty"`
+			} `json:"errors"`
+			Successes []struct {
+				CategoryId openapi_types.UUID `json:"categoryId"`
+				PolicyId   openapi_types.UUID `json:"policyId"`
+			} `json:"successes"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON207 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseScheduleBetaListCategoryBlockResponse parses an HTTP response from a ScheduleBetaListCategoryBlockWithResponse call
+func ParseScheduleBetaListCategoryBlockResponse(rsp *http.Response) (*ScheduleBetaListCategoryBlockResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ScheduleBetaListCategoryBlockResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest []struct {
+			CategoryId openapi_types.UUID `json:"categoryId"`
+			Day        int                `json:"day"`
+			From       time.Time          `json:"from"`
+			Id         openapi_types.UUID `json:"id"`
+			PolicyId   openapi_types.UUID `json:"policyId"`
+			To         time.Time          `json:"to"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseRemoveBetaListCategoryBlockScheduleResponse parses an HTTP response from a RemoveBetaListCategoryBlockScheduleWithResponse call
+func ParseRemoveBetaListCategoryBlockScheduleResponse(rsp *http.Response) (*RemoveBetaListCategoryBlockScheduleResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &RemoveBetaListCategoryBlockScheduleResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

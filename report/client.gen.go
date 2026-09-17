@@ -230,6 +230,40 @@ type GetTopDomainsParamsProtectionModule string
 // GetTopDomainsParamsReason defines parameters for GetTopDomains.
 type GetTopDomainsParamsReason string
 
+// GetRequestsPerEdnsParams defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParams struct {
+	CategoryIds *struct {
+		union json.RawMessage
+	} `form:"categoryIds,omitempty" json:"categoryIds,omitempty"`
+	Limit      *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	NetworkIds *struct {
+		union json.RawMessage
+	} `form:"networkIds,omitempty" json:"networkIds,omitempty"`
+	OrganizationIds *struct {
+		union json.RawMessage
+	} `form:"organizationIds,omitempty" json:"organizationIds,omitempty"`
+	Start time.Time `form:"start" json:"start"`
+	End   time.Time `form:"end" json:"end"`
+}
+
+// GetRequestsPerEdnsParamsCategoryIds0 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsCategoryIds0 = openapi_types.UUID
+
+// GetRequestsPerEdnsParamsCategoryIds1 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsCategoryIds1 = []openapi_types.UUID
+
+// GetRequestsPerEdnsParamsNetworkIds0 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsNetworkIds0 = openapi_types.UUID
+
+// GetRequestsPerEdnsParamsNetworkIds1 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsNetworkIds1 = []openapi_types.UUID
+
+// GetRequestsPerEdnsParamsOrganizationIds0 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsOrganizationIds0 = openapi_types.UUID
+
+// GetRequestsPerEdnsParamsOrganizationIds1 defines parameters for GetRequestsPerEdns.
+type GetRequestsPerEdnsParamsOrganizationIds1 = []openapi_types.UUID
+
 // GetStatisticsParams defines parameters for GetStatistics.
 type GetStatisticsParams struct {
 	Start           time.Time                       `form:"start" json:"start"`
@@ -393,6 +427,9 @@ type ClientInterface interface {
 	// GetTopDomains request
 	GetTopDomains(ctx context.Context, params *GetTopDomainsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetRequestsPerEdns request
+	GetRequestsPerEdns(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetStatistics request
 	GetStatistics(ctx context.Context, params *GetStatisticsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
@@ -447,6 +484,18 @@ func (c *Client) GetHistoricalDnsLogs(ctx context.Context, params *GetHistorical
 
 func (c *Client) GetTopDomains(ctx context.Context, params *GetTopDomainsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTopDomainsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetRequestsPerEdns(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetRequestsPerEdnsRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1248,6 +1297,127 @@ func NewGetTopDomainsRequest(server string, params *GetTopDomainsParams) (*http.
 	return req, nil
 }
 
+// NewGetRequestsPerEdnsRequest generates requests for GetRequestsPerEdns
+func NewGetRequestsPerEdnsRequest(server string, params *GetRequestsPerEdnsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/edns")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.CategoryIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "categoryIds", runtime.ParamLocationQuery, *params.CategoryIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.NetworkIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "networkIds", runtime.ParamLocationQuery, *params.NetworkIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.OrganizationIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationIds", runtime.ParamLocationQuery, *params.OrganizationIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "start", runtime.ParamLocationQuery, params.Start); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "end", runtime.ParamLocationQuery, params.End); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetStatisticsRequest generates requests for GetStatistics
 func NewGetStatisticsRequest(server string, params *GetStatisticsParams) (*http.Request, error) {
 	var err error
@@ -1426,6 +1596,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetTopDomainsWithResponse request
 	GetTopDomainsWithResponse(ctx context.Context, params *GetTopDomainsParams, reqEditors ...RequestEditorFn) (*GetTopDomainsResponse, error)
+
+	// GetRequestsPerEdnsWithResponse request
+	GetRequestsPerEdnsWithResponse(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*GetRequestsPerEdnsResponse, error)
 
 	// GetStatisticsWithResponse request
 	GetStatisticsWithResponse(ctx context.Context, params *GetStatisticsParams, reqEditors ...RequestEditorFn) (*GetStatisticsResponse, error)
@@ -1666,6 +1839,60 @@ func (r GetTopDomainsResponse) StatusCode() int {
 	return 0
 }
 
+type GetRequestsPerEdnsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Edns []struct {
+			Allowed        float32            `json:"allowed"`
+			Blocked        float32            `json:"blocked"`
+			EdnsTag        string             `json:"ednsTag"`
+			NetworkId      openapi_types.UUID `json:"networkId"`
+			OrganizationId openapi_types.UUID `json:"organizationId"`
+			Requests       float32            `json:"requests"`
+			Unresolved     float32            `json:"unresolved"`
+		} `json:"edns"`
+		Filters struct {
+			CategoryIds      *[]openapi_types.UUID                         `json:"categoryIds,omitempty"`
+			End              time.Time                                     `json:"end"`
+			Granularity      *GetRequestsPerEdns200FiltersGranularity      `json:"granularity,omitempty"`
+			Limit            *float32                                      `json:"limit,omitempty"`
+			Metric           *GetRequestsPerEdns200FiltersMetric           `json:"metric,omitempty"`
+			NetworkIds       *[]openapi_types.UUID                         `json:"networkIds,omitempty"`
+			OrganizationIds  *[]openapi_types.UUID                         `json:"organizationIds,omitempty"`
+			PolicyIds        *[]openapi_types.UUID                         `json:"policyIds,omitempty"`
+			ProtectionModule *GetRequestsPerEdns200FiltersProtectionModule `json:"protectionModule,omitempty"`
+			Reason           *GetRequestsPerEdns200FiltersReason           `json:"reason,omitempty"`
+			Start            time.Time                                     `json:"start"`
+		} `json:"filters"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *BadRequestResponse
+	JSON500 *ServerErrorResponse
+}
+type GetRequestsPerEdns200FiltersGranularity string
+type GetRequestsPerEdns200FiltersMetric string
+type GetRequestsPerEdns200FiltersProtectionModule string
+type GetRequestsPerEdns200FiltersReason string
+
+// Status returns HTTPResponse.Status
+func (r GetRequestsPerEdnsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetRequestsPerEdnsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetStatisticsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -1768,6 +1995,15 @@ func (c *ClientWithResponses) GetTopDomainsWithResponse(ctx context.Context, par
 		return nil, err
 	}
 	return ParseGetTopDomainsResponse(rsp)
+}
+
+// GetRequestsPerEdnsWithResponse request returning *GetRequestsPerEdnsResponse
+func (c *ClientWithResponses) GetRequestsPerEdnsWithResponse(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*GetRequestsPerEdnsResponse, error) {
+	rsp, err := c.GetRequestsPerEdns(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetRequestsPerEdnsResponse(rsp)
 }
 
 // GetStatisticsWithResponse request returning *GetStatisticsResponse
@@ -2116,6 +2352,90 @@ func ParseGetTopDomainsResponse(rsp *http.Response) (*GetTopDomainsResponse, err
 				ProtectionModule *GetTopDomains200FiltersProtectionModule `json:"protectionModule,omitempty"`
 				Reason           *GetTopDomains200FiltersReason           `json:"reason,omitempty"`
 				Start            time.Time                                `json:"start"`
+			} `json:"filters"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest BadRequestResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetRequestsPerEdnsResponse parses an HTTP response from a GetRequestsPerEdnsWithResponse call
+func ParseGetRequestsPerEdnsResponse(rsp *http.Response) (*GetRequestsPerEdnsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetRequestsPerEdnsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Edns []struct {
+				Allowed        float32            `json:"allowed"`
+				Blocked        float32            `json:"blocked"`
+				EdnsTag        string             `json:"ednsTag"`
+				NetworkId      openapi_types.UUID `json:"networkId"`
+				OrganizationId openapi_types.UUID `json:"organizationId"`
+				Requests       float32            `json:"requests"`
+				Unresolved     float32            `json:"unresolved"`
+			} `json:"edns"`
+			Filters struct {
+				CategoryIds      *[]openapi_types.UUID                         `json:"categoryIds,omitempty"`
+				End              time.Time                                     `json:"end"`
+				Granularity      *GetRequestsPerEdns200FiltersGranularity      `json:"granularity,omitempty"`
+				Limit            *float32                                      `json:"limit,omitempty"`
+				Metric           *GetRequestsPerEdns200FiltersMetric           `json:"metric,omitempty"`
+				NetworkIds       *[]openapi_types.UUID                         `json:"networkIds,omitempty"`
+				OrganizationIds  *[]openapi_types.UUID                         `json:"organizationIds,omitempty"`
+				PolicyIds        *[]openapi_types.UUID                         `json:"policyIds,omitempty"`
+				ProtectionModule *GetRequestsPerEdns200FiltersProtectionModule `json:"protectionModule,omitempty"`
+				Reason           *GetRequestsPerEdns200FiltersReason           `json:"reason,omitempty"`
+				Start            time.Time                                     `json:"start"`
 			} `json:"filters"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
