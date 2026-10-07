@@ -33,6 +33,7 @@ const (
 // Defines values for GetTopCategoriesParamsProtectionModule.
 const (
 	GetTopCategoriesParamsProtectionModuleAppBlocker        GetTopCategoriesParamsProtectionModule = "app_blocker"
+	GetTopCategoriesParamsProtectionModuleBetaList          GetTopCategoriesParamsProtectionModule = "beta_list"
 	GetTopCategoriesParamsProtectionModuleContentFilter     GetTopCategoriesParamsProtectionModule = "content_filter"
 	GetTopCategoriesParamsProtectionModuleMalwareProtection GetTopCategoriesParamsProtectionModule = "malware_protection"
 )
@@ -53,6 +54,7 @@ const (
 // Defines values for GetTopDomainsByCategoryParamsProtectionModule.
 const (
 	GetTopDomainsByCategoryParamsProtectionModuleAppBlocker        GetTopDomainsByCategoryParamsProtectionModule = "app_blocker"
+	GetTopDomainsByCategoryParamsProtectionModuleBetaList          GetTopDomainsByCategoryParamsProtectionModule = "beta_list"
 	GetTopDomainsByCategoryParamsProtectionModuleContentFilter     GetTopDomainsByCategoryParamsProtectionModule = "content_filter"
 	GetTopDomainsByCategoryParamsProtectionModuleMalwareProtection GetTopDomainsByCategoryParamsProtectionModule = "malware_protection"
 )
@@ -86,15 +88,16 @@ const (
 
 // Defines values for GetTopDomainsParamsMetric.
 const (
-	Allowed    GetTopDomainsParamsMetric = "allowed"
-	Blocked    GetTopDomainsParamsMetric = "blocked"
-	Requests   GetTopDomainsParamsMetric = "requests"
-	Unresolved GetTopDomainsParamsMetric = "unresolved"
+	GetTopDomainsParamsMetricAllowed    GetTopDomainsParamsMetric = "allowed"
+	GetTopDomainsParamsMetricBlocked    GetTopDomainsParamsMetric = "blocked"
+	GetTopDomainsParamsMetricRequests   GetTopDomainsParamsMetric = "requests"
+	GetTopDomainsParamsMetricUnresolved GetTopDomainsParamsMetric = "unresolved"
 )
 
 // Defines values for GetTopDomainsParamsProtectionModule.
 const (
 	AppBlocker        GetTopDomainsParamsProtectionModule = "app_blocker"
+	BetaList          GetTopDomainsParamsProtectionModule = "beta_list"
 	ContentFilter     GetTopDomainsParamsProtectionModule = "content_filter"
 	MalwareProtection GetTopDomainsParamsProtectionModule = "malware_protection"
 )
@@ -102,6 +105,14 @@ const (
 // Defines values for GetTopDomainsParamsReason.
 const (
 	IpBlocker GetTopDomainsParamsReason = "ip_blocker"
+)
+
+// Defines values for GetProfilesReportParamsMetric.
+const (
+	GetProfilesReportParamsMetricAllowed    GetProfilesReportParamsMetric = "allowed"
+	GetProfilesReportParamsMetricBlocked    GetProfilesReportParamsMetric = "blocked"
+	GetProfilesReportParamsMetricRequests   GetProfilesReportParamsMetric = "requests"
+	GetProfilesReportParamsMetricUnresolved GetProfilesReportParamsMetric = "unresolved"
 )
 
 // Defines values for GetStatisticsParamsGranularity.
@@ -199,6 +210,7 @@ type GetHistoricalDnsLogsParams struct {
 	OrganizationIds *[]openapi_types.UUID                `form:"organizationIds,omitempty" json:"organizationIds,omitempty"`
 	PolicyIds       *[]openapi_types.UUID                `form:"policyIds,omitempty" json:"policyIds,omitempty"`
 	Reasons         *[]GetHistoricalDnsLogsParamsReasons `form:"reasons,omitempty" json:"reasons,omitempty"`
+	SourceIp        *string                              `form:"sourceIp,omitempty" json:"sourceIp,omitempty"`
 }
 
 // GetHistoricalDnsLogsParamsActions defines parameters for GetHistoricalDnsLogs.
@@ -263,6 +275,44 @@ type GetRequestsPerEdnsParamsOrganizationIds0 = openapi_types.UUID
 
 // GetRequestsPerEdnsParamsOrganizationIds1 defines parameters for GetRequestsPerEdns.
 type GetRequestsPerEdnsParamsOrganizationIds1 = []openapi_types.UUID
+
+// GetProfilesReportParams defines parameters for GetProfilesReport.
+type GetProfilesReportParams struct {
+	Limit      *float32                       `form:"limit,omitempty" json:"limit,omitempty"`
+	Metric     *GetProfilesReportParamsMetric `form:"metric,omitempty" json:"metric,omitempty"`
+	NetworkIds *struct {
+		union json.RawMessage
+	} `form:"networkIds,omitempty" json:"networkIds,omitempty"`
+	OrganizationIds *struct {
+		union json.RawMessage
+	} `form:"organizationIds,omitempty" json:"organizationIds,omitempty"`
+	PolicyIds *struct {
+		union json.RawMessage
+	} `form:"policyIds,omitempty" json:"policyIds,omitempty"`
+	Start time.Time `form:"start" json:"start"`
+	End   time.Time `form:"end" json:"end"`
+}
+
+// GetProfilesReportParamsMetric defines parameters for GetProfilesReport.
+type GetProfilesReportParamsMetric string
+
+// GetProfilesReportParamsNetworkIds0 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsNetworkIds0 = openapi_types.UUID
+
+// GetProfilesReportParamsNetworkIds1 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsNetworkIds1 = []openapi_types.UUID
+
+// GetProfilesReportParamsOrganizationIds0 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsOrganizationIds0 = openapi_types.UUID
+
+// GetProfilesReportParamsOrganizationIds1 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsOrganizationIds1 = []openapi_types.UUID
+
+// GetProfilesReportParamsPolicyIds0 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsPolicyIds0 = openapi_types.UUID
+
+// GetProfilesReportParamsPolicyIds1 defines parameters for GetProfilesReport.
+type GetProfilesReportParamsPolicyIds1 = []openapi_types.UUID
 
 // GetStatisticsParams defines parameters for GetStatistics.
 type GetStatisticsParams struct {
@@ -430,6 +480,9 @@ type ClientInterface interface {
 	// GetRequestsPerEdns request
 	GetRequestsPerEdns(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetProfilesReport request
+	GetProfilesReport(ctx context.Context, params *GetProfilesReportParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetStatistics request
 	GetStatistics(ctx context.Context, params *GetStatisticsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
@@ -496,6 +549,18 @@ func (c *Client) GetTopDomains(ctx context.Context, params *GetTopDomainsParams,
 
 func (c *Client) GetRequestsPerEdns(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetRequestsPerEdnsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetProfilesReport(ctx context.Context, params *GetProfilesReportParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetProfilesReportRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1101,6 +1166,22 @@ func NewGetHistoricalDnsLogsRequest(server string, params *GetHistoricalDnsLogsP
 
 		}
 
+		if params.SourceIp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "sourceIp", runtime.ParamLocationQuery, *params.SourceIp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
 		queryURL.RawQuery = queryValues.Encode()
 	}
 
@@ -1418,6 +1499,143 @@ func NewGetRequestsPerEdnsRequest(server string, params *GetRequestsPerEdnsParam
 	return req, nil
 }
 
+// NewGetProfilesReportRequest generates requests for GetProfilesReport
+func NewGetProfilesReportRequest(server string, params *GetProfilesReportParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/profiles")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Metric != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "metric", runtime.ParamLocationQuery, *params.Metric); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.NetworkIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "networkIds", runtime.ParamLocationQuery, *params.NetworkIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.OrganizationIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationIds", runtime.ParamLocationQuery, *params.OrganizationIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.PolicyIds != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "policyIds", runtime.ParamLocationQuery, *params.PolicyIds); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "start", runtime.ParamLocationQuery, params.Start); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "end", runtime.ParamLocationQuery, params.End); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetStatisticsRequest generates requests for GetStatistics
 func NewGetStatisticsRequest(server string, params *GetStatisticsParams) (*http.Request, error) {
 	var err error
@@ -1599,6 +1817,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetRequestsPerEdnsWithResponse request
 	GetRequestsPerEdnsWithResponse(ctx context.Context, params *GetRequestsPerEdnsParams, reqEditors ...RequestEditorFn) (*GetRequestsPerEdnsResponse, error)
+
+	// GetProfilesReportWithResponse request
+	GetProfilesReportWithResponse(ctx context.Context, params *GetProfilesReportParams, reqEditors ...RequestEditorFn) (*GetProfilesReportResponse, error)
 
 	// GetStatisticsWithResponse request
 	GetStatisticsWithResponse(ctx context.Context, params *GetStatisticsParams, reqEditors ...RequestEditorFn) (*GetStatisticsResponse, error)
@@ -1844,13 +2065,13 @@ type GetRequestsPerEdnsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Edns []struct {
-			Allowed        float32            `json:"allowed"`
-			Blocked        float32            `json:"blocked"`
-			EdnsTag        string             `json:"ednsTag"`
-			NetworkId      openapi_types.UUID `json:"networkId"`
-			OrganizationId openapi_types.UUID `json:"organizationId"`
-			Requests       float32            `json:"requests"`
-			Unresolved     float32            `json:"unresolved"`
+			Allowed        float32             `json:"allowed"`
+			Blocked        float32             `json:"blocked"`
+			EdnsTag        string              `json:"ednsTag"`
+			NetworkId      *openapi_types.UUID `json:"networkId,omitempty"`
+			OrganizationId *openapi_types.UUID `json:"organizationId,omitempty"`
+			Requests       float32             `json:"requests"`
+			Unresolved     float32             `json:"unresolved"`
 		} `json:"edns"`
 		Filters struct {
 			CategoryIds      *[]openapi_types.UUID                         `json:"categoryIds,omitempty"`
@@ -1887,6 +2108,59 @@ func (r GetRequestsPerEdnsResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r GetRequestsPerEdnsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetProfilesReportResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Filters struct {
+			CategoryIds      *[]openapi_types.UUID                        `json:"categoryIds,omitempty"`
+			End              time.Time                                    `json:"end"`
+			Granularity      *GetProfilesReport200FiltersGranularity      `json:"granularity,omitempty"`
+			Limit            *float32                                     `json:"limit,omitempty"`
+			Metric           *GetProfilesReport200FiltersMetric           `json:"metric,omitempty"`
+			NetworkIds       *[]openapi_types.UUID                        `json:"networkIds,omitempty"`
+			OrganizationIds  *[]openapi_types.UUID                        `json:"organizationIds,omitempty"`
+			PolicyIds        *[]openapi_types.UUID                        `json:"policyIds,omitempty"`
+			ProtectionModule *GetProfilesReport200FiltersProtectionModule `json:"protectionModule,omitempty"`
+			Reason           *GetProfilesReport200FiltersReason           `json:"reason,omitempty"`
+			Start            time.Time                                    `json:"start"`
+		} `json:"filters"`
+		Profiles []struct {
+			Allowed        float32             `json:"allowed"`
+			Blocked        float32             `json:"blocked"`
+			OrganizationId *openapi_types.UUID `json:"organizationId,omitempty"`
+			PolicyId       openapi_types.UUID  `json:"policyId"`
+			Requests       float32             `json:"requests"`
+			Unresolved     float32             `json:"unresolved"`
+		} `json:"profiles"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *BadRequestResponse
+	JSON500 *ServerErrorResponse
+}
+type GetProfilesReport200FiltersGranularity string
+type GetProfilesReport200FiltersMetric string
+type GetProfilesReport200FiltersProtectionModule string
+type GetProfilesReport200FiltersReason string
+
+// Status returns HTTPResponse.Status
+func (r GetProfilesReportResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetProfilesReportResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -2004,6 +2278,15 @@ func (c *ClientWithResponses) GetRequestsPerEdnsWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseGetRequestsPerEdnsResponse(rsp)
+}
+
+// GetProfilesReportWithResponse request returning *GetProfilesReportResponse
+func (c *ClientWithResponses) GetProfilesReportWithResponse(ctx context.Context, params *GetProfilesReportParams, reqEditors ...RequestEditorFn) (*GetProfilesReportResponse, error) {
+	rsp, err := c.GetProfilesReport(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetProfilesReportResponse(rsp)
 }
 
 // GetStatisticsWithResponse request returning *GetStatisticsResponse
@@ -2416,13 +2699,13 @@ func ParseGetRequestsPerEdnsResponse(rsp *http.Response) (*GetRequestsPerEdnsRes
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Edns []struct {
-				Allowed        float32            `json:"allowed"`
-				Blocked        float32            `json:"blocked"`
-				EdnsTag        string             `json:"ednsTag"`
-				NetworkId      openapi_types.UUID `json:"networkId"`
-				OrganizationId openapi_types.UUID `json:"organizationId"`
-				Requests       float32            `json:"requests"`
-				Unresolved     float32            `json:"unresolved"`
+				Allowed        float32             `json:"allowed"`
+				Blocked        float32             `json:"blocked"`
+				EdnsTag        string              `json:"ednsTag"`
+				NetworkId      *openapi_types.UUID `json:"networkId,omitempty"`
+				OrganizationId *openapi_types.UUID `json:"organizationId,omitempty"`
+				Requests       float32             `json:"requests"`
+				Unresolved     float32             `json:"unresolved"`
 			} `json:"edns"`
 			Filters struct {
 				CategoryIds      *[]openapi_types.UUID                         `json:"categoryIds,omitempty"`
@@ -2437,6 +2720,89 @@ func ParseGetRequestsPerEdnsResponse(rsp *http.Response) (*GetRequestsPerEdnsRes
 				Reason           *GetRequestsPerEdns200FiltersReason           `json:"reason,omitempty"`
 				Start            time.Time                                     `json:"start"`
 			} `json:"filters"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest BadRequestResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetProfilesReportResponse parses an HTTP response from a GetProfilesReportWithResponse call
+func ParseGetProfilesReportResponse(rsp *http.Response) (*GetProfilesReportResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetProfilesReportResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Filters struct {
+				CategoryIds      *[]openapi_types.UUID                        `json:"categoryIds,omitempty"`
+				End              time.Time                                    `json:"end"`
+				Granularity      *GetProfilesReport200FiltersGranularity      `json:"granularity,omitempty"`
+				Limit            *float32                                     `json:"limit,omitempty"`
+				Metric           *GetProfilesReport200FiltersMetric           `json:"metric,omitempty"`
+				NetworkIds       *[]openapi_types.UUID                        `json:"networkIds,omitempty"`
+				OrganizationIds  *[]openapi_types.UUID                        `json:"organizationIds,omitempty"`
+				PolicyIds        *[]openapi_types.UUID                        `json:"policyIds,omitempty"`
+				ProtectionModule *GetProfilesReport200FiltersProtectionModule `json:"protectionModule,omitempty"`
+				Reason           *GetProfilesReport200FiltersReason           `json:"reason,omitempty"`
+				Start            time.Time                                    `json:"start"`
+			} `json:"filters"`
+			Profiles []struct {
+				Allowed        float32             `json:"allowed"`
+				Blocked        float32             `json:"blocked"`
+				OrganizationId *openapi_types.UUID `json:"organizationId,omitempty"`
+				PolicyId       openapi_types.UUID  `json:"policyId"`
+				Requests       float32             `json:"requests"`
+				Unresolved     float32             `json:"unresolved"`
+			} `json:"profiles"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
