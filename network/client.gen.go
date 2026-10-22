@@ -29,10 +29,16 @@ const (
 	ListNetworksParamsIncludePoliciesTrue  ListNetworksParamsIncludePolicies = "true"
 )
 
+// Defines values for ListNetworksParamsIncludeHidden.
+const (
+	ListNetworksParamsIncludeHiddenFalse ListNetworksParamsIncludeHidden = "false"
+	ListNetworksParamsIncludeHiddenTrue  ListNetworksParamsIncludeHidden = "true"
+)
+
 // Defines values for GetNetworkParamsIncludePolicies.
 const (
-	GetNetworkParamsIncludePoliciesFalse GetNetworkParamsIncludePolicies = "false"
-	GetNetworkParamsIncludePoliciesTrue  GetNetworkParamsIncludePolicies = "true"
+	False GetNetworkParamsIncludePolicies = "false"
+	True  GetNetworkParamsIncludePolicies = "true"
 )
 
 // FlashStartErrorBody defines model for FlashStartErrorBody.
@@ -68,10 +74,14 @@ type UnauthorizedResponse struct {
 type ListNetworksParams struct {
 	OrganizationId  *openapi_types.UUID                `form:"organizationId,omitempty" json:"organizationId,omitempty"`
 	IncludePolicies *ListNetworksParamsIncludePolicies `form:"includePolicies,omitempty" json:"includePolicies,omitempty"`
+	IncludeHidden   *ListNetworksParamsIncludeHidden   `form:"includeHidden,omitempty" json:"includeHidden,omitempty"`
 }
 
 // ListNetworksParamsIncludePolicies defines parameters for ListNetworks.
 type ListNetworksParamsIncludePolicies string
+
+// ListNetworksParamsIncludeHidden defines parameters for ListNetworks.
+type ListNetworksParamsIncludeHidden string
 
 // CreateExternalDynamicNetworkJSONBody defines parameters for CreateExternalDynamicNetwork.
 type CreateExternalDynamicNetworkJSONBody struct {
@@ -1046,6 +1056,22 @@ func NewListNetworksRequest(server string, params *ListNetworksParams) (*http.Re
 		if params.IncludePolicies != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includePolicies", runtime.ParamLocationQuery, *params.IncludePolicies); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.IncludeHidden != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeHidden", runtime.ParamLocationQuery, *params.IncludeHidden); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
