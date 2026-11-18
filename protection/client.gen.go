@@ -47,6 +47,178 @@ const (
 	ListPoliciesParamsIncludeNetworkCountTrue  ListPoliciesParamsIncludeNetworkCount = "true"
 )
 
+// Defines values for UpdatePolicyBlockJSONBody0ResponseType.
+const (
+	NXDOMAIN UpdatePolicyBlockJSONBody0ResponseType = "NXDOMAIN"
+)
+
+// Defines values for UpdatePolicyBlockJSONBody1ResponseType.
+const (
+	STOPPAGE UpdatePolicyBlockJSONBody1ResponseType = "STOP_PAGE"
+)
+
+// Defines values for ListStopPagesParamsIncludeSharedAncestors.
+const (
+	False ListStopPagesParamsIncludeSharedAncestors = "false"
+	True  ListStopPagesParamsIncludeSharedAncestors = "true"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyBlockReason.
+const (
+	CreateCustomStopPageJSONBodyBlockReasonHIDE CreateCustomStopPageJSONBodyBlockReason = "HIDE"
+	CreateCustomStopPageJSONBodyBlockReasonSHOW CreateCustomStopPageJSONBodyBlockReason = "SHOW"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyBlockedDomain.
+const (
+	CreateCustomStopPageJSONBodyBlockedDomainHIDE CreateCustomStopPageJSONBodyBlockedDomain = "HIDE"
+	CreateCustomStopPageJSONBodyBlockedDomainSHOW CreateCustomStopPageJSONBodyBlockedDomain = "SHOW"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyDescription0Display.
+const (
+	CreateCustomStopPageJSONBodyDescription0DisplayCUSTOM CreateCustomStopPageJSONBodyDescription0Display = "CUSTOM"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyDescription1Display.
+const (
+	CreateCustomStopPageJSONBodyDescription1DisplayHIDE CreateCustomStopPageJSONBodyDescription1Display = "HIDE"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyImage0Display.
+const (
+	CreateCustomStopPageJSONBodyImage0DisplayCUSTOM CreateCustomStopPageJSONBodyImage0Display = "CUSTOM"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyImage1Display.
+const (
+	CreateCustomStopPageJSONBodyImage1DisplayDEFAULT CreateCustomStopPageJSONBodyImage1Display = "DEFAULT"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyImage2Display.
+const (
+	CreateCustomStopPageJSONBodyImage2DisplayHIDE CreateCustomStopPageJSONBodyImage2Display = "HIDE"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyMessage0Display.
+const (
+	CreateCustomStopPageJSONBodyMessage0DisplayCUSTOM CreateCustomStopPageJSONBodyMessage0Display = "CUSTOM"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyMessage1Display.
+const (
+	CreateCustomStopPageJSONBodyMessage1DisplayHIDE CreateCustomStopPageJSONBodyMessage1Display = "HIDE"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyTitle0Display.
+const (
+	CreateCustomStopPageJSONBodyTitle0DisplayCUSTOM CreateCustomStopPageJSONBodyTitle0Display = "CUSTOM"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyTitle1Display.
+const (
+	CreateCustomStopPageJSONBodyTitle1DisplayHIDE CreateCustomStopPageJSONBodyTitle1Display = "HIDE"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyTitle2Display.
+const (
+	CreateCustomStopPageJSONBodyTitle2DisplayCUSTOMER CreateCustomStopPageJSONBodyTitle2Display = "CUSTOMER"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyTitle3Display.
+const (
+	CreateCustomStopPageJSONBodyTitle3DisplayPOLICY CreateCustomStopPageJSONBodyTitle3Display = "POLICY"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyTitle4Display.
+const (
+	CreateCustomStopPageJSONBodyTitle4DisplayCUSTOMERANDPOLICY CreateCustomStopPageJSONBodyTitle4Display = "CUSTOMER_AND_POLICY"
+)
+
+// Defines values for CreateCustomStopPageJSONBodyUnblockLink.
+const (
+	CreateCustomStopPageJSONBodyUnblockLinkHIDE CreateCustomStopPageJSONBodyUnblockLink = "HIDE"
+	CreateCustomStopPageJSONBodyUnblockLinkSHOW CreateCustomStopPageJSONBodyUnblockLink = "SHOW"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyBlockReason.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyBlockReasonHIDE UpdateCustomStopPageConfigurationJSONBodyBlockReason = "HIDE"
+	UpdateCustomStopPageConfigurationJSONBodyBlockReasonSHOW UpdateCustomStopPageConfigurationJSONBodyBlockReason = "SHOW"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyBlockedDomain.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyBlockedDomainHIDE UpdateCustomStopPageConfigurationJSONBodyBlockedDomain = "HIDE"
+	UpdateCustomStopPageConfigurationJSONBodyBlockedDomainSHOW UpdateCustomStopPageConfigurationJSONBodyBlockedDomain = "SHOW"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyDescription0Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyDescription0DisplayCUSTOM UpdateCustomStopPageConfigurationJSONBodyDescription0Display = "CUSTOM"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyDescription1Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyDescription1DisplayHIDE UpdateCustomStopPageConfigurationJSONBodyDescription1Display = "HIDE"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyImage0Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyImage0DisplayCUSTOM UpdateCustomStopPageConfigurationJSONBodyImage0Display = "CUSTOM"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyImage1Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyImage1DisplayDEFAULT UpdateCustomStopPageConfigurationJSONBodyImage1Display = "DEFAULT"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyImage2Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyImage2DisplayHIDE UpdateCustomStopPageConfigurationJSONBodyImage2Display = "HIDE"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyMessage0Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyMessage0DisplayCUSTOM UpdateCustomStopPageConfigurationJSONBodyMessage0Display = "CUSTOM"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyMessage1Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyMessage1DisplayHIDE UpdateCustomStopPageConfigurationJSONBodyMessage1Display = "HIDE"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyTitle0Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyTitle0DisplayCUSTOM UpdateCustomStopPageConfigurationJSONBodyTitle0Display = "CUSTOM"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyTitle1Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyTitle1DisplayHIDE UpdateCustomStopPageConfigurationJSONBodyTitle1Display = "HIDE"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyTitle2Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyTitle2DisplayCUSTOMER UpdateCustomStopPageConfigurationJSONBodyTitle2Display = "CUSTOMER"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyTitle3Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyTitle3DisplayPOLICY UpdateCustomStopPageConfigurationJSONBodyTitle3Display = "POLICY"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyTitle4Display.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyTitle4DisplayCUSTOMERANDPOLICY UpdateCustomStopPageConfigurationJSONBodyTitle4Display = "CUSTOMER_AND_POLICY"
+)
+
+// Defines values for UpdateCustomStopPageConfigurationJSONBodyUnblockLink.
+const (
+	UpdateCustomStopPageConfigurationJSONBodyUnblockLinkHIDE UpdateCustomStopPageConfigurationJSONBodyUnblockLink = "HIDE"
+	UpdateCustomStopPageConfigurationJSONBodyUnblockLinkSHOW UpdateCustomStopPageConfigurationJSONBodyUnblockLink = "SHOW"
+)
+
 // FlashStartErrorBody defines model for FlashStartErrorBody.
 type FlashStartErrorBody struct {
 	Code    string       `json:"code"`
@@ -171,6 +343,11 @@ type ListMalwareCategoryMacrosParams struct {
 	Lang           *string             `form:"lang,omitempty" json:"lang,omitempty"`
 }
 
+// SetOrganizationStopPageDefaultJSONBody defines parameters for SetOrganizationStopPageDefault.
+type SetOrganizationStopPageDefaultJSONBody struct {
+	StopPageId *openapi_types.UUID `json:"stopPageId"`
+}
+
 // ListPoliciesParams defines parameters for ListPolicies.
 type ListPoliciesParams struct {
 	OrganizationId      *openapi_types.UUID                    `form:"organizationId,omitempty" json:"organizationId,omitempty"`
@@ -235,6 +412,28 @@ type ScheduleBetaListCategoryBlockJSONBody struct {
 	} `json:"blockSchedulation"`
 	CategoryId openapi_types.UUID `json:"categoryId"`
 }
+
+// UpdatePolicyBlockJSONBody defines parameters for UpdatePolicyBlock.
+type UpdatePolicyBlockJSONBody struct {
+	union json.RawMessage
+}
+
+// UpdatePolicyBlockJSONBody0 defines parameters for UpdatePolicyBlock.
+type UpdatePolicyBlockJSONBody0 struct {
+	ResponseType UpdatePolicyBlockJSONBody0ResponseType `json:"responseType"`
+}
+
+// UpdatePolicyBlockJSONBody0ResponseType defines parameters for UpdatePolicyBlock.
+type UpdatePolicyBlockJSONBody0ResponseType string
+
+// UpdatePolicyBlockJSONBody1 defines parameters for UpdatePolicyBlock.
+type UpdatePolicyBlockJSONBody1 struct {
+	ResponseType UpdatePolicyBlockJSONBody1ResponseType `json:"responseType"`
+	StopPageId   *openapi_types.UUID                    `json:"stopPageId,omitempty"`
+}
+
+// UpdatePolicyBlockJSONBody1ResponseType defines parameters for UpdatePolicyBlock.
+type UpdatePolicyBlockJSONBody1ResponseType string
 
 // AllowCategoriesJSONBody defines parameters for AllowCategories.
 type AllowCategoriesJSONBody struct {
@@ -310,6 +509,331 @@ type BlockTldsJSONBody struct {
 	TldIds []openapi_types.UUID `json:"tldIds"`
 }
 
+// ListStopPagesParams defines parameters for ListStopPages.
+type ListStopPagesParams struct {
+	OrganizationId         *openapi_types.UUID                        `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	IncludeSharedAncestors *ListStopPagesParamsIncludeSharedAncestors `form:"includeSharedAncestors,omitempty" json:"includeSharedAncestors,omitempty"`
+}
+
+// ListStopPagesParamsIncludeSharedAncestors defines parameters for ListStopPages.
+type ListStopPagesParamsIncludeSharedAncestors string
+
+// CreateCustomStopPageJSONBody defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBody struct {
+	BlockReason   CreateCustomStopPageJSONBodyBlockReason   `json:"blockReason"`
+	BlockedDomain CreateCustomStopPageJSONBodyBlockedDomain `json:"blockedDomain"`
+	Description   CreateCustomStopPageJSONBody_Description  `json:"description"`
+	Image         CreateCustomStopPageJSONBody_Image        `json:"image"`
+	IsShared      *bool                                     `json:"isShared,omitempty"`
+	MakeDefault   *bool                                     `json:"makeDefault,omitempty"`
+	Message       CreateCustomStopPageJSONBody_Message      `json:"message"`
+	Name          string                                    `json:"name"`
+	Title         CreateCustomStopPageJSONBody_Title        `json:"title"`
+	UnblockLink   CreateCustomStopPageJSONBodyUnblockLink   `json:"unblockLink"`
+}
+
+// CreateCustomStopPageParams defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+}
+
+// CreateCustomStopPageJSONBodyBlockReason defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyBlockReason string
+
+// CreateCustomStopPageJSONBodyBlockedDomain defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyBlockedDomain string
+
+// CreateCustomStopPageJSONBodyDescription0 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyDescription0 struct {
+	Display CreateCustomStopPageJSONBodyDescription0Display `json:"display"`
+	Value   string                                          `json:"value"`
+}
+
+// CreateCustomStopPageJSONBodyDescription0Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyDescription0Display string
+
+// CreateCustomStopPageJSONBodyDescription1 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyDescription1 struct {
+	Display CreateCustomStopPageJSONBodyDescription1Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyDescription1Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyDescription1Display string
+
+// CreateCustomStopPageJSONBody_Description defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBody_Description struct {
+	union json.RawMessage
+}
+
+// CreateCustomStopPageJSONBodyImage0 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage0 struct {
+	Display CreateCustomStopPageJSONBodyImage0Display `json:"display"`
+	Value   string                                    `json:"value"`
+}
+
+// CreateCustomStopPageJSONBodyImage0Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage0Display string
+
+// CreateCustomStopPageJSONBodyImage1 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage1 struct {
+	Display CreateCustomStopPageJSONBodyImage1Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyImage1Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage1Display string
+
+// CreateCustomStopPageJSONBodyImage2 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage2 struct {
+	Display CreateCustomStopPageJSONBodyImage2Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyImage2Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyImage2Display string
+
+// CreateCustomStopPageJSONBody_Image defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBody_Image struct {
+	union json.RawMessage
+}
+
+// CreateCustomStopPageJSONBodyMessage0 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyMessage0 struct {
+	Display CreateCustomStopPageJSONBodyMessage0Display `json:"display"`
+	Value   string                                      `json:"value"`
+}
+
+// CreateCustomStopPageJSONBodyMessage0Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyMessage0Display string
+
+// CreateCustomStopPageJSONBodyMessage1 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyMessage1 struct {
+	Display CreateCustomStopPageJSONBodyMessage1Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyMessage1Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyMessage1Display string
+
+// CreateCustomStopPageJSONBody_Message defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBody_Message struct {
+	union json.RawMessage
+}
+
+// CreateCustomStopPageJSONBodyTitle0 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle0 struct {
+	Display CreateCustomStopPageJSONBodyTitle0Display `json:"display"`
+	Value   string                                    `json:"value"`
+}
+
+// CreateCustomStopPageJSONBodyTitle0Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle0Display string
+
+// CreateCustomStopPageJSONBodyTitle1 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle1 struct {
+	Display CreateCustomStopPageJSONBodyTitle1Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyTitle1Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle1Display string
+
+// CreateCustomStopPageJSONBodyTitle2 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle2 struct {
+	Display CreateCustomStopPageJSONBodyTitle2Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyTitle2Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle2Display string
+
+// CreateCustomStopPageJSONBodyTitle3 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle3 struct {
+	Display CreateCustomStopPageJSONBodyTitle3Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyTitle3Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle3Display string
+
+// CreateCustomStopPageJSONBodyTitle4 defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle4 struct {
+	Display CreateCustomStopPageJSONBodyTitle4Display `json:"display"`
+}
+
+// CreateCustomStopPageJSONBodyTitle4Display defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyTitle4Display string
+
+// CreateCustomStopPageJSONBody_Title defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBody_Title struct {
+	union json.RawMessage
+}
+
+// CreateCustomStopPageJSONBodyUnblockLink defines parameters for CreateCustomStopPage.
+type CreateCustomStopPageJSONBodyUnblockLink string
+
+// UpdateCustomStopPageConfigurationJSONBody defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBody struct {
+	BlockReason   *UpdateCustomStopPageConfigurationJSONBodyBlockReason   `json:"blockReason,omitempty"`
+	BlockedDomain *UpdateCustomStopPageConfigurationJSONBodyBlockedDomain `json:"blockedDomain,omitempty"`
+	Description   *UpdateCustomStopPageConfigurationJSONBody_Description  `json:"description,omitempty"`
+	Image         *UpdateCustomStopPageConfigurationJSONBody_Image        `json:"image,omitempty"`
+	Message       *UpdateCustomStopPageConfigurationJSONBody_Message      `json:"message,omitempty"`
+	Title         *UpdateCustomStopPageConfigurationJSONBody_Title        `json:"title,omitempty"`
+	UnblockLink   *UpdateCustomStopPageConfigurationJSONBodyUnblockLink   `json:"unblockLink,omitempty"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyBlockReason defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyBlockReason string
+
+// UpdateCustomStopPageConfigurationJSONBodyBlockedDomain defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyBlockedDomain string
+
+// UpdateCustomStopPageConfigurationJSONBodyDescription0 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyDescription0 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyDescription0Display `json:"display"`
+	Value   string                                                       `json:"value"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyDescription0Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyDescription0Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyDescription1 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyDescription1 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyDescription1Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyDescription1Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyDescription1Display string
+
+// UpdateCustomStopPageConfigurationJSONBody_Description defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBody_Description struct {
+	union json.RawMessage
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyImage0 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage0 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyImage0Display `json:"display"`
+	Value   string                                                 `json:"value"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyImage0Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage0Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyImage1 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage1 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyImage1Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyImage1Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage1Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyImage2 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage2 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyImage2Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyImage2Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyImage2Display string
+
+// UpdateCustomStopPageConfigurationJSONBody_Image defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBody_Image struct {
+	union json.RawMessage
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyMessage0 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyMessage0 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyMessage0Display `json:"display"`
+	Value   string                                                   `json:"value"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyMessage0Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyMessage0Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyMessage1 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyMessage1 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyMessage1Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyMessage1Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyMessage1Display string
+
+// UpdateCustomStopPageConfigurationJSONBody_Message defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBody_Message struct {
+	union json.RawMessage
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle0 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle0 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyTitle0Display `json:"display"`
+	Value   string                                                 `json:"value"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle0Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle0Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle1 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle1 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyTitle1Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle1Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle1Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle2 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle2 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyTitle2Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle2Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle2Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle3 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle3 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyTitle3Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle3Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle3Display string
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle4 defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle4 struct {
+	Display UpdateCustomStopPageConfigurationJSONBodyTitle4Display `json:"display"`
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyTitle4Display defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyTitle4Display string
+
+// UpdateCustomStopPageConfigurationJSONBody_Title defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBody_Title struct {
+	union json.RawMessage
+}
+
+// UpdateCustomStopPageConfigurationJSONBodyUnblockLink defines parameters for UpdateCustomStopPageConfiguration.
+type UpdateCustomStopPageConfigurationJSONBodyUnblockLink string
+
+// CreateExternalStopPageJSONBody defines parameters for CreateExternalStopPage.
+type CreateExternalStopPageJSONBody struct {
+	ExternalUrl string `json:"externalUrl"`
+	IsShared    *bool  `json:"isShared,omitempty"`
+	MakeDefault *bool  `json:"makeDefault,omitempty"`
+	Name        string `json:"name"`
+}
+
+// CreateExternalStopPageParams defines parameters for CreateExternalStopPage.
+type CreateExternalStopPageParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+}
+
+// UpdateExternalStopPageConfigurationJSONBody defines parameters for UpdateExternalStopPageConfiguration.
+type UpdateExternalStopPageConfigurationJSONBody struct {
+	ExternalUrl *string `json:"externalUrl,omitempty"`
+}
+
+// GetStandardStopPageParams defines parameters for GetStandardStopPage.
+type GetStandardStopPageParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+}
+
+// UpdateStopPageJSONBody defines parameters for UpdateStopPage.
+type UpdateStopPageJSONBody struct {
+	Name *string `json:"name,omitempty"`
+}
+
 // ListProtectionTemplatesParams defines parameters for ListProtectionTemplates.
 type ListProtectionTemplatesParams struct {
 	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
@@ -339,6 +863,9 @@ type AddExceptionGroupDomainsJSONRequestBody AddExceptionGroupDomainsJSONBody
 // UpdateExceptionGroupDomainNoteJSONRequestBody defines body for UpdateExceptionGroupDomainNote for application/json ContentType.
 type UpdateExceptionGroupDomainNoteJSONRequestBody UpdateExceptionGroupDomainNoteJSONBody
 
+// SetOrganizationStopPageDefaultJSONRequestBody defines body for SetOrganizationStopPageDefault for application/json ContentType.
+type SetOrganizationStopPageDefaultJSONRequestBody SetOrganizationStopPageDefaultJSONBody
+
 // CreatePolicyJSONRequestBody defines body for CreatePolicy for application/json ContentType.
 type CreatePolicyJSONRequestBody CreatePolicyJSONBody
 
@@ -362,6 +889,9 @@ type BlockBetaListCategoriesJSONRequestBody BlockBetaListCategoriesJSONBody
 
 // ScheduleBetaListCategoryBlockJSONRequestBody defines body for ScheduleBetaListCategoryBlock for application/json ContentType.
 type ScheduleBetaListCategoryBlockJSONRequestBody ScheduleBetaListCategoryBlockJSONBody
+
+// UpdatePolicyBlockJSONRequestBody defines body for UpdatePolicyBlock for application/json ContentType.
+type UpdatePolicyBlockJSONRequestBody UpdatePolicyBlockJSONBody
 
 // AllowCategoriesJSONRequestBody defines body for AllowCategories for application/json ContentType.
 type AllowCategoriesJSONRequestBody AllowCategoriesJSONBody
@@ -398,6 +928,21 @@ type AllowTldsJSONRequestBody AllowTldsJSONBody
 
 // BlockTldsJSONRequestBody defines body for BlockTlds for application/json ContentType.
 type BlockTldsJSONRequestBody BlockTldsJSONBody
+
+// CreateCustomStopPageJSONRequestBody defines body for CreateCustomStopPage for application/json ContentType.
+type CreateCustomStopPageJSONRequestBody CreateCustomStopPageJSONBody
+
+// UpdateCustomStopPageConfigurationJSONRequestBody defines body for UpdateCustomStopPageConfiguration for application/json ContentType.
+type UpdateCustomStopPageConfigurationJSONRequestBody UpdateCustomStopPageConfigurationJSONBody
+
+// CreateExternalStopPageJSONRequestBody defines body for CreateExternalStopPage for application/json ContentType.
+type CreateExternalStopPageJSONRequestBody CreateExternalStopPageJSONBody
+
+// UpdateExternalStopPageConfigurationJSONRequestBody defines body for UpdateExternalStopPageConfiguration for application/json ContentType.
+type UpdateExternalStopPageConfigurationJSONRequestBody UpdateExternalStopPageConfigurationJSONBody
+
+// UpdateStopPageJSONRequestBody defines body for UpdateStopPage for application/json ContentType.
+type UpdateStopPageJSONRequestBody UpdateStopPageJSONBody
 
 // AsMissingCredentialsErrorBody returns the union data inside the UnauthorizedResponse as a MissingCredentialsErrorBody
 func (t UnauthorizedResponse) AsMissingCredentialsErrorBody() (MissingCredentialsErrorBody, error) {
@@ -596,6 +1141,11 @@ type ClientInterface interface {
 	// ListMalwareCategoryMacros request
 	ListMalwareCategoryMacros(ctx context.Context, params *ListMalwareCategoryMacrosParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// SetOrganizationStopPageDefaultWithBody request with any body
+	SetOrganizationStopPageDefaultWithBody(ctx context.Context, organizationId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	SetOrganizationStopPageDefault(ctx context.Context, organizationId openapi_types.UUID, body SetOrganizationStopPageDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ListPolicies request
 	ListPolicies(ctx context.Context, params *ListPoliciesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -656,6 +1206,14 @@ type ClientInterface interface {
 
 	// RemoveBetaListCategoryBlockSchedule request
 	RemoveBetaListCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetPolicyBlock request
+	GetPolicyBlock(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdatePolicyBlockWithBody request with any body
+	UpdatePolicyBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdatePolicyBlock(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AllowCategoriesWithBody request with any body
 	AllowCategoriesWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -740,6 +1298,9 @@ type ClientInterface interface {
 
 	UpdatePolicySettings(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetPolicyStopPage request
+	GetPolicyStopPage(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// AllowTldsWithBody request with any body
 	AllowTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -752,6 +1313,52 @@ type ClientInterface interface {
 	BlockTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	BlockTlds(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListStopPages request
+	ListStopPages(ctx context.Context, params *ListStopPagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateCustomStopPageWithBody request with any body
+	CreateCustomStopPageWithBody(ctx context.Context, params *CreateCustomStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateCustomStopPage(ctx context.Context, params *CreateCustomStopPageParams, body CreateCustomStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetCustomStopPageConfiguration request
+	GetCustomStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateCustomStopPageConfigurationWithBody request with any body
+	UpdateCustomStopPageConfigurationWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateCustomStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, body UpdateCustomStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateExternalStopPageWithBody request with any body
+	CreateExternalStopPageWithBody(ctx context.Context, params *CreateExternalStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateExternalStopPage(ctx context.Context, params *CreateExternalStopPageParams, body CreateExternalStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetExternalStopPageConfiguration request
+	GetExternalStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateExternalStopPageConfigurationWithBody request with any body
+	UpdateExternalStopPageConfigurationWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateExternalStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, body UpdateExternalStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetStandardStopPage request
+	GetStandardStopPage(ctx context.Context, params *GetStandardStopPageParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteStopPage request
+	DeleteStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetStopPage request
+	GetStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateStopPageWithBody request with any body
+	UpdateStopPageWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	UpdateStopPage(ctx context.Context, stopPageId openapi_types.UUID, body UpdateStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ShareStopPage request
+	ShareStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListProtectionTemplates request
 	ListProtectionTemplates(ctx context.Context, params *ListProtectionTemplatesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1033,6 +1640,30 @@ func (c *Client) ListMalwareCategoryMacros(ctx context.Context, params *ListMalw
 	return c.Client.Do(req)
 }
 
+func (c *Client) SetOrganizationStopPageDefaultWithBody(ctx context.Context, organizationId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetOrganizationStopPageDefaultRequestWithBody(c.Server, organizationId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) SetOrganizationStopPageDefault(ctx context.Context, organizationId openapi_types.UUID, body SetOrganizationStopPageDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetOrganizationStopPageDefaultRequest(c.Server, organizationId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) ListPolicies(ctx context.Context, params *ListPoliciesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewListPoliciesRequest(c.Server, params)
 	if err != nil {
@@ -1299,6 +1930,42 @@ func (c *Client) ScheduleBetaListCategoryBlock(ctx context.Context, policyId ope
 
 func (c *Client) RemoveBetaListCategoryBlockSchedule(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewRemoveBetaListCategoryBlockScheduleRequest(c.Server, policyId, schedulationId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetPolicyBlock(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPolicyBlockRequest(c.Server, policyId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdatePolicyBlockWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicyBlockRequestWithBody(c.Server, policyId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdatePolicyBlock(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdatePolicyBlockRequest(c.Server, policyId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1681,6 +2348,18 @@ func (c *Client) UpdatePolicySettings(ctx context.Context, policyId openapi_type
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetPolicyStopPage(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPolicyStopPageRequest(c.Server, policyId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) AllowTldsWithBody(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewAllowTldsRequestWithBody(c.Server, policyId, contentType, body)
 	if err != nil {
@@ -1731,6 +2410,210 @@ func (c *Client) BlockTldsWithBody(ctx context.Context, policyId openapi_types.U
 
 func (c *Client) BlockTlds(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewBlockTldsRequest(c.Server, policyId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ListStopPages(ctx context.Context, params *ListStopPagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListStopPagesRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateCustomStopPageWithBody(ctx context.Context, params *CreateCustomStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateCustomStopPageRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateCustomStopPage(ctx context.Context, params *CreateCustomStopPageParams, body CreateCustomStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateCustomStopPageRequest(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetCustomStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetCustomStopPageConfigurationRequest(c.Server, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateCustomStopPageConfigurationWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateCustomStopPageConfigurationRequestWithBody(c.Server, stopPageId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateCustomStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, body UpdateCustomStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateCustomStopPageConfigurationRequest(c.Server, stopPageId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateExternalStopPageWithBody(ctx context.Context, params *CreateExternalStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateExternalStopPageRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateExternalStopPage(ctx context.Context, params *CreateExternalStopPageParams, body CreateExternalStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateExternalStopPageRequest(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetExternalStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetExternalStopPageConfigurationRequest(c.Server, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateExternalStopPageConfigurationWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExternalStopPageConfigurationRequestWithBody(c.Server, stopPageId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateExternalStopPageConfiguration(ctx context.Context, stopPageId openapi_types.UUID, body UpdateExternalStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateExternalStopPageConfigurationRequest(c.Server, stopPageId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetStandardStopPage(ctx context.Context, params *GetStandardStopPageParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetStandardStopPageRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteStopPageRequest(c.Server, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetStopPageRequest(c.Server, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateStopPageWithBody(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateStopPageRequestWithBody(c.Server, stopPageId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) UpdateStopPage(ctx context.Context, stopPageId openapi_types.UUID, body UpdateStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateStopPageRequest(c.Server, stopPageId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) ShareStopPage(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShareStopPageRequest(c.Server, stopPageId)
 	if err != nil {
 		return nil, err
 	}
@@ -2759,6 +3642,53 @@ func NewListMalwareCategoryMacrosRequest(server string, params *ListMalwareCateg
 	return req, nil
 }
 
+// NewSetOrganizationStopPageDefaultRequest calls the generic SetOrganizationStopPageDefault builder with application/json body
+func NewSetOrganizationStopPageDefaultRequest(server string, organizationId openapi_types.UUID, body SetOrganizationStopPageDefaultJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSetOrganizationStopPageDefaultRequestWithBody(server, organizationId, "application/json", bodyReader)
+}
+
+// NewSetOrganizationStopPageDefaultRequestWithBody generates requests for SetOrganizationStopPageDefault with any type of body
+func NewSetOrganizationStopPageDefaultRequestWithBody(server string, organizationId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "organizationId", runtime.ParamLocationPath, organizationId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/organizations/%s/stop-page-default", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewListPoliciesRequest generates requests for ListPolicies
 func NewListPoliciesRequest(server string, params *ListPoliciesParams) (*http.Request, error) {
 	var err error
@@ -3407,6 +4337,87 @@ func NewRemoveBetaListCategoryBlockScheduleRequest(server string, policyId opena
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewGetPolicyBlockRequest generates requests for GetPolicyBlock
+func NewGetPolicyBlockRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/block", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdatePolicyBlockRequest calls the generic UpdatePolicyBlock builder with application/json body
+func NewUpdatePolicyBlockRequest(server string, policyId openapi_types.UUID, body UpdatePolicyBlockJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdatePolicyBlockRequestWithBody(server, policyId, "application/json", bodyReader)
+}
+
+// NewUpdatePolicyBlockRequestWithBody generates requests for UpdatePolicyBlock with any type of body
+func NewUpdatePolicyBlockRequestWithBody(server string, policyId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/block", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -4276,6 +5287,40 @@ func NewUpdatePolicySettingsRequestWithBody(server string, policyId openapi_type
 	return req, nil
 }
 
+// NewGetPolicyStopPageRequest generates requests for GetPolicyStopPage
+func NewGetPolicyStopPageRequest(server string, policyId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "policyId", runtime.ParamLocationPath, policyId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/policies/%s/stop-page", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewAllowTldsRequest calls the generic AllowTlds builder with application/json body
 func NewAllowTldsRequest(server string, policyId openapi_types.UUID, body AllowTldsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -4400,6 +5445,555 @@ func NewBlockTldsRequestWithBody(server string, policyId openapi_types.UUID, con
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewListStopPagesRequest generates requests for ListStopPages
+func NewListStopPagesRequest(server string, params *ListStopPagesParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.IncludeSharedAncestors != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "includeSharedAncestors", runtime.ParamLocationQuery, *params.IncludeSharedAncestors); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateCustomStopPageRequest calls the generic CreateCustomStopPage builder with application/json body
+func NewCreateCustomStopPageRequest(server string, params *CreateCustomStopPageParams, body CreateCustomStopPageJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateCustomStopPageRequestWithBody(server, params, "application/json", bodyReader)
+}
+
+// NewCreateCustomStopPageRequestWithBody generates requests for CreateCustomStopPage with any type of body
+func NewCreateCustomStopPageRequestWithBody(server string, params *CreateCustomStopPageParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/custom")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetCustomStopPageConfigurationRequest generates requests for GetCustomStopPageConfiguration
+func NewGetCustomStopPageConfigurationRequest(server string, stopPageId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/custom/%s/configuration", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateCustomStopPageConfigurationRequest calls the generic UpdateCustomStopPageConfiguration builder with application/json body
+func NewUpdateCustomStopPageConfigurationRequest(server string, stopPageId openapi_types.UUID, body UpdateCustomStopPageConfigurationJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateCustomStopPageConfigurationRequestWithBody(server, stopPageId, "application/json", bodyReader)
+}
+
+// NewUpdateCustomStopPageConfigurationRequestWithBody generates requests for UpdateCustomStopPageConfiguration with any type of body
+func NewUpdateCustomStopPageConfigurationRequestWithBody(server string, stopPageId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/custom/%s/configuration", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewCreateExternalStopPageRequest calls the generic CreateExternalStopPage builder with application/json body
+func NewCreateExternalStopPageRequest(server string, params *CreateExternalStopPageParams, body CreateExternalStopPageJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateExternalStopPageRequestWithBody(server, params, "application/json", bodyReader)
+}
+
+// NewCreateExternalStopPageRequestWithBody generates requests for CreateExternalStopPage with any type of body
+func NewCreateExternalStopPageRequestWithBody(server string, params *CreateExternalStopPageParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/external")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetExternalStopPageConfigurationRequest generates requests for GetExternalStopPageConfiguration
+func NewGetExternalStopPageConfigurationRequest(server string, stopPageId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/external/%s/configuration", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateExternalStopPageConfigurationRequest calls the generic UpdateExternalStopPageConfiguration builder with application/json body
+func NewUpdateExternalStopPageConfigurationRequest(server string, stopPageId openapi_types.UUID, body UpdateExternalStopPageConfigurationJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateExternalStopPageConfigurationRequestWithBody(server, stopPageId, "application/json", bodyReader)
+}
+
+// NewUpdateExternalStopPageConfigurationRequestWithBody generates requests for UpdateExternalStopPageConfiguration with any type of body
+func NewUpdateExternalStopPageConfigurationRequestWithBody(server string, stopPageId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/external/%s/configuration", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetStandardStopPageRequest generates requests for GetStandardStopPage
+func NewGetStandardStopPageRequest(server string, params *GetStandardStopPageParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/standard")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewDeleteStopPageRequest generates requests for DeleteStopPage
+func NewDeleteStopPageRequest(server string, stopPageId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetStopPageRequest generates requests for GetStopPage
+func NewGetStopPageRequest(server string, stopPageId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateStopPageRequest calls the generic UpdateStopPage builder with application/json body
+func NewUpdateStopPageRequest(server string, stopPageId openapi_types.UUID, body UpdateStopPageJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateStopPageRequestWithBody(server, stopPageId, "application/json", bodyReader)
+}
+
+// NewUpdateStopPageRequestWithBody generates requests for UpdateStopPage with any type of body
+func NewUpdateStopPageRequestWithBody(server string, stopPageId openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewShareStopPageRequest generates requests for ShareStopPage
+func NewShareStopPageRequest(server string, stopPageId openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "stopPageId", runtime.ParamLocationPath, stopPageId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/stop-pages/%s/share", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
 
 	return req, nil
 }
@@ -4756,6 +6350,11 @@ type ClientWithResponsesInterface interface {
 	// ListMalwareCategoryMacrosWithResponse request
 	ListMalwareCategoryMacrosWithResponse(ctx context.Context, params *ListMalwareCategoryMacrosParams, reqEditors ...RequestEditorFn) (*ListMalwareCategoryMacrosResponse, error)
 
+	// SetOrganizationStopPageDefaultWithBodyWithResponse request with any body
+	SetOrganizationStopPageDefaultWithBodyWithResponse(ctx context.Context, organizationId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationStopPageDefaultResponse, error)
+
+	SetOrganizationStopPageDefaultWithResponse(ctx context.Context, organizationId openapi_types.UUID, body SetOrganizationStopPageDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*SetOrganizationStopPageDefaultResponse, error)
+
 	// ListPoliciesWithResponse request
 	ListPoliciesWithResponse(ctx context.Context, params *ListPoliciesParams, reqEditors ...RequestEditorFn) (*ListPoliciesResponse, error)
 
@@ -4816,6 +6415,14 @@ type ClientWithResponsesInterface interface {
 
 	// RemoveBetaListCategoryBlockScheduleWithResponse request
 	RemoveBetaListCategoryBlockScheduleWithResponse(ctx context.Context, policyId openapi_types.UUID, schedulationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*RemoveBetaListCategoryBlockScheduleResponse, error)
+
+	// GetPolicyBlockWithResponse request
+	GetPolicyBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyBlockResponse, error)
+
+	// UpdatePolicyBlockWithBodyWithResponse request with any body
+	UpdatePolicyBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyBlockResponse, error)
+
+	UpdatePolicyBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyBlockResponse, error)
 
 	// AllowCategoriesWithBodyWithResponse request with any body
 	AllowCategoriesWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowCategoriesResponse, error)
@@ -4900,6 +6507,9 @@ type ClientWithResponsesInterface interface {
 
 	UpdatePolicySettingsWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicySettingsJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicySettingsResponse, error)
 
+	// GetPolicyStopPageWithResponse request
+	GetPolicyStopPageWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyStopPageResponse, error)
+
 	// AllowTldsWithBodyWithResponse request with any body
 	AllowTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error)
 
@@ -4912,6 +6522,52 @@ type ClientWithResponsesInterface interface {
 	BlockTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
 
 	BlockTldsWithResponse(ctx context.Context, policyId openapi_types.UUID, body BlockTldsJSONRequestBody, reqEditors ...RequestEditorFn) (*BlockTldsResponse, error)
+
+	// ListStopPagesWithResponse request
+	ListStopPagesWithResponse(ctx context.Context, params *ListStopPagesParams, reqEditors ...RequestEditorFn) (*ListStopPagesResponse, error)
+
+	// CreateCustomStopPageWithBodyWithResponse request with any body
+	CreateCustomStopPageWithBodyWithResponse(ctx context.Context, params *CreateCustomStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateCustomStopPageResponse, error)
+
+	CreateCustomStopPageWithResponse(ctx context.Context, params *CreateCustomStopPageParams, body CreateCustomStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateCustomStopPageResponse, error)
+
+	// GetCustomStopPageConfigurationWithResponse request
+	GetCustomStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetCustomStopPageConfigurationResponse, error)
+
+	// UpdateCustomStopPageConfigurationWithBodyWithResponse request with any body
+	UpdateCustomStopPageConfigurationWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateCustomStopPageConfigurationResponse, error)
+
+	UpdateCustomStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateCustomStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateCustomStopPageConfigurationResponse, error)
+
+	// CreateExternalStopPageWithBodyWithResponse request with any body
+	CreateExternalStopPageWithBodyWithResponse(ctx context.Context, params *CreateExternalStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateExternalStopPageResponse, error)
+
+	CreateExternalStopPageWithResponse(ctx context.Context, params *CreateExternalStopPageParams, body CreateExternalStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateExternalStopPageResponse, error)
+
+	// GetExternalStopPageConfigurationWithResponse request
+	GetExternalStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetExternalStopPageConfigurationResponse, error)
+
+	// UpdateExternalStopPageConfigurationWithBodyWithResponse request with any body
+	UpdateExternalStopPageConfigurationWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExternalStopPageConfigurationResponse, error)
+
+	UpdateExternalStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateExternalStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExternalStopPageConfigurationResponse, error)
+
+	// GetStandardStopPageWithResponse request
+	GetStandardStopPageWithResponse(ctx context.Context, params *GetStandardStopPageParams, reqEditors ...RequestEditorFn) (*GetStandardStopPageResponse, error)
+
+	// DeleteStopPageWithResponse request
+	DeleteStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteStopPageResponse, error)
+
+	// GetStopPageWithResponse request
+	GetStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetStopPageResponse, error)
+
+	// UpdateStopPageWithBodyWithResponse request with any body
+	UpdateStopPageWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateStopPageResponse, error)
+
+	UpdateStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateStopPageResponse, error)
+
+	// ShareStopPageWithResponse request
+	ShareStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ShareStopPageResponse, error)
 
 	// ListProtectionTemplatesWithResponse request
 	ListProtectionTemplatesWithResponse(ctx context.Context, params *ListProtectionTemplatesParams, reqEditors ...RequestEditorFn) (*ListProtectionTemplatesResponse, error)
@@ -5554,6 +7210,37 @@ func (r ListMalwareCategoryMacrosResponse) StatusCode() int {
 	return 0
 }
 
+type SetOrganizationStopPageDefaultResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		OrganizationId        openapi_types.UUID  `json:"organizationId"`
+		ReconciliationPending bool                `json:"reconciliationPending"`
+		StopPageId            *openapi_types.UUID `json:"stopPageId"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r SetOrganizationStopPageDefaultResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SetOrganizationStopPageDefaultResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type ListPoliciesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -6084,6 +7771,107 @@ func (r RemoveBetaListCategoryBlockScheduleResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r RemoveBetaListCategoryBlockScheduleResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetPolicyBlockResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		union json.RawMessage
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type GetPolicyBlock2000 struct {
+	ResponseType GetPolicyBlock2000ResponseType `json:"responseType"`
+}
+type GetPolicyBlock2000ResponseType string
+type GetPolicyBlock2001 struct {
+	ResponseType GetPolicyBlock2001ResponseType `json:"responseType"`
+	StopPage     GetPolicyBlock_200_1_StopPage  `json:"stopPage"`
+}
+type GetPolicyBlock2001ResponseType string
+type GetPolicyBlock2001StopPage0 struct {
+	Type GetPolicyBlock2001StopPage0Type `json:"type"`
+}
+type GetPolicyBlock2001StopPage0Type string
+type GetPolicyBlock2001StopPage1 struct {
+	Id   openapi_types.UUID              `json:"id"`
+	Name string                          `json:"name"`
+	Type GetPolicyBlock2001StopPage1Type `json:"type"`
+}
+type GetPolicyBlock2001StopPage1Type string
+type GetPolicyBlock_200_1_StopPage struct {
+	union json.RawMessage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPolicyBlockResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPolicyBlockResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type UpdatePolicyBlockResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		union json.RawMessage
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type UpdatePolicyBlock2000 struct {
+	ResponseType UpdatePolicyBlock2000ResponseType `json:"responseType"`
+}
+type UpdatePolicyBlock2000ResponseType string
+type UpdatePolicyBlock2001 struct {
+	ResponseType UpdatePolicyBlock2001ResponseType `json:"responseType"`
+	StopPage     UpdatePolicyBlock_200_1_StopPage  `json:"stopPage"`
+}
+type UpdatePolicyBlock2001ResponseType string
+type UpdatePolicyBlock2001StopPage0 struct {
+	Type UpdatePolicyBlock2001StopPage0Type `json:"type"`
+}
+type UpdatePolicyBlock2001StopPage0Type string
+type UpdatePolicyBlock2001StopPage1 struct {
+	Id   openapi_types.UUID                 `json:"id"`
+	Name string                             `json:"name"`
+	Type UpdatePolicyBlock2001StopPage1Type `json:"type"`
+}
+type UpdatePolicyBlock2001StopPage1Type string
+type UpdatePolicyBlock_200_1_StopPage struct {
+	union json.RawMessage
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdatePolicyBlockResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdatePolicyBlockResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -6793,6 +8581,91 @@ func (r UpdatePolicySettingsResponse) StatusCode() int {
 	return 0
 }
 
+type GetPolicyStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Configured GetPolicyStopPage_200_Configured `json:"configured"`
+		Effective  GetPolicyStopPage_200_Effective  `json:"effective"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type GetPolicyStopPage200Configured0 struct {
+	ResponseType GetPolicyStopPage200Configured0ResponseType `json:"responseType"`
+}
+type GetPolicyStopPage200Configured0ResponseType string
+type GetPolicyStopPage200Configured1 struct {
+	ResponseType GetPolicyStopPage200Configured1ResponseType `json:"responseType"`
+	StopPage     GetPolicyStopPage_200_Configured_1_StopPage `json:"stopPage"`
+}
+type GetPolicyStopPage200Configured1ResponseType string
+type GetPolicyStopPage200Configured1StopPage0 struct {
+	Type GetPolicyStopPage200Configured1StopPage0Type `json:"type"`
+}
+type GetPolicyStopPage200Configured1StopPage0Type string
+type GetPolicyStopPage200Configured1StopPage1 struct {
+	Id   openapi_types.UUID                           `json:"id"`
+	Name string                                       `json:"name"`
+	Type GetPolicyStopPage200Configured1StopPage1Type `json:"type"`
+}
+type GetPolicyStopPage200Configured1StopPage1Type string
+type GetPolicyStopPage_200_Configured_1_StopPage struct {
+	union json.RawMessage
+}
+type GetPolicyStopPage_200_Configured struct {
+	union json.RawMessage
+}
+type GetPolicyStopPage200Effective0 struct {
+	ResponseType GetPolicyStopPage200Effective0ResponseType `json:"responseType"`
+}
+type GetPolicyStopPage200Effective0ResponseType string
+type GetPolicyStopPage200Effective1 struct {
+	ResponseType       GetPolicyStopPage200Effective1ResponseType `json:"responseType"`
+	Source             GetPolicyStopPage200Effective1Source       `json:"source"`
+	SourceOrganization *struct {
+		Id   openapi_types.UUID `json:"id"`
+		Name string             `json:"name"`
+	} `json:"sourceOrganization"`
+	StopPage GetPolicyStopPage_200_Effective_1_StopPage `json:"stopPage"`
+}
+type GetPolicyStopPage200Effective1ResponseType string
+type GetPolicyStopPage200Effective1Source string
+type GetPolicyStopPage200Effective1StopPage0 struct {
+	Type GetPolicyStopPage200Effective1StopPage0Type `json:"type"`
+}
+type GetPolicyStopPage200Effective1StopPage0Type string
+type GetPolicyStopPage200Effective1StopPage1 struct {
+	Id   openapi_types.UUID                          `json:"id"`
+	Name string                                      `json:"name"`
+	Type GetPolicyStopPage200Effective1StopPage1Type `json:"type"`
+}
+type GetPolicyStopPage200Effective1StopPage1Type string
+type GetPolicyStopPage_200_Effective_1_StopPage struct {
+	union json.RawMessage
+}
+type GetPolicyStopPage_200_Effective struct {
+	union json.RawMessage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPolicyStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPolicyStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type AllowTldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -6896,6 +8769,587 @@ func (r BlockTldsResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r BlockTldsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ListStopPagesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]struct {
+		CanManage        bool                               `json:"canManage"`
+		DeletionBlockers []ListStopPages200DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                 `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                 `json:"isDefault"`
+		IsShared         bool                 `json:"isShared"`
+		Name             string               `json:"name"`
+		OrganizationId   openapi_types.UUID   `json:"organizationId"`
+		OrganizationName *string              `json:"organizationName"`
+		PolicyCount      int                  `json:"policyCount"`
+		Type             ListStopPages200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type ListStopPages200DeletionBlockers string
+type ListStopPages200Type string
+
+// Status returns HTTPResponse.Status
+func (r ListStopPagesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListStopPagesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type CreateCustomStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *struct {
+		CanManage        bool                                      `json:"canManage"`
+		DeletionBlockers []CreateCustomStopPage201DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                        `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                        `json:"isDefault"`
+		IsShared         bool                        `json:"isShared"`
+		Name             string                      `json:"name"`
+		OrganizationId   openapi_types.UUID          `json:"organizationId"`
+		OrganizationName *string                     `json:"organizationName"`
+		PolicyCount      int                         `json:"policyCount"`
+		Type             CreateCustomStopPage201Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type CreateCustomStopPage201DeletionBlockers string
+type CreateCustomStopPage201Type string
+
+// Status returns HTTPResponse.Status
+func (r CreateCustomStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateCustomStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetCustomStopPageConfigurationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		BlockReason   GetCustomStopPageConfiguration200BlockReason   `json:"blockReason"`
+		BlockedDomain GetCustomStopPageConfiguration200BlockedDomain `json:"blockedDomain"`
+		Description   GetCustomStopPageConfiguration_200_Description `json:"description"`
+		Image         GetCustomStopPageConfiguration_200_Image       `json:"image"`
+		Message       GetCustomStopPageConfiguration_200_Message     `json:"message"`
+		Title         GetCustomStopPageConfiguration_200_Title       `json:"title"`
+		UnblockLink   GetCustomStopPageConfiguration200UnblockLink   `json:"unblockLink"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type GetCustomStopPageConfiguration200BlockReason string
+type GetCustomStopPageConfiguration200BlockedDomain string
+type GetCustomStopPageConfiguration200Description0 struct {
+	Display GetCustomStopPageConfiguration200Description0Display `json:"display"`
+	Value   string                                               `json:"value"`
+}
+type GetCustomStopPageConfiguration200Description0Display string
+type GetCustomStopPageConfiguration200Description1 struct {
+	Display GetCustomStopPageConfiguration200Description1Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Description1Display string
+type GetCustomStopPageConfiguration_200_Description struct {
+	union json.RawMessage
+}
+type GetCustomStopPageConfiguration200Image0 struct {
+	Display GetCustomStopPageConfiguration200Image0Display `json:"display"`
+	Value   string                                         `json:"value"`
+}
+type GetCustomStopPageConfiguration200Image0Display string
+type GetCustomStopPageConfiguration200Image1 struct {
+	Display GetCustomStopPageConfiguration200Image1Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Image1Display string
+type GetCustomStopPageConfiguration200Image2 struct {
+	Display GetCustomStopPageConfiguration200Image2Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Image2Display string
+type GetCustomStopPageConfiguration_200_Image struct {
+	union json.RawMessage
+}
+type GetCustomStopPageConfiguration200Message0 struct {
+	Display GetCustomStopPageConfiguration200Message0Display `json:"display"`
+	Value   string                                           `json:"value"`
+}
+type GetCustomStopPageConfiguration200Message0Display string
+type GetCustomStopPageConfiguration200Message1 struct {
+	Display GetCustomStopPageConfiguration200Message1Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Message1Display string
+type GetCustomStopPageConfiguration_200_Message struct {
+	union json.RawMessage
+}
+type GetCustomStopPageConfiguration200Title0 struct {
+	Display GetCustomStopPageConfiguration200Title0Display `json:"display"`
+	Value   string                                         `json:"value"`
+}
+type GetCustomStopPageConfiguration200Title0Display string
+type GetCustomStopPageConfiguration200Title1 struct {
+	Display GetCustomStopPageConfiguration200Title1Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Title1Display string
+type GetCustomStopPageConfiguration200Title2 struct {
+	Display GetCustomStopPageConfiguration200Title2Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Title2Display string
+type GetCustomStopPageConfiguration200Title3 struct {
+	Display GetCustomStopPageConfiguration200Title3Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Title3Display string
+type GetCustomStopPageConfiguration200Title4 struct {
+	Display GetCustomStopPageConfiguration200Title4Display `json:"display"`
+}
+type GetCustomStopPageConfiguration200Title4Display string
+type GetCustomStopPageConfiguration_200_Title struct {
+	union json.RawMessage
+}
+type GetCustomStopPageConfiguration200UnblockLink string
+
+// Status returns HTTPResponse.Status
+func (r GetCustomStopPageConfigurationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetCustomStopPageConfigurationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type UpdateCustomStopPageConfigurationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		BlockReason   UpdateCustomStopPageConfiguration200BlockReason   `json:"blockReason"`
+		BlockedDomain UpdateCustomStopPageConfiguration200BlockedDomain `json:"blockedDomain"`
+		Description   UpdateCustomStopPageConfiguration_200_Description `json:"description"`
+		Image         UpdateCustomStopPageConfiguration_200_Image       `json:"image"`
+		Message       UpdateCustomStopPageConfiguration_200_Message     `json:"message"`
+		Title         UpdateCustomStopPageConfiguration_200_Title       `json:"title"`
+		UnblockLink   UpdateCustomStopPageConfiguration200UnblockLink   `json:"unblockLink"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type UpdateCustomStopPageConfiguration200BlockReason string
+type UpdateCustomStopPageConfiguration200BlockedDomain string
+type UpdateCustomStopPageConfiguration200Description0 struct {
+	Display UpdateCustomStopPageConfiguration200Description0Display `json:"display"`
+	Value   string                                                  `json:"value"`
+}
+type UpdateCustomStopPageConfiguration200Description0Display string
+type UpdateCustomStopPageConfiguration200Description1 struct {
+	Display UpdateCustomStopPageConfiguration200Description1Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Description1Display string
+type UpdateCustomStopPageConfiguration_200_Description struct {
+	union json.RawMessage
+}
+type UpdateCustomStopPageConfiguration200Image0 struct {
+	Display UpdateCustomStopPageConfiguration200Image0Display `json:"display"`
+	Value   string                                            `json:"value"`
+}
+type UpdateCustomStopPageConfiguration200Image0Display string
+type UpdateCustomStopPageConfiguration200Image1 struct {
+	Display UpdateCustomStopPageConfiguration200Image1Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Image1Display string
+type UpdateCustomStopPageConfiguration200Image2 struct {
+	Display UpdateCustomStopPageConfiguration200Image2Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Image2Display string
+type UpdateCustomStopPageConfiguration_200_Image struct {
+	union json.RawMessage
+}
+type UpdateCustomStopPageConfiguration200Message0 struct {
+	Display UpdateCustomStopPageConfiguration200Message0Display `json:"display"`
+	Value   string                                              `json:"value"`
+}
+type UpdateCustomStopPageConfiguration200Message0Display string
+type UpdateCustomStopPageConfiguration200Message1 struct {
+	Display UpdateCustomStopPageConfiguration200Message1Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Message1Display string
+type UpdateCustomStopPageConfiguration_200_Message struct {
+	union json.RawMessage
+}
+type UpdateCustomStopPageConfiguration200Title0 struct {
+	Display UpdateCustomStopPageConfiguration200Title0Display `json:"display"`
+	Value   string                                            `json:"value"`
+}
+type UpdateCustomStopPageConfiguration200Title0Display string
+type UpdateCustomStopPageConfiguration200Title1 struct {
+	Display UpdateCustomStopPageConfiguration200Title1Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Title1Display string
+type UpdateCustomStopPageConfiguration200Title2 struct {
+	Display UpdateCustomStopPageConfiguration200Title2Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Title2Display string
+type UpdateCustomStopPageConfiguration200Title3 struct {
+	Display UpdateCustomStopPageConfiguration200Title3Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Title3Display string
+type UpdateCustomStopPageConfiguration200Title4 struct {
+	Display UpdateCustomStopPageConfiguration200Title4Display `json:"display"`
+}
+type UpdateCustomStopPageConfiguration200Title4Display string
+type UpdateCustomStopPageConfiguration_200_Title struct {
+	union json.RawMessage
+}
+type UpdateCustomStopPageConfiguration200UnblockLink string
+
+// Status returns HTTPResponse.Status
+func (r UpdateCustomStopPageConfigurationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateCustomStopPageConfigurationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type CreateExternalStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *struct {
+		CanManage        bool                                        `json:"canManage"`
+		DeletionBlockers []CreateExternalStopPage201DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                          `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                          `json:"isDefault"`
+		IsShared         bool                          `json:"isShared"`
+		Name             string                        `json:"name"`
+		OrganizationId   openapi_types.UUID            `json:"organizationId"`
+		OrganizationName *string                       `json:"organizationName"`
+		PolicyCount      int                           `json:"policyCount"`
+		Type             CreateExternalStopPage201Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type CreateExternalStopPage201DeletionBlockers string
+type CreateExternalStopPage201Type string
+
+// Status returns HTTPResponse.Status
+func (r CreateExternalStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateExternalStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetExternalStopPageConfigurationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		ExternalUrl string `json:"externalUrl"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r GetExternalStopPageConfigurationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetExternalStopPageConfigurationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type UpdateExternalStopPageConfigurationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		ExternalUrl string `json:"externalUrl"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateExternalStopPageConfigurationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateExternalStopPageConfigurationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetStandardStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		PolicyIds []openapi_types.UUID       `json:"policyIds"`
+		Type      GetStandardStopPage200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type GetStandardStopPage200Type string
+
+// Status returns HTTPResponse.Status
+func (r GetStandardStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetStandardStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type DeleteStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CanManage        bool                                `json:"canManage"`
+		DeletionBlockers []DeleteStopPage200DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                  `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                  `json:"isDefault"`
+		IsShared         bool                  `json:"isShared"`
+		Name             string                `json:"name"`
+		OrganizationId   openapi_types.UUID    `json:"organizationId"`
+		OrganizationName *string               `json:"organizationName"`
+		PolicyCount      int                   `json:"policyCount"`
+		Type             DeleteStopPage200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type DeleteStopPage200DeletionBlockers string
+type DeleteStopPage200Type string
+
+// Status returns HTTPResponse.Status
+func (r DeleteStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CanManage        bool                             `json:"canManage"`
+		DeletionBlockers []GetStopPage200DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID               `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool               `json:"isDefault"`
+		IsShared         bool               `json:"isShared"`
+		Name             string             `json:"name"`
+		OrganizationId   openapi_types.UUID `json:"organizationId"`
+		OrganizationName *string            `json:"organizationName"`
+		PolicyCount      int                `json:"policyCount"`
+		Type             GetStopPage200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type GetStopPage200DeletionBlockers string
+type GetStopPage200Type string
+
+// Status returns HTTPResponse.Status
+func (r GetStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type UpdateStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CanManage        bool                                `json:"canManage"`
+		DeletionBlockers []UpdateStopPage200DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                  `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                  `json:"isDefault"`
+		IsShared         bool                  `json:"isShared"`
+		Name             string                `json:"name"`
+		OrganizationId   openapi_types.UUID    `json:"organizationId"`
+		OrganizationName *string               `json:"organizationName"`
+		PolicyCount      int                   `json:"policyCount"`
+		Type             UpdateStopPage200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON422 *ValidationErrorResponse
+	JSON500 *ServerErrorResponse
+}
+type UpdateStopPage200DeletionBlockers string
+type UpdateStopPage200Type string
+
+// Status returns HTTPResponse.Status
+func (r UpdateStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateStopPageResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type ShareStopPageResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CanManage        bool                               `json:"canManage"`
+		DeletionBlockers []ShareStopPage200DeletionBlockers `json:"deletionBlockers"`
+		Id               openapi_types.UUID                 `json:"id"`
+
+		// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+		IsDefault        bool                 `json:"isDefault"`
+		IsShared         bool                 `json:"isShared"`
+		Name             string               `json:"name"`
+		OrganizationId   openapi_types.UUID   `json:"organizationId"`
+		OrganizationName *string              `json:"organizationName"`
+		PolicyCount      int                  `json:"policyCount"`
+		Type             ShareStopPage200Type `json:"type"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON404 *NotFoundResponse
+	JSON500 *ServerErrorResponse
+}
+type ShareStopPage200DeletionBlockers string
+type ShareStopPage200Type string
+
+// Status returns HTTPResponse.Status
+func (r ShareStopPageResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ShareStopPageResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -7258,6 +9712,23 @@ func (c *ClientWithResponses) ListMalwareCategoryMacrosWithResponse(ctx context.
 	return ParseListMalwareCategoryMacrosResponse(rsp)
 }
 
+// SetOrganizationStopPageDefaultWithBodyWithResponse request with arbitrary body returning *SetOrganizationStopPageDefaultResponse
+func (c *ClientWithResponses) SetOrganizationStopPageDefaultWithBodyWithResponse(ctx context.Context, organizationId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationStopPageDefaultResponse, error) {
+	rsp, err := c.SetOrganizationStopPageDefaultWithBody(ctx, organizationId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetOrganizationStopPageDefaultResponse(rsp)
+}
+
+func (c *ClientWithResponses) SetOrganizationStopPageDefaultWithResponse(ctx context.Context, organizationId openapi_types.UUID, body SetOrganizationStopPageDefaultJSONRequestBody, reqEditors ...RequestEditorFn) (*SetOrganizationStopPageDefaultResponse, error) {
+	rsp, err := c.SetOrganizationStopPageDefault(ctx, organizationId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetOrganizationStopPageDefaultResponse(rsp)
+}
+
 // ListPoliciesWithResponse request returning *ListPoliciesResponse
 func (c *ClientWithResponses) ListPoliciesWithResponse(ctx context.Context, params *ListPoliciesParams, reqEditors ...RequestEditorFn) (*ListPoliciesResponse, error) {
 	rsp, err := c.ListPolicies(ctx, params, reqEditors...)
@@ -7455,6 +9926,32 @@ func (c *ClientWithResponses) RemoveBetaListCategoryBlockScheduleWithResponse(ct
 		return nil, err
 	}
 	return ParseRemoveBetaListCategoryBlockScheduleResponse(rsp)
+}
+
+// GetPolicyBlockWithResponse request returning *GetPolicyBlockResponse
+func (c *ClientWithResponses) GetPolicyBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyBlockResponse, error) {
+	rsp, err := c.GetPolicyBlock(ctx, policyId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPolicyBlockResponse(rsp)
+}
+
+// UpdatePolicyBlockWithBodyWithResponse request with arbitrary body returning *UpdatePolicyBlockResponse
+func (c *ClientWithResponses) UpdatePolicyBlockWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdatePolicyBlockResponse, error) {
+	rsp, err := c.UpdatePolicyBlockWithBody(ctx, policyId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdatePolicyBlockResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdatePolicyBlockWithResponse(ctx context.Context, policyId openapi_types.UUID, body UpdatePolicyBlockJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdatePolicyBlockResponse, error) {
+	rsp, err := c.UpdatePolicyBlock(ctx, policyId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdatePolicyBlockResponse(rsp)
 }
 
 // AllowCategoriesWithBodyWithResponse request with arbitrary body returning *AllowCategoriesResponse
@@ -7726,6 +10223,15 @@ func (c *ClientWithResponses) UpdatePolicySettingsWithResponse(ctx context.Conte
 	return ParseUpdatePolicySettingsResponse(rsp)
 }
 
+// GetPolicyStopPageWithResponse request returning *GetPolicyStopPageResponse
+func (c *ClientWithResponses) GetPolicyStopPageWithResponse(ctx context.Context, policyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetPolicyStopPageResponse, error) {
+	rsp, err := c.GetPolicyStopPage(ctx, policyId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPolicyStopPageResponse(rsp)
+}
+
 // AllowTldsWithBodyWithResponse request with arbitrary body returning *AllowTldsResponse
 func (c *ClientWithResponses) AllowTldsWithBodyWithResponse(ctx context.Context, policyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AllowTldsResponse, error) {
 	rsp, err := c.AllowTldsWithBody(ctx, policyId, contentType, body, reqEditors...)
@@ -7767,6 +10273,154 @@ func (c *ClientWithResponses) BlockTldsWithResponse(ctx context.Context, policyI
 		return nil, err
 	}
 	return ParseBlockTldsResponse(rsp)
+}
+
+// ListStopPagesWithResponse request returning *ListStopPagesResponse
+func (c *ClientWithResponses) ListStopPagesWithResponse(ctx context.Context, params *ListStopPagesParams, reqEditors ...RequestEditorFn) (*ListStopPagesResponse, error) {
+	rsp, err := c.ListStopPages(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListStopPagesResponse(rsp)
+}
+
+// CreateCustomStopPageWithBodyWithResponse request with arbitrary body returning *CreateCustomStopPageResponse
+func (c *ClientWithResponses) CreateCustomStopPageWithBodyWithResponse(ctx context.Context, params *CreateCustomStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateCustomStopPageResponse, error) {
+	rsp, err := c.CreateCustomStopPageWithBody(ctx, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateCustomStopPageResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateCustomStopPageWithResponse(ctx context.Context, params *CreateCustomStopPageParams, body CreateCustomStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateCustomStopPageResponse, error) {
+	rsp, err := c.CreateCustomStopPage(ctx, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateCustomStopPageResponse(rsp)
+}
+
+// GetCustomStopPageConfigurationWithResponse request returning *GetCustomStopPageConfigurationResponse
+func (c *ClientWithResponses) GetCustomStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetCustomStopPageConfigurationResponse, error) {
+	rsp, err := c.GetCustomStopPageConfiguration(ctx, stopPageId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetCustomStopPageConfigurationResponse(rsp)
+}
+
+// UpdateCustomStopPageConfigurationWithBodyWithResponse request with arbitrary body returning *UpdateCustomStopPageConfigurationResponse
+func (c *ClientWithResponses) UpdateCustomStopPageConfigurationWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateCustomStopPageConfigurationResponse, error) {
+	rsp, err := c.UpdateCustomStopPageConfigurationWithBody(ctx, stopPageId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateCustomStopPageConfigurationResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateCustomStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateCustomStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateCustomStopPageConfigurationResponse, error) {
+	rsp, err := c.UpdateCustomStopPageConfiguration(ctx, stopPageId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateCustomStopPageConfigurationResponse(rsp)
+}
+
+// CreateExternalStopPageWithBodyWithResponse request with arbitrary body returning *CreateExternalStopPageResponse
+func (c *ClientWithResponses) CreateExternalStopPageWithBodyWithResponse(ctx context.Context, params *CreateExternalStopPageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateExternalStopPageResponse, error) {
+	rsp, err := c.CreateExternalStopPageWithBody(ctx, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateExternalStopPageResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateExternalStopPageWithResponse(ctx context.Context, params *CreateExternalStopPageParams, body CreateExternalStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateExternalStopPageResponse, error) {
+	rsp, err := c.CreateExternalStopPage(ctx, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateExternalStopPageResponse(rsp)
+}
+
+// GetExternalStopPageConfigurationWithResponse request returning *GetExternalStopPageConfigurationResponse
+func (c *ClientWithResponses) GetExternalStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetExternalStopPageConfigurationResponse, error) {
+	rsp, err := c.GetExternalStopPageConfiguration(ctx, stopPageId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetExternalStopPageConfigurationResponse(rsp)
+}
+
+// UpdateExternalStopPageConfigurationWithBodyWithResponse request with arbitrary body returning *UpdateExternalStopPageConfigurationResponse
+func (c *ClientWithResponses) UpdateExternalStopPageConfigurationWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateExternalStopPageConfigurationResponse, error) {
+	rsp, err := c.UpdateExternalStopPageConfigurationWithBody(ctx, stopPageId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateExternalStopPageConfigurationResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateExternalStopPageConfigurationWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateExternalStopPageConfigurationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateExternalStopPageConfigurationResponse, error) {
+	rsp, err := c.UpdateExternalStopPageConfiguration(ctx, stopPageId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateExternalStopPageConfigurationResponse(rsp)
+}
+
+// GetStandardStopPageWithResponse request returning *GetStandardStopPageResponse
+func (c *ClientWithResponses) GetStandardStopPageWithResponse(ctx context.Context, params *GetStandardStopPageParams, reqEditors ...RequestEditorFn) (*GetStandardStopPageResponse, error) {
+	rsp, err := c.GetStandardStopPage(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetStandardStopPageResponse(rsp)
+}
+
+// DeleteStopPageWithResponse request returning *DeleteStopPageResponse
+func (c *ClientWithResponses) DeleteStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteStopPageResponse, error) {
+	rsp, err := c.DeleteStopPage(ctx, stopPageId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteStopPageResponse(rsp)
+}
+
+// GetStopPageWithResponse request returning *GetStopPageResponse
+func (c *ClientWithResponses) GetStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetStopPageResponse, error) {
+	rsp, err := c.GetStopPage(ctx, stopPageId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetStopPageResponse(rsp)
+}
+
+// UpdateStopPageWithBodyWithResponse request with arbitrary body returning *UpdateStopPageResponse
+func (c *ClientWithResponses) UpdateStopPageWithBodyWithResponse(ctx context.Context, stopPageId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateStopPageResponse, error) {
+	rsp, err := c.UpdateStopPageWithBody(ctx, stopPageId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateStopPageResponse(rsp)
+}
+
+func (c *ClientWithResponses) UpdateStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, body UpdateStopPageJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateStopPageResponse, error) {
+	rsp, err := c.UpdateStopPage(ctx, stopPageId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateStopPageResponse(rsp)
+}
+
+// ShareStopPageWithResponse request returning *ShareStopPageResponse
+func (c *ClientWithResponses) ShareStopPageWithResponse(ctx context.Context, stopPageId openapi_types.UUID, reqEditors ...RequestEditorFn) (*ShareStopPageResponse, error) {
+	rsp, err := c.ShareStopPage(ctx, stopPageId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseShareStopPageResponse(rsp)
 }
 
 // ListProtectionTemplatesWithResponse request returning *ListProtectionTemplatesResponse
@@ -8925,6 +11579,71 @@ func ParseListMalwareCategoryMacrosResponse(rsp *http.Response) (*ListMalwareCat
 	return response, nil
 }
 
+// ParseSetOrganizationStopPageDefaultResponse parses an HTTP response from a SetOrganizationStopPageDefaultWithResponse call
+func ParseSetOrganizationStopPageDefaultResponse(rsp *http.Response) (*SetOrganizationStopPageDefaultResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SetOrganizationStopPageDefaultResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			OrganizationId        openapi_types.UUID  `json:"organizationId"`
+			ReconciliationPending bool                `json:"reconciliationPending"`
+			StopPageId            *openapi_types.UUID `json:"stopPageId"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseListPoliciesResponse parses an HTTP response from a ListPoliciesWithResponse call
 func ParseListPoliciesResponse(rsp *http.Response) (*ListPoliciesResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -9888,6 +12607,125 @@ func ParseRemoveBetaListCategoryBlockScheduleResponse(rsp *http.Response) (*Remo
 			return nil, err
 		}
 		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPolicyBlockResponse parses an HTTP response from a GetPolicyBlockWithResponse call
+func ParseGetPolicyBlockResponse(rsp *http.Response) (*GetPolicyBlockResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPolicyBlockResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			union json.RawMessage
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdatePolicyBlockResponse parses an HTTP response from a UpdatePolicyBlockWithResponse call
+func ParseUpdatePolicyBlockResponse(rsp *http.Response) (*UpdatePolicyBlockResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdatePolicyBlockResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			union json.RawMessage
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest ServerErrorResponse
@@ -11239,6 +14077,63 @@ func ParseUpdatePolicySettingsResponse(rsp *http.Response) (*UpdatePolicySetting
 	return response, nil
 }
 
+// ParseGetPolicyStopPageResponse parses an HTTP response from a GetPolicyStopPageWithResponse call
+func ParseGetPolicyStopPageResponse(rsp *http.Response) (*GetPolicyStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPolicyStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Configured GetPolicyStopPage_200_Configured `json:"configured"`
+			Effective  GetPolicyStopPage_200_Effective  `json:"effective"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseAllowTldsResponse parses an HTTP response from a AllowTldsWithResponse call
 func ParseAllowTldsResponse(rsp *http.Response) (*AllowTldsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -11431,6 +14326,810 @@ func ParseBlockTldsResponse(rsp *http.Response) (*BlockTldsResponse, error) {
 			return nil, err
 		}
 		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListStopPagesResponse parses an HTTP response from a ListStopPagesWithResponse call
+func ParseListStopPagesResponse(rsp *http.Response) (*ListStopPagesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListStopPagesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []struct {
+			CanManage        bool                               `json:"canManage"`
+			DeletionBlockers []ListStopPages200DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                 `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                 `json:"isDefault"`
+			IsShared         bool                 `json:"isShared"`
+			Name             string               `json:"name"`
+			OrganizationId   openapi_types.UUID   `json:"organizationId"`
+			OrganizationName *string              `json:"organizationName"`
+			PolicyCount      int                  `json:"policyCount"`
+			Type             ListStopPages200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateCustomStopPageResponse parses an HTTP response from a CreateCustomStopPageWithResponse call
+func ParseCreateCustomStopPageResponse(rsp *http.Response) (*CreateCustomStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateCustomStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest struct {
+			CanManage        bool                                      `json:"canManage"`
+			DeletionBlockers []CreateCustomStopPage201DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                        `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                        `json:"isDefault"`
+			IsShared         bool                        `json:"isShared"`
+			Name             string                      `json:"name"`
+			OrganizationId   openapi_types.UUID          `json:"organizationId"`
+			OrganizationName *string                     `json:"organizationName"`
+			PolicyCount      int                         `json:"policyCount"`
+			Type             CreateCustomStopPage201Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetCustomStopPageConfigurationResponse parses an HTTP response from a GetCustomStopPageConfigurationWithResponse call
+func ParseGetCustomStopPageConfigurationResponse(rsp *http.Response) (*GetCustomStopPageConfigurationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetCustomStopPageConfigurationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			BlockReason   GetCustomStopPageConfiguration200BlockReason   `json:"blockReason"`
+			BlockedDomain GetCustomStopPageConfiguration200BlockedDomain `json:"blockedDomain"`
+			Description   GetCustomStopPageConfiguration_200_Description `json:"description"`
+			Image         GetCustomStopPageConfiguration_200_Image       `json:"image"`
+			Message       GetCustomStopPageConfiguration_200_Message     `json:"message"`
+			Title         GetCustomStopPageConfiguration_200_Title       `json:"title"`
+			UnblockLink   GetCustomStopPageConfiguration200UnblockLink   `json:"unblockLink"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateCustomStopPageConfigurationResponse parses an HTTP response from a UpdateCustomStopPageConfigurationWithResponse call
+func ParseUpdateCustomStopPageConfigurationResponse(rsp *http.Response) (*UpdateCustomStopPageConfigurationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateCustomStopPageConfigurationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			BlockReason   UpdateCustomStopPageConfiguration200BlockReason   `json:"blockReason"`
+			BlockedDomain UpdateCustomStopPageConfiguration200BlockedDomain `json:"blockedDomain"`
+			Description   UpdateCustomStopPageConfiguration_200_Description `json:"description"`
+			Image         UpdateCustomStopPageConfiguration_200_Image       `json:"image"`
+			Message       UpdateCustomStopPageConfiguration_200_Message     `json:"message"`
+			Title         UpdateCustomStopPageConfiguration_200_Title       `json:"title"`
+			UnblockLink   UpdateCustomStopPageConfiguration200UnblockLink   `json:"unblockLink"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateExternalStopPageResponse parses an HTTP response from a CreateExternalStopPageWithResponse call
+func ParseCreateExternalStopPageResponse(rsp *http.Response) (*CreateExternalStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateExternalStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest struct {
+			CanManage        bool                                        `json:"canManage"`
+			DeletionBlockers []CreateExternalStopPage201DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                          `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                          `json:"isDefault"`
+			IsShared         bool                          `json:"isShared"`
+			Name             string                        `json:"name"`
+			OrganizationId   openapi_types.UUID            `json:"organizationId"`
+			OrganizationName *string                       `json:"organizationName"`
+			PolicyCount      int                           `json:"policyCount"`
+			Type             CreateExternalStopPage201Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetExternalStopPageConfigurationResponse parses an HTTP response from a GetExternalStopPageConfigurationWithResponse call
+func ParseGetExternalStopPageConfigurationResponse(rsp *http.Response) (*GetExternalStopPageConfigurationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetExternalStopPageConfigurationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			ExternalUrl string `json:"externalUrl"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateExternalStopPageConfigurationResponse parses an HTTP response from a UpdateExternalStopPageConfigurationWithResponse call
+func ParseUpdateExternalStopPageConfigurationResponse(rsp *http.Response) (*UpdateExternalStopPageConfigurationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateExternalStopPageConfigurationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			ExternalUrl string `json:"externalUrl"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetStandardStopPageResponse parses an HTTP response from a GetStandardStopPageWithResponse call
+func ParseGetStandardStopPageResponse(rsp *http.Response) (*GetStandardStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetStandardStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			PolicyIds []openapi_types.UUID       `json:"policyIds"`
+			Type      GetStandardStopPage200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteStopPageResponse parses an HTTP response from a DeleteStopPageWithResponse call
+func ParseDeleteStopPageResponse(rsp *http.Response) (*DeleteStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CanManage        bool                                `json:"canManage"`
+			DeletionBlockers []DeleteStopPage200DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                  `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                  `json:"isDefault"`
+			IsShared         bool                  `json:"isShared"`
+			Name             string                `json:"name"`
+			OrganizationId   openapi_types.UUID    `json:"organizationId"`
+			OrganizationName *string               `json:"organizationName"`
+			PolicyCount      int                   `json:"policyCount"`
+			Type             DeleteStopPage200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetStopPageResponse parses an HTTP response from a GetStopPageWithResponse call
+func ParseGetStopPageResponse(rsp *http.Response) (*GetStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CanManage        bool                             `json:"canManage"`
+			DeletionBlockers []GetStopPage200DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID               `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool               `json:"isDefault"`
+			IsShared         bool               `json:"isShared"`
+			Name             string             `json:"name"`
+			OrganizationId   openapi_types.UUID `json:"organizationId"`
+			OrganizationName *string            `json:"organizationName"`
+			PolicyCount      int                `json:"policyCount"`
+			Type             GetStopPage200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateStopPageResponse parses an HTTP response from a UpdateStopPageWithResponse call
+func ParseUpdateStopPageResponse(rsp *http.Response) (*UpdateStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CanManage        bool                                `json:"canManage"`
+			DeletionBlockers []UpdateStopPage200DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                  `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                  `json:"isDefault"`
+			IsShared         bool                  `json:"isShared"`
+			Name             string                `json:"name"`
+			OrganizationId   openapi_types.UUID    `json:"organizationId"`
+			OrganizationName *string               `json:"organizationName"`
+			PolicyCount      int                   `json:"policyCount"`
+			Type             UpdateStopPage200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest ValidationErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseShareStopPageResponse parses an HTTP response from a ShareStopPageWithResponse call
+func ParseShareStopPageResponse(rsp *http.Response) (*ShareStopPageResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ShareStopPageResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CanManage        bool                               `json:"canManage"`
+			DeletionBlockers []ShareStopPage200DeletionBlockers `json:"deletionBlockers"`
+			Id               openapi_types.UUID                 `json:"id"`
+
+			// IsDefault True when this page is the local default of its owner organization, even when the viewer is a descendant. It is not the viewer's effective default.
+			IsDefault        bool                 `json:"isDefault"`
+			IsShared         bool                 `json:"isShared"`
+			Name             string               `json:"name"`
+			OrganizationId   openapi_types.UUID   `json:"organizationId"`
+			OrganizationName *string              `json:"organizationName"`
+			PolicyCount      int                  `json:"policyCount"`
+			Type             ShareStopPage200Type `json:"type"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFoundResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest ServerErrorResponse

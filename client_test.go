@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/FlashStart-Group/client-go/v8/authentication"
-	"github.com/FlashStart-Group/client-go/v8/network"
+	"github.com/FlashStart-Group/client-go/v9/authentication"
+	"github.com/FlashStart-Group/client-go/v9/network"
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 

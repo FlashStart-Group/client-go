@@ -5,11 +5,11 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/FlashStart-Group/client-go/v8/authentication"
-	"github.com/FlashStart-Group/client-go/v8/integration"
-	"github.com/FlashStart-Group/client-go/v8/network"
-	"github.com/FlashStart-Group/client-go/v8/protection"
-	"github.com/FlashStart-Group/client-go/v8/report"
+	"github.com/FlashStart-Group/client-go/v9/authentication"
+	"github.com/FlashStart-Group/client-go/v9/integration"
+	"github.com/FlashStart-Group/client-go/v9/network"
+	"github.com/FlashStart-Group/client-go/v9/protection"
+	"github.com/FlashStart-Group/client-go/v9/report"
 )
 
 const (

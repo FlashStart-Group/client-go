@@ -3638,18 +3638,19 @@ type GetDevicesResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                  `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                  `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                       `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                  `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                  `json:"diskUsage"`
 			FirmwareVersion      *string                                   `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                   `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *GetDevices_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *GetDevices_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *GetDevices_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                   `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                   `json:"metadata,omitempty"`
 			OsVersion            *string                                   `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                     `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                  `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                  `json:"ramUsage"`
 			ReleaseVersion       *string                                   `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                  `json:"temperature,omitempty"`
 			Uptime               *float32                                  `json:"uptime,omitempty"`
@@ -3670,6 +3671,11 @@ type GetDevicesResponse struct {
 type GetDevices200InfoLastLoginCheckTime0 = string
 type GetDevices200InfoLastLoginCheckTime1 = time.Time
 type GetDevices_200_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type GetDevices200InfoLastStatsCheckTime0 = string
+type GetDevices200InfoLastStatsCheckTime1 = time.Time
+type GetDevices_200_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type GetDevices200InfoLastVersionCheckTime0 = string
@@ -3708,18 +3714,19 @@ type CreateDeviceResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                    `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                    `json:"diskUsage"`
 			FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *CreateDevice_201_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *CreateDevice_201_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *CreateDevice_201_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 			OsVersion            *string                                     `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                    `json:"ramUsage"`
 			ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                    `json:"temperature,omitempty"`
 			Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -3740,6 +3747,11 @@ type CreateDeviceResponse struct {
 type CreateDevice201InfoLastLoginCheckTime0 = string
 type CreateDevice201InfoLastLoginCheckTime1 = time.Time
 type CreateDevice_201_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type CreateDevice201InfoLastStatsCheckTime0 = string
+type CreateDevice201InfoLastStatsCheckTime1 = time.Time
+type CreateDevice_201_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type CreateDevice201InfoLastVersionCheckTime0 = string
@@ -3778,18 +3790,19 @@ type DeleteDeviceResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                    `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                    `json:"diskUsage"`
 			FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *DeleteDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *DeleteDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *DeleteDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 			OsVersion            *string                                     `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                    `json:"ramUsage"`
 			ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                    `json:"temperature,omitempty"`
 			Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -3810,6 +3823,11 @@ type DeleteDeviceResponse struct {
 type DeleteDevice200InfoLastLoginCheckTime0 = string
 type DeleteDevice200InfoLastLoginCheckTime1 = time.Time
 type DeleteDevice_200_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type DeleteDevice200InfoLastStatsCheckTime0 = string
+type DeleteDevice200InfoLastStatsCheckTime1 = time.Time
+type DeleteDevice_200_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type DeleteDevice200InfoLastVersionCheckTime0 = string
@@ -3848,18 +3866,19 @@ type GetDeviceResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                 `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                 `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                      `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                 `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                 `json:"diskUsage"`
 			FirmwareVersion      *string                                  `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                  `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *GetDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *GetDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *GetDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                  `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                  `json:"metadata,omitempty"`
 			OsVersion            *string                                  `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                    `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                 `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                 `json:"ramUsage"`
 			ReleaseVersion       *string                                  `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                 `json:"temperature,omitempty"`
 			Uptime               *float32                                 `json:"uptime,omitempty"`
@@ -3880,6 +3899,11 @@ type GetDeviceResponse struct {
 type GetDevice200InfoLastLoginCheckTime0 = string
 type GetDevice200InfoLastLoginCheckTime1 = time.Time
 type GetDevice_200_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type GetDevice200InfoLastStatsCheckTime0 = string
+type GetDevice200InfoLastStatsCheckTime1 = time.Time
+type GetDevice_200_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type GetDevice200InfoLastVersionCheckTime0 = string
@@ -3918,18 +3942,19 @@ type UpdateDeviceResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                    `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                    `json:"diskUsage"`
 			FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *UpdateDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *UpdateDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *UpdateDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 			OsVersion            *string                                     `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                    `json:"ramUsage"`
 			ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                    `json:"temperature,omitempty"`
 			Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -3950,6 +3975,11 @@ type UpdateDeviceResponse struct {
 type UpdateDevice200InfoLastLoginCheckTime0 = string
 type UpdateDevice200InfoLastLoginCheckTime1 = time.Time
 type UpdateDevice_200_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type UpdateDevice200InfoLastStatsCheckTime0 = string
+type UpdateDevice200InfoLastStatsCheckTime1 = time.Time
+type UpdateDevice_200_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type UpdateDevice200InfoLastVersionCheckTime0 = string
@@ -3988,18 +4018,19 @@ type UpdateDeviceCatchAllResponse struct {
 		} `json:"catchAllRule"`
 		Id   openapi_types.UUID `json:"id"`
 		Info struct {
-			CpuUsage             *float32                                            `json:"cpuUsage,omitempty"`
+			CpuUsage             *float32                                            `json:"cpuUsage"`
 			DeviceId             *openapi_types.UUID                                 `json:"deviceId,omitempty"`
-			DiskUsage            *float32                                            `json:"diskUsage,omitempty"`
+			DiskUsage            *float32                                            `json:"diskUsage"`
 			FirmwareVersion      *string                                             `json:"firmwareVersion,omitempty"`
 			HardwareModel        *string                                             `json:"hardwareModel,omitempty"`
 			LastLoginCheckTime   *UpdateDeviceCatchAll_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+			LastStatsCheckTime   *UpdateDeviceCatchAll_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 			LastVersionCheckTime *UpdateDeviceCatchAll_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 			LocalDnsIp           *string                                             `json:"localDnsIp,omitempty"`
 			Metadata             *map[string]interface{}                             `json:"metadata,omitempty"`
 			OsVersion            *string                                             `json:"osVersion,omitempty"`
 			PublicDnsFallback    *bool                                               `json:"publicDnsFallback,omitempty"`
-			RamUsage             *float32                                            `json:"ramUsage,omitempty"`
+			RamUsage             *float32                                            `json:"ramUsage"`
 			ReleaseVersion       *string                                             `json:"releaseVersion,omitempty"`
 			Temperature          *float32                                            `json:"temperature,omitempty"`
 			Uptime               *float32                                            `json:"uptime,omitempty"`
@@ -4020,6 +4051,11 @@ type UpdateDeviceCatchAllResponse struct {
 type UpdateDeviceCatchAll200InfoLastLoginCheckTime0 = string
 type UpdateDeviceCatchAll200InfoLastLoginCheckTime1 = time.Time
 type UpdateDeviceCatchAll_200_Info_LastLoginCheckTime struct {
+	union json.RawMessage
+}
+type UpdateDeviceCatchAll200InfoLastStatsCheckTime0 = string
+type UpdateDeviceCatchAll200InfoLastStatsCheckTime1 = time.Time
+type UpdateDeviceCatchAll_200_Info_LastStatsCheckTime struct {
 	union json.RawMessage
 }
 type UpdateDeviceCatchAll200InfoLastVersionCheckTime0 = string
@@ -4972,6 +5008,7 @@ type GetRouters200NetworksPrimaryNetwork1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -4997,6 +5034,7 @@ type GetRouters200NetworksSecondaryNetworks1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5059,6 +5097,7 @@ type CreateRouter201NetworksPrimaryNetwork1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5084,6 +5123,7 @@ type CreateRouter201NetworksSecondaryNetworks1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5146,6 +5186,7 @@ type DeleteRouter200NetworksPrimaryNetwork1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5171,6 +5212,7 @@ type DeleteRouter200NetworksSecondaryNetworks1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5233,6 +5275,7 @@ type GetRouter200NetworksPrimaryNetwork1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5258,6 +5301,7 @@ type GetRouter200NetworksSecondaryNetworks1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5320,6 +5364,7 @@ type UpdateRouter200NetworksPrimaryNetwork1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5345,6 +5390,7 @@ type UpdateRouter200NetworksSecondaryNetworks1 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5448,6 +5494,7 @@ type GetRouterNetworks2001 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5502,6 +5549,7 @@ type UpdateDynamicInternalRouterNetwork2001 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -5553,6 +5601,7 @@ type UpdateEncryptedRouterNetwork2001 struct {
 	Ddns struct {
 		Domain   string              `json:"domain"`
 		Id       *openapi_types.UUID `json:"id,omitempty"`
+		LastSync *time.Time          `json:"lastSync,omitempty"`
 		Password *string             `json:"password,omitempty"`
 		Username string              `json:"username"`
 	} `json:"ddns"`
@@ -6612,18 +6661,19 @@ func ParseGetDevicesResponse(rsp *http.Response) (*GetDevicesResponse, error) {
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                  `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                  `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                       `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                  `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                  `json:"diskUsage"`
 				FirmwareVersion      *string                                   `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                   `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *GetDevices_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *GetDevices_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *GetDevices_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                   `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                   `json:"metadata,omitempty"`
 				OsVersion            *string                                   `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                     `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                  `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                  `json:"ramUsage"`
 				ReleaseVersion       *string                                   `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                  `json:"temperature,omitempty"`
 				Uptime               *float32                                  `json:"uptime,omitempty"`
@@ -6705,18 +6755,19 @@ func ParseCreateDeviceResponse(rsp *http.Response) (*CreateDeviceResponse, error
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                    `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                    `json:"diskUsage"`
 				FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *CreateDevice_201_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *CreateDevice_201_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *CreateDevice_201_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 				OsVersion            *string                                     `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                    `json:"ramUsage"`
 				ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                    `json:"temperature,omitempty"`
 				Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -6798,18 +6849,19 @@ func ParseDeleteDeviceResponse(rsp *http.Response) (*DeleteDeviceResponse, error
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                    `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                    `json:"diskUsage"`
 				FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *DeleteDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *DeleteDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *DeleteDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 				OsVersion            *string                                     `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                    `json:"ramUsage"`
 				ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                    `json:"temperature,omitempty"`
 				Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -6891,18 +6943,19 @@ func ParseGetDeviceResponse(rsp *http.Response) (*GetDeviceResponse, error) {
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                 `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                 `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                      `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                 `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                 `json:"diskUsage"`
 				FirmwareVersion      *string                                  `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                  `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *GetDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *GetDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *GetDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                  `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                  `json:"metadata,omitempty"`
 				OsVersion            *string                                  `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                    `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                 `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                 `json:"ramUsage"`
 				ReleaseVersion       *string                                  `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                 `json:"temperature,omitempty"`
 				Uptime               *float32                                 `json:"uptime,omitempty"`
@@ -6984,18 +7037,19 @@ func ParseUpdateDeviceResponse(rsp *http.Response) (*UpdateDeviceResponse, error
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                    `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                    `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                         `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                    `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                    `json:"diskUsage"`
 				FirmwareVersion      *string                                     `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                     `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *UpdateDevice_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *UpdateDevice_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *UpdateDevice_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                     `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                     `json:"metadata,omitempty"`
 				OsVersion            *string                                     `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                       `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                    `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                    `json:"ramUsage"`
 				ReleaseVersion       *string                                     `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                    `json:"temperature,omitempty"`
 				Uptime               *float32                                    `json:"uptime,omitempty"`
@@ -7077,18 +7131,19 @@ func ParseUpdateDeviceCatchAllResponse(rsp *http.Response) (*UpdateDeviceCatchAl
 			} `json:"catchAllRule"`
 			Id   openapi_types.UUID `json:"id"`
 			Info struct {
-				CpuUsage             *float32                                            `json:"cpuUsage,omitempty"`
+				CpuUsage             *float32                                            `json:"cpuUsage"`
 				DeviceId             *openapi_types.UUID                                 `json:"deviceId,omitempty"`
-				DiskUsage            *float32                                            `json:"diskUsage,omitempty"`
+				DiskUsage            *float32                                            `json:"diskUsage"`
 				FirmwareVersion      *string                                             `json:"firmwareVersion,omitempty"`
 				HardwareModel        *string                                             `json:"hardwareModel,omitempty"`
 				LastLoginCheckTime   *UpdateDeviceCatchAll_200_Info_LastLoginCheckTime   `json:"lastLoginCheckTime,omitempty"`
+				LastStatsCheckTime   *UpdateDeviceCatchAll_200_Info_LastStatsCheckTime   `json:"lastStatsCheckTime"`
 				LastVersionCheckTime *UpdateDeviceCatchAll_200_Info_LastVersionCheckTime `json:"lastVersionCheckTime,omitempty"`
 				LocalDnsIp           *string                                             `json:"localDnsIp,omitempty"`
 				Metadata             *map[string]interface{}                             `json:"metadata,omitempty"`
 				OsVersion            *string                                             `json:"osVersion,omitempty"`
 				PublicDnsFallback    *bool                                               `json:"publicDnsFallback,omitempty"`
-				RamUsage             *float32                                            `json:"ramUsage,omitempty"`
+				RamUsage             *float32                                            `json:"ramUsage"`
 				ReleaseVersion       *string                                             `json:"releaseVersion,omitempty"`
 				Temperature          *float32                                            `json:"temperature,omitempty"`
 				Uptime               *float32                                            `json:"uptime,omitempty"`
