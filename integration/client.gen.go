@@ -283,6 +283,21 @@ type UpdateEndpointPolicyJSONBody struct {
 	UninstallPinRequired   *bool `json:"uninstallPinRequired,omitempty"`
 }
 
+// GetEndpointSessionHistoryParams defines parameters for GetEndpointSessionHistory.
+type GetEndpointSessionHistoryParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+	Limit          *string             `form:"limit,omitempty" json:"limit,omitempty"`
+	Offset         *string             `form:"offset,omitempty" json:"offset,omitempty"`
+	DateFrom       *time.Time          `form:"dateFrom,omitempty" json:"dateFrom,omitempty"`
+	DateTo         *time.Time          `form:"dateTo,omitempty" json:"dateTo,omitempty"`
+	SearchTerm     *string             `form:"searchTerm,omitempty" json:"searchTerm,omitempty"`
+}
+
+// GetEndpointSessionHistoryStatsParams defines parameters for GetEndpointSessionHistoryStats.
+type GetEndpointSessionHistoryStatsParams struct {
+	OrganizationId *openapi_types.UUID `form:"organizationId,omitempty" json:"organizationId,omitempty"`
+}
+
 // UpdateEndpointJSONBody defines parameters for UpdateEndpoint.
 type UpdateEndpointJSONBody struct {
 	EndpointPolicyId *openapi_types.UUID `json:"endpointPolicyId,omitempty"`
@@ -710,6 +725,12 @@ type ClientInterface interface {
 	UpdateEndpointPolicyWithBody(ctx context.Context, endpointPolicyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	UpdateEndpointPolicy(ctx context.Context, endpointPolicyId openapi_types.UUID, body UpdateEndpointPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetEndpointSessionHistory request
+	GetEndpointSessionHistory(ctx context.Context, params *GetEndpointSessionHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetEndpointSessionHistoryStats request
+	GetEndpointSessionHistoryStats(ctx context.Context, params *GetEndpointSessionHistoryStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteEndpoint request
 	DeleteEndpoint(ctx context.Context, endpointId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1165,6 +1186,30 @@ func (c *Client) UpdateEndpointPolicyWithBody(ctx context.Context, endpointPolic
 
 func (c *Client) UpdateEndpointPolicy(ctx context.Context, endpointPolicyId openapi_types.UUID, body UpdateEndpointPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUpdateEndpointPolicyRequest(c.Server, endpointPolicyId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetEndpointSessionHistory(ctx context.Context, params *GetEndpointSessionHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetEndpointSessionHistoryRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetEndpointSessionHistoryStats(ctx context.Context, params *GetEndpointSessionHistoryStatsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetEndpointSessionHistoryStatsRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -2546,6 +2591,184 @@ func NewUpdateEndpointPolicyRequestWithBody(server string, endpointPolicyId open
 	return req, nil
 }
 
+// NewGetEndpointSessionHistoryRequest generates requests for GetEndpointSessionHistory
+func NewGetEndpointSessionHistoryRequest(server string, params *GetEndpointSessionHistoryParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/endpoints/session/history")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Offset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "offset", runtime.ParamLocationQuery, *params.Offset); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.DateFrom != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "dateFrom", runtime.ParamLocationQuery, *params.DateFrom); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.DateTo != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "dateTo", runtime.ParamLocationQuery, *params.DateTo); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.SearchTerm != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "searchTerm", runtime.ParamLocationQuery, *params.SearchTerm); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetEndpointSessionHistoryStatsRequest generates requests for GetEndpointSessionHistoryStats
+func NewGetEndpointSessionHistoryStatsRequest(server string, params *GetEndpointSessionHistoryStatsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/endpoints/session/history/stats")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.OrganizationId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "organizationId", runtime.ParamLocationQuery, *params.OrganizationId); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewDeleteEndpointRequest generates requests for DeleteEndpoint
 func NewDeleteEndpointRequest(server string, endpointId openapi_types.UUID) (*http.Request, error) {
 	var err error
@@ -3544,6 +3767,12 @@ type ClientWithResponsesInterface interface {
 	UpdateEndpointPolicyWithBodyWithResponse(ctx context.Context, endpointPolicyId openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateEndpointPolicyResponse, error)
 
 	UpdateEndpointPolicyWithResponse(ctx context.Context, endpointPolicyId openapi_types.UUID, body UpdateEndpointPolicyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateEndpointPolicyResponse, error)
+
+	// GetEndpointSessionHistoryWithResponse request
+	GetEndpointSessionHistoryWithResponse(ctx context.Context, params *GetEndpointSessionHistoryParams, reqEditors ...RequestEditorFn) (*GetEndpointSessionHistoryResponse, error)
+
+	// GetEndpointSessionHistoryStatsWithResponse request
+	GetEndpointSessionHistoryStatsWithResponse(ctx context.Context, params *GetEndpointSessionHistoryStatsParams, reqEditors ...RequestEditorFn) (*GetEndpointSessionHistoryStatsResponse, error)
 
 	// DeleteEndpointWithResponse request
 	DeleteEndpointWithResponse(ctx context.Context, endpointId openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteEndpointResponse, error)
@@ -4755,6 +4984,80 @@ func (r UpdateEndpointPolicyResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r UpdateEndpointPolicyResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetEndpointSessionHistoryResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data []struct {
+			DurationMinutes float32    `json:"durationMinutes"`
+			EndedAt         *time.Time `json:"endedAt,omitempty"`
+			EndpointId      string     `json:"endpointId"`
+			EndpointName    string     `json:"endpointName"`
+			IsActive        bool       `json:"isActive"`
+			StartedAt       time.Time  `json:"startedAt"`
+		} `json:"data"`
+		Links struct {
+			First *string `json:"first,omitempty"`
+			Last  *string `json:"last,omitempty"`
+			Next  *string `json:"next,omitempty"`
+			Prev  *string `json:"prev,omitempty"`
+			Self  string  `json:"self"`
+		} `json:"links"`
+		Total float32 `json:"total"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON422 *BadRequestResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r GetEndpointSessionHistoryResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetEndpointSessionHistoryResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetEndpointSessionHistoryStatsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		ActiveSessions         float32 `json:"activeSessions"`
+		AverageDurationMinutes float32 `json:"averageDurationMinutes"`
+		SessionsLast24Hours    float32 `json:"sessionsLast24Hours"`
+		UniqueClients          float32 `json:"uniqueClients"`
+	}
+	JSON401 *UnauthorizedResponse
+	JSON403 *ForbiddenResponse
+	JSON422 *BadRequestResponse
+	JSON500 *ServerErrorResponse
+}
+
+// Status returns HTTPResponse.Status
+func (r GetEndpointSessionHistoryStatsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetEndpointSessionHistoryStatsResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -6381,6 +6684,24 @@ func (c *ClientWithResponses) UpdateEndpointPolicyWithResponse(ctx context.Conte
 		return nil, err
 	}
 	return ParseUpdateEndpointPolicyResponse(rsp)
+}
+
+// GetEndpointSessionHistoryWithResponse request returning *GetEndpointSessionHistoryResponse
+func (c *ClientWithResponses) GetEndpointSessionHistoryWithResponse(ctx context.Context, params *GetEndpointSessionHistoryParams, reqEditors ...RequestEditorFn) (*GetEndpointSessionHistoryResponse, error) {
+	rsp, err := c.GetEndpointSessionHistory(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetEndpointSessionHistoryResponse(rsp)
+}
+
+// GetEndpointSessionHistoryStatsWithResponse request returning *GetEndpointSessionHistoryStatsResponse
+func (c *ClientWithResponses) GetEndpointSessionHistoryStatsWithResponse(ctx context.Context, params *GetEndpointSessionHistoryStatsParams, reqEditors ...RequestEditorFn) (*GetEndpointSessionHistoryStatsResponse, error) {
+	rsp, err := c.GetEndpointSessionHistoryStats(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetEndpointSessionHistoryStatsResponse(rsp)
 }
 
 // DeleteEndpointWithResponse request returning *DeleteEndpointResponse
@@ -8374,6 +8695,136 @@ func ParseUpdateEndpointPolicyResponse(rsp *http.Response) (*UpdateEndpointPolic
 			return nil, err
 		}
 		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest BadRequestResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetEndpointSessionHistoryResponse parses an HTTP response from a GetEndpointSessionHistoryWithResponse call
+func ParseGetEndpointSessionHistoryResponse(rsp *http.Response) (*GetEndpointSessionHistoryResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetEndpointSessionHistoryResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data []struct {
+				DurationMinutes float32    `json:"durationMinutes"`
+				EndedAt         *time.Time `json:"endedAt,omitempty"`
+				EndpointId      string     `json:"endpointId"`
+				EndpointName    string     `json:"endpointName"`
+				IsActive        bool       `json:"isActive"`
+				StartedAt       time.Time  `json:"startedAt"`
+			} `json:"data"`
+			Links struct {
+				First *string `json:"first,omitempty"`
+				Last  *string `json:"last,omitempty"`
+				Next  *string `json:"next,omitempty"`
+				Prev  *string `json:"prev,omitempty"`
+				Self  string  `json:"self"`
+			} `json:"links"`
+			Total float32 `json:"total"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest BadRequestResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest ServerErrorResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetEndpointSessionHistoryStatsResponse parses an HTTP response from a GetEndpointSessionHistoryStatsWithResponse call
+func ParseGetEndpointSessionHistoryStatsResponse(rsp *http.Response) (*GetEndpointSessionHistoryStatsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetEndpointSessionHistoryStatsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			ActiveSessions         float32 `json:"activeSessions"`
+			AverageDurationMinutes float32 `json:"averageDurationMinutes"`
+			SessionsLast24Hours    float32 `json:"sessionsLast24Hours"`
+			UniqueClients          float32 `json:"uniqueClients"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest UnauthorizedResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
 		var dest BadRequestResponse
